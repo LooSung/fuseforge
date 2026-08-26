@@ -1,7 +1,7 @@
 # FuseForge — Product Discovery
 
-Status: Draft for human checkpoint  
-Date: 2026-08-26
+- Status: Draft for human checkpoint
+- Date: 2026-08-26
 
 ## 1. Background
 
