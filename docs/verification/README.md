@@ -16,6 +16,15 @@ first execution of the full coordinator flow, including a passing
 frontend-client-to-backend connected check. Read it before describing what
 FuseForge has actually coordinated.
 
+[`track-classification-2026-08-27.md`](track-classification-2026-08-27.md)
+measures how often the coordinator asked about persistence instead of deciding
+for the user, before and after the fix. Read it before describing classification
+stability.
+
+[`self-install-2026-08-27.md`](self-install-2026-08-27.md) records the installer,
+uninstaller, and self-aware doctor, with a live install, activation probe, and
+removal. Read it before describing how FuseForge is installed.
+
 ## Baseline contents
 
 A coordinator Test record states:

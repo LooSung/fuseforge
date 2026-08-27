@@ -5,6 +5,10 @@ Status: **Experimental — implementation slice 2**.
 This setup path inspects and, only with explicit approval, installs missing
 Compforge and OOPforge packs and harness links.
 
+It does **not** install FuseForge. In Compforge and OOPforge, `bootstrap.sh` is
+the self-install entry point; here it installs those two packs instead. FuseForge
+itself is [`install.md`](install.md).
+
 ## Safe inspection
 
 From a FuseForge checkout:
@@ -23,8 +27,13 @@ This command:
 Read-only readiness check:
 
 ```bash
-bash scripts/setup/doctor.sh
+bash scripts/setup/doctor.sh                # FuseForge and both specialists
+bash scripts/setup/doctor.sh --specialists  # the specialist packs only
 ```
+
+Without a flag, doctor also requires FuseForge itself to be installed, and names
+`install.sh` when it is not. `bootstrap.sh` calls the `--specialists` scope,
+because it installs the specialists and was not asked to install FuseForge.
 
 Doctor exits successfully when both packs are compatible and at least one
 harness can load them. A harness you have not set up is reported as absent, not

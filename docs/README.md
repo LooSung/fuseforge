@@ -45,19 +45,18 @@ canonical policy remains under [`../skills/`](../skills/).
 
 ## Implementation
 
-- [Slice 1](planning/implementation/implementation-slice-1.md)
-- [Slice 2 plan](planning/implementation/implementation-slice-2-plan.md) and
-  [evidence](planning/implementation/implementation-slice-2.md)
-- [Slice 3 plan](planning/implementation/implementation-slice-3-plan.md) and
-  [evidence](planning/implementation/implementation-slice-3.md)
-- [Slice 4 plan](planning/implementation/implementation-slice-4-plan.md) and
-  [evidence](planning/implementation/implementation-slice-4.md)
+Every slice plan and evidence record is indexed in
+[planning/implementation/README.md](planning/implementation/README.md). Slices 1
+through 8 are implemented.
 
 ## Verification
 
 - [Verification index](verification/README.md)
 - [Released-flow acceptance](verification/released-flow-acceptance-2026-08-27.md)
 - [Approved coordinator Test evidence](verification/coordinator-test-2026-08-27.md)
+- [Calendar Slice 1 connected proof](verification/calendar-slice-1-2026-08-27.md)
+- [Track classification](verification/track-classification-2026-08-27.md)
+- [Self-install](verification/self-install-2026-08-27.md)
 
 ## Governance
 

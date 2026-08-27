@@ -1,8 +1,58 @@
 #!/usr/bin/env bash
 
+cyan() { printf '\033[36m%s\033[0m\n' "$*"; }
+green() { printf '\033[32m%s\033[0m\n' "$*"; }
+yellow() { printf '\033[33m%s\033[0m\n' "$*"; }
+red() { printf '\033[31m%s\033[0m\n' "$*" >&2; }
+
 fuseforge_root() {
   local setup_dir="$1"
   cd "$setup_dir/../.." && pwd
+}
+
+# Every path FuseForge links into a harness, as "destination|source-subdirectory".
+# install.sh, uninstall.sh, and doctor.sh read this one list so they cannot drift
+# apart and leave a link that only one of them knows about.
+fuseforge_link_plan() {
+  local harness="$1"
+  case "$harness" in
+    claude)
+      printf '%s\n' "$HOME/.claude/skills/fuseforge|skills"
+      printf '%s\n' "$HOME/.claude/commands/fuseforge|commands"
+      ;;
+    codex)
+      printf '%s\n' "$HOME/.codex/skills/fuseforge|skills"
+      ;;
+    cursor)
+      printf '%s\n' "$HOME/.agents/skills/fuseforge|skills"
+      ;;
+    *)
+      printf 'Unknown harness: %s\n' "$harness" >&2
+      return 2
+      ;;
+  esac
+}
+
+fuseforge_harness_dir() {
+  local harness="$1"
+  case "$harness" in
+    claude) printf '%s\n' "$HOME/.claude" ;;
+    codex) printf '%s\n' "$HOME/.codex" ;;
+    cursor) printf '%s\n' "$HOME/.agents" ;;
+    *)
+      printf 'Unknown harness: %s\n' "$harness" >&2
+      return 2
+      ;;
+  esac
+}
+
+fuseforge_harness_label() {
+  case "$1" in
+    claude) printf '%s\n' "Claude Code" ;;
+    codex) printf '%s\n' "Codex CLI" ;;
+    cursor) printf '%s\n' "Cursor Agent" ;;
+    *) printf '%s\n' "$1" ;;
+  esac
 }
 
 pack_root() {

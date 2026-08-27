@@ -37,6 +37,26 @@ Eight runs are a distribution, not a guarantee, and only one phrasing on one
 harness was measured. Context, intent, and topology classification have not been
 measured this way.
 
+## Installation
+
+`scripts/setup/install.sh` installs FuseForge into Claude Code, Codex CLI, and
+Cursor Agent, and `scripts/setup/uninstall.sh` removes it. Both were exercised on
+2026-08-27 in a throwaway `HOME` across nineteen cases and once live, including
+an activation probe and a return to the prior state. Evidence:
+[self-install](../verification/self-install-2026-08-27.md).
+
+The installer creates four symlinks and writes nothing else. It never replaces a
+path that is not a symlink, and never replaces a symlink owned by another
+checkout without `--force`. `uninstall.sh` removes only links pointing at its own
+checkout and never deletes a pack source.
+
+`scripts/setup/bootstrap.sh` installs the *specialist* packs. In Compforge and
+OOPforge that filename is the self-install entry point, so the habit transfers to
+the wrong action; FuseForge itself is `install.sh`.
+
+Not covered: Windows, a package registry, and updating or repairing a specialist
+pack that is already installed.
+
 ## Harness evidence
 
 Support requires the skill-directory install in

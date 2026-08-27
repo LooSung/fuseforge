@@ -51,3 +51,6 @@ jobs:
 
       - name: Bootstrap smoke test
         run: bash scripts/ci/bootstrap-smoke.sh
+
+      - name: Install and uninstall smoke test
+        run: bash scripts/ci/install-smoke.sh

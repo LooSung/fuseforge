@@ -6,6 +6,55 @@ future plans, private backlogs, and unsupported claims do not belong here.
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-08-27
+
+### Added
+
+- `scripts/setup/install.sh` and `scripts/setup/uninstall.sh`. FuseForge was the
+  only one of the three packs with no installer; its install was a clone plus four
+  symlinks typed by hand. The installer takes the sibling packs' `update`,
+  `--force`, and `--dry-run` arguments and `INSTALL_CLAUDE`, `INSTALL_CODEX`, and
+  `INSTALL_CURSOR` overrides.
+- `scripts/setup/quickstart.sh`, a curl-able entry point that clones or updates
+  `~/.fuseforge` and installs it. It installs FuseForge only and prints the
+  specialist bootstrap command rather than running it.
+- An install and uninstall smoke check that runs in a throwaway `HOME`, covering
+  dry-run, idempotent rerun, foreign symlinks, real files at link paths, absent
+  harnesses, partial installs, and a directory that is not a FuseForge checkout.
+
+### Fixed
+
+- `doctor.sh` inspected only the specialist packs, so it could report a ready
+  environment while FuseForge itself was installed in no harness. It now reports
+  FuseForge's own installation and fails when it is absent or partial.
+- No setup script was executable in Git, which is why installing required a
+  `chmod +x` step.
+- `skills/SKILL.md` and `AGENTS.md` still said six approved implementation
+  slices after `0.2.1` shipped the seventh, and the README slice table omitted it.
+
+### Changed
+
+- `bootstrap.sh` now states that it installs the specialist packs and that
+  FuseForge itself is `install.sh`. In the sibling packs `bootstrap.sh` is the
+  self-install entry point, so the name transfers to the wrong action here.
+- `doctor.sh --specialists` checks the specialist packs only. `bootstrap.sh` uses
+  it, so installing the specialists no longer fails on a FuseForge install that
+  bootstrap was never asked to create.
+- Packaging checks require the installer, uninstaller, and quickstart to exist
+  and be executable, and require all three link-touching scripts to read one
+  shared link plan so a path cannot be known to only some of them.
+
+### Known limitations
+
+- Installation was exercised on macOS only. Windows is not supported by any of
+  the three packs.
+- Only Claude Code was probed live after installing. Codex CLI and Cursor Agent
+  links were confirmed by `doctor.sh`, which is weaker than an activation probe.
+- The quickstart update path was not exercised against a remote with local
+  commits present.
+- Everything carried over from `0.2.1` still stands: one slice, one stack pair,
+  one harness of connected evidence, and classification measured for one phrasing.
+
 ## [0.2.1] - 2026-08-27
 
 ### Fixed

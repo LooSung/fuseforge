@@ -6,6 +6,34 @@ SETUP_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=scripts/setup/lib/common.sh
 source "$SETUP_DIR/lib/common.sh"
 
+# bootstrap.sh installs the specialist packs and has no opinion on whether
+# FuseForge itself is installed, so it asks for that scope instead of failing on
+# a condition it was not asked to fix.
+SCOPE="all"
+
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --specialists)
+      SCOPE="specialists"
+      ;;
+    --help|-h)
+      cat <<'USAGE'
+FuseForge pack doctor
+
+Usage:
+  bash scripts/setup/doctor.sh                Check FuseForge and both specialists
+  bash scripts/setup/doctor.sh --specialists  Check the specialist packs only
+USAGE
+      exit 0
+      ;;
+    *)
+      printf 'Unknown argument: %s\n' "$1" >&2
+      exit 2
+      ;;
+  esac
+  shift
+done
+
 if ! command -v python3 >/dev/null 2>&1; then
   printf 'Bootstrap blocked. python3 is required for contract inspection.\n' >&2
   exit 1
@@ -21,8 +49,13 @@ IFS='|' read -r OOP_STATUS OOP_VERSION OOP_REASON <<EOF
 $(inspect_pack oopforge "$OOP_ROOT")
 EOF
 
+SELF_ROOT="$(fuseforge_root "$SETUP_DIR")"
+SELF_VERSION="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["version"])' \
+  "$SELF_ROOT/skills/stability.json" 2>/dev/null || printf '%s' '-')"
+
 printf 'FuseForge Pack Doctor\n\n'
 printf '%-10s %-13s %-10s %s\n' "Pack" "Status" "Version" "Root"
+print_pack_row "FuseForge" "self" "$SELF_VERSION" "$SELF_ROOT"
 print_pack_row "Compforge" "$COMP_STATUS" "$COMP_VERSION" "$COMP_ROOT"
 print_pack_row "OOPforge" "$OOP_STATUS" "$OOP_VERSION" "$OOP_ROOT"
 
@@ -119,7 +152,63 @@ EOF
   esac
 }
 
-printf '\nHarness links\n'
+# FuseForge itself was previously unchecked, so doctor could report a ready
+# environment while the coordinator was not installed in any harness.
+SELF_READY=""
+SELF_BROKEN=0
+
+tally_self() {
+  local harness="$1"
+  local label destination source status detail ok=0 missing=0
+
+  label="$(fuseforge_harness_label "$harness")"
+  while IFS='|' read -r destination source; do
+    [ -n "$destination" ] || continue
+    IFS='|' read -r status detail <<EOF2
+$(link_status "$destination" "$SELF_ROOT/$source")
+EOF2
+    case "$status" in
+      compatible) ok=$((ok + 1)) ;;
+      missing) missing=$((missing + 1)) ;;
+      *)
+        printf '  %-26s %-13s %s\n' "$label" "$status" "$detail"
+        SELF_BROKEN=1
+        return
+        ;;
+    esac
+  done <<EOF
+$(fuseforge_link_plan "$harness")
+EOF
+
+  if [ "$ok" -gt 0 ] && [ "$missing" -gt 0 ]; then
+    printf '  %-26s %-13s %s\n' "$label" "incomplete" "some FuseForge links are missing"
+    SELF_BROKEN=1
+  elif [ "$ok" -gt 0 ]; then
+    printf '  %-26s %-13s %s\n' "$label" "compatible" "-"
+    SELF_READY="$SELF_READY $label,"
+  else
+    printf '  %-26s %-13s %s\n' "$label" "missing" "-"
+  fi
+}
+
+if [ "$SCOPE" = "all" ]; then
+  printf '\nFuseForge itself\n\n'
+  tally_self claude
+  tally_self codex
+  tally_self cursor
+
+  if [ "$SELF_BROKEN" -eq 1 ]; then
+    printf '\n  FuseForge is partly installed. Run scripts/setup/install.sh --force\n'
+    FAILED=1
+  elif [ -z "$SELF_READY" ]; then
+    printf '\n  FuseForge is not installed in any harness. Run scripts/setup/install.sh\n'
+    FAILED=1
+  else
+    printf '\n  FuseForge is available in:%s\n' "${SELF_READY%,}"
+  fi
+fi
+
+printf '\nSpecialist harness links\n'
 
 start_harness "Claude Code"
 tally_link "Compforge skills" "$HOME/.claude/skills/compforge" "$COMP_ROOT/skills"
@@ -154,6 +243,8 @@ fi
 if [ "$FAILED" -eq 0 ]; then
   printf 'No changes required.\n'
 else
-  printf 'Pack environment is not ready. Run bootstrap without --apply for a safe change plan.\n'
+  printf 'Environment is not ready.\n'
+  printf 'FuseForge itself:  bash scripts/setup/install.sh\n'
+  printf 'Specialist packs:  bash scripts/setup/bootstrap.sh   (prints a plan first)\n'
   exit 1
 fi

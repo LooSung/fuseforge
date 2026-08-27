@@ -16,6 +16,10 @@ Usage:
   bash scripts/setup/bootstrap.sh          Inspect and print a safe change plan
   bash scripts/setup/bootstrap.sh --apply  Clone and link only missing items
 
+This installs the Compforge and OOPforge specialist packs. Unlike those packs,
+FuseForge's bootstrap does not install FuseForge itself; use
+scripts/setup/install.sh for that.
+
 Existing packs and occupied link destinations are never updated or replaced.
 USAGE
 }
@@ -64,6 +68,8 @@ add_plan() {
 }
 
 printf 'FuseForge Bootstrap Plan\n\n'
+printf 'This installs Compforge and OOPforge. For FuseForge itself, run\n'
+printf 'scripts/setup/install.sh.\n\n'
 printf '%-10s %-13s %-10s %s\n' "Pack" "Status" "Version" "Root"
 print_pack_row "Compforge" "$COMP_STATUS" "$COMP_VERSION" "$COMP_ROOT"
 print_pack_row "OOPforge" "$OOP_STATUS" "$OOP_VERSION" "$OOP_ROOT"
@@ -229,7 +235,7 @@ if ! env OOPFORGE_HOME="$OOP_ROOT" bash "$OOP_ROOT/scripts/setup/doctor.sh"; the
   exit 1
 fi
 
-if ! bash "$SETUP_DIR/doctor.sh"; then
+if ! bash "$SETUP_DIR/doctor.sh" --specialists; then
   printf 'FuseForge doctor failed after apply. Rerun is safe after resolving the reported issue.\n' >&2
   exit 1
 fi

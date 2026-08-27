@@ -7,10 +7,11 @@
 - [Slice 5 plan](implementation-slice-5-plan.md) and [evidence](implementation-slice-5.md)
 - [Slice 6 plan](implementation-slice-6-plan.md) and [evidence](implementation-slice-6.md)
 - [Slice 7 plan](implementation-slice-7-plan.md) and [evidence](implementation-slice-7.md)
+- [Slice 8 plan](implementation-slice-8-plan.md) and [evidence](implementation-slice-8.md)
 
 Each slice preserves its approved scope and checkpoint evidence.
 
-Slices 1 through 7 are implemented and statically verified. This pack contains no
+Slices 1 through 8 are implemented and statically verified. This pack contains no
 calendar application source by design.
 
 The coordinator flow has since been executed once end to end against a separate
@@ -20,3 +21,7 @@ product workspace, with a passing connected check. See
 Slice 7 is the first slice verified by measuring live behavior before and after
 the change, in
 [track classification](../../verification/track-classification-2026-08-27.md).
+
+Slice 8 gives FuseForge the installer, uninstaller, and self-aware doctor that its
+sibling packs already had. Evidence:
+[self-install](../../verification/self-install-2026-08-27.md).

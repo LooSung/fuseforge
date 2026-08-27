@@ -8,7 +8,7 @@ FuseForge는 [Compforge](https://github.com/LooSung/compforge)와
 
 ## 현재 상태
 
-Discovery, Design, Delivery Plan, Skeleton, 여섯 개 구현 슬라이스와 실험적
+Discovery, Design, Delivery Plan, Skeleton, 여덟 개 구현 슬라이스와 실험적
 코디네이터 Test 체크포인트가 승인됐다. 아직 완성된 코디네이터는 아니다.
 
 ### 실제로 증명된 것
@@ -37,6 +37,26 @@ Compforge·OOPforge에 위임하고, 쓰지 않은 산출물을 썼다고 보고
 Compforge는 TypeScript·React 프런트엔드 규율을 소유한다. OOPforge는 Java
 Spring·Python FastAPI 백엔드 OOP/DDD 규율을 소유한다. FuseForge는
 크로스스택 조정, 공유 계약 일관성, 통합 체크포인트와 연결 검증만 소유한다.
+
+## 설치
+
+```bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/LooSung/fuseforge/main/scripts/setup/quickstart.sh)"
+```
+
+`~/.fuseforge`를 클론하거나 갱신한 뒤, 발견한 하네스에 FuseForge를 설치한다.
+이어서 전문 팩을 설치한다. 이 둘이 없으면 FuseForge는 위임할 수 없다.
+
+```bash
+bash ~/.fuseforge/scripts/setup/bootstrap.sh          # 먼저 계획만 출력한다
+bash ~/.fuseforge/scripts/setup/bootstrap.sh --apply  # 누락된 항목만 만든다
+bash ~/.fuseforge/scripts/setup/doctor.sh             # 결과를 확인한다
+```
+
+제거는 `bash ~/.fuseforge/scripts/setup/uninstall.sh`이며, 자기가 만든 symlink만
+지운다. 형제 팩과 달리 FuseForge의 `bootstrap.sh`는 *전문 팩*을 설치하고,
+FuseForge 자신은 `install.sh`가 설치한다. 릴리스 고정, 플래그, 수동 설치는
+[설치 문서](docs/setup/install.md)를 읽는다.
 
 ## 현재 경계
 
@@ -70,19 +90,21 @@ Spring·Python FastAPI 백엔드 OOP/DDD 규율을 소유한다. FuseForge는
 
 ## 구현 슬라이스
 
-1. [선택 게이트](docs/planning/implementation/implementation-slice-1.md)
-   - 요청 맥락·의도·필요 트랙을 분류하고 누락된 스택·topology를 묻는다.
-2. [전문 팩 bootstrap](docs/planning/implementation/implementation-slice-2.md)
-   - 환경을 먼저 검사하고 `--apply`에서 누락된 팩과 링크만 설치한다.
-3. [greenfield workspace](docs/planning/implementation/implementation-slice-3.md)
-   - 정확한 경로 승인 후 workspace, 공유 계약 `rev-1`, 로컬 상태를 만든다.
-4. [Design 통합](docs/planning/implementation/implementation-slice-4.md)
-   - 전문 팩 결과를 검증하고 사용자 승인 후에만 계약 `rev-2`를 허용한다.
-5. [Implement 위임](docs/planning/implementation/implementation-slice-5.md)
-   - 트랙마다 작업 타깃 하나만 쓰게 하고, 의존성 설치는 소유 전문 팩에 맡긴다.
-6. [연결 검증](docs/planning/implementation/implementation-slice-6.md)
-   - 실제 client가 실행 중인 백엔드를 통과하기 전에는 슬라이스를 완료로 보지
-     않는다.
+슬라이스마다 승인된 계획서와 증거 기록이 있다. 목록은
+[docs/planning/implementation/README.md](docs/planning/implementation/README.md)에 있다.
+
+| 슬라이스 | 범위 |
+|---|---|
+| 1 | 요청 분류와 선택 게이트 |
+| 2 | 읽기 전용 팩 doctor와 누락 항목만 만드는 명시적 bootstrap |
+| 3 | 정확한 경로 승인 기반 greenfield workspace와 공유 계약 `rev-1` |
+| 4 | 전문 팩 Design 위임과 부모가 소유하는 `rev-2` |
+| 5 | 전문 팩 Implement 위임, 쓰기 루트, 의존성 소유권 |
+| 6 | 부모가 소유하는 연결 검증과 슬라이스 완료 장벽 |
+| 7 | 백엔드 트랙을 임의로 결정하지 않고 영속성을 묻는다 |
+| 8 | 형제 팩과 동일한 자체 설치·제거·doctor |
+
+슬라이스는 한 번에 하나씩 승인되며, 계획서 승인 전에 구현된 슬라이스는 없다.
 
 ## 코디네이터 Test
 
@@ -130,7 +152,6 @@ Pull request 전에 [`AGENTS.md`](AGENTS.md)와
 - 프로덕션 배포
 - 기존 전문 팩의 자동 업데이트·수리
 - 범용 멀티에이전트 런타임
-- FuseForge 자체 설치 스크립트 (설치는 문서화된 symlink 명령으로 한다)
 
 ## 언어 정책
 

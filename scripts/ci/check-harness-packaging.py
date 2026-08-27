@@ -128,9 +128,48 @@ def check_required_paths(root: Path) -> None:
         "docs/setup/codex.md",
         "docs/setup/cursor.md",
         "docs/reference/support-scope.md",
+        "docs/setup/install.md",
     )
     for relative in required:
         assert (root / relative).is_file(), f"missing packaging path: {relative}"
+
+
+def check_setup_parity(root: Path) -> None:
+    """FuseForge requires an installer of every pack it accepts, in
+    scripts/setup/lib/common.sh. Hold FuseForge itself to the same bar."""
+    for relative in (
+        "scripts/setup/install.sh",
+        "scripts/setup/uninstall.sh",
+        "scripts/setup/doctor.sh",
+        "scripts/setup/quickstart.sh",
+    ):
+        path = root / relative
+        assert path.is_file(), f"missing setup script: {relative}"
+        assert path.stat().st_mode & 0o111, f"not executable: {relative}"
+
+    installer = (root / "scripts/setup/install.sh").read_text(encoding="utf-8")
+    for flag in ("--dry-run", "--force", "update"):
+        assert flag in installer, f"install.sh does not accept {flag}"
+
+    uninstaller = (root / "scripts/setup/uninstall.sh").read_text(encoding="utf-8")
+    flat = " ".join(uninstaller.replace("#", " ").split())
+    assert "never deletes the pack source" in flat, (
+        "uninstall.sh must state that it never deletes the pack source"
+    )
+
+    # A link path known to only some of the three scripts would leak on uninstall
+    # or go unreported by doctor, so all three read one shared plan.
+    common = (root / "scripts/setup/lib/common.sh").read_text(encoding="utf-8")
+    assert "fuseforge_link_plan()" in common, "common.sh must define the link plan"
+    for relative in (
+        "scripts/setup/install.sh",
+        "scripts/setup/uninstall.sh",
+        "scripts/setup/doctor.sh",
+    ):
+        text = (root / relative).read_text(encoding="utf-8")
+        assert "fuseforge_link_plan" in text, (
+            f"{relative} must use fuseforge_link_plan instead of its own paths"
+        )
 
 
 def check_frontmatter(root: Path) -> None:
@@ -170,6 +209,7 @@ def main() -> None:
     check_registry(root, version)
     check_skill_claims(root)
     check_required_paths(root)
+    check_setup_parity(root)
     check_frontmatter(root)
     check_skill_size(root)
     check_activation_probes(root)

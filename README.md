@@ -9,7 +9,7 @@ flow.
 
 ## Status
 
-Discovery, Design, Delivery Plan, Skeleton, six implementation slices, and the
+Discovery, Design, Delivery Plan, Skeleton, eight implementation slices, and the
 experimental coordinator Test checkpoint are approved. The package is not yet a
 complete coordinator.
 
@@ -43,6 +43,26 @@ OOPforge remains responsible for Java Spring and Python FastAPI backend
 discipline. FuseForge is intended to own only cross-stack coordination,
 shared-contract consistency, integrated checkpoints, and connected
 verification.
+
+## Install
+
+```bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/LooSung/fuseforge/main/scripts/setup/quickstart.sh)"
+```
+
+This clones or updates `~/.fuseforge` and installs it into the harnesses it finds.
+Then add the specialist packs, which FuseForge cannot delegate without:
+
+```bash
+bash ~/.fuseforge/scripts/setup/bootstrap.sh          # print a plan first
+bash ~/.fuseforge/scripts/setup/bootstrap.sh --apply  # create missing items only
+bash ~/.fuseforge/scripts/setup/doctor.sh             # check the result
+```
+
+Removal is `bash ~/.fuseforge/scripts/setup/uninstall.sh`, which removes only the
+symlinks it created. Note that unlike the sibling packs, FuseForge's
+`bootstrap.sh` installs its *specialists*; `install.sh` installs FuseForge. See
+[Install](docs/setup/install.md) for pinned releases, flags, and manual setup.
 
 ## Current boundaries
 
@@ -104,6 +124,8 @@ Each slice has an approved plan and an evidence record. The index is
 | 4 | Specialist Design delegation and parent-owned `rev-2` |
 | 5 | Specialist Implement delegation, write roots, and dependency ownership |
 | 6 | Parent-owned connected verification and the slice completion barrier |
+| 7 | Asking about persistence instead of silently deciding the backend track |
+| 8 | Self-install, uninstall, and doctor parity with the sibling packs |
 
 Slices are approved one at a time, and no slice was implemented before its plan
 was approved.

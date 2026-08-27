@@ -5,7 +5,7 @@ description: Use FuseForge for coordinated selection, confirmed greenfield setup
 
 # FuseForge
 
-Status: **Experimental — approved coordinator slices 1–6**.
+Status: **Experimental — approved coordinator slices 1–8**.
 
 For `FUSEFORGE_ACTIVATION_PROBE`, output these three lines and stop without
 reading other files:

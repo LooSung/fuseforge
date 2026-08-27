@@ -9,12 +9,16 @@ feature-level workflow, shared contract, and integrated approval experience.
 ## Current stage
 
 FuseForge's **coordinator Test checkpoint is approved**. Discovery, Design,
-Delivery Plan, Skeleton, and six Implement slices are approved.
+Delivery Plan, Skeleton, and eight Implement slices are approved.
 
 The whole flow has been executed once against a real product workspace and
 produced calendar Slice 1 with a passing connected check. Read
 `docs/verification/calendar-slice-1-2026-08-27.md` before describing what
 FuseForge has coordinated. It is one slice, one stack pair, one harness.
+
+FuseForge installs and uninstalls itself with `scripts/setup/install.sh` and
+`scripts/setup/uninstall.sh`. `scripts/setup/bootstrap.sh` installs the
+specialist packs, not FuseForge, which differs from the sibling packs.
 
 - Read `docs/planning/checkpoints/discovery.md`,
   `docs/planning/checkpoints/design.md`,

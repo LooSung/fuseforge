@@ -166,7 +166,7 @@ for path in \
   fi
 done
 
-HOME="$PLAN_HOME" bash "$DOCTOR" >/dev/null
+HOME="$PLAN_HOME" bash "$DOCTOR" --specialists >/dev/null
 COMP_LINK_BEFORE="$(readlink "$PLAN_HOME/.claude/skills/compforge")"
 SECOND_OUTPUT="$(
   HOME="$PLAN_HOME" \
