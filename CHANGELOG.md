@@ -6,6 +6,30 @@ future plans, private backlogs, and unsupported claims do not belong here.
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-08-27
+
+### Added
+
+- `/fuseforge:consult` is no longer a Skeleton interface. It answers
+  coordination questions, compares coordinator choices, reviews shared-contract
+  alignment, or writes one explicitly requested planning document. It does not
+  implement product behavior, settle a silent stack or track, or impersonate
+  Compforge or OOPforge Consult.
+
+### Known limitations
+
+- Consult `review` and `document` modes were not exercised live. One comparison
+  on Codex CLI loaded the policy, started with `Mode: proposal`, and wrote
+  nothing.
+- Non-interactive `claude -p` still cannot read `~/.claude/skills/` without
+  `--add-dir`. A granted Claude Consult chose Proposal and wrote nothing, but
+  spoke before the Mode header.
+- A live `install.sh` round trip has been run on macOS only. Isolated
+  `install-smoke.sh` already runs on GitHub Actions `ubuntu-latest`.
+- Everything carried over from `0.3.1` still stands: one calendar slice, one
+  stack pair, one harness of connected evidence, and classification measured
+  for one phrasing.
+
 ## [0.3.1] - 2026-08-27
 
 ### Fixed

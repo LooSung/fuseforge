@@ -10,12 +10,14 @@ Invoke:
 
 ```text
 /fuseforge:craft <product request>
+/fuseforge:consult <coordination question>
 ```
 
 Activation probe:
 
 ```text
 /fuseforge:craft FUSEFORGE_ACTIVATION_PROBE
+/fuseforge:consult FUSEFORGE_CONSULT_PROBE
 ```
 
 Expected output:
@@ -24,6 +26,14 @@ Expected output:
 FUSEFORGE_LOADED
 Assumptions
 Selection Gate
+```
+
+Consult probe output:
+
+```text
+FUSEFORGE_CONSULT_LOADED
+Mode: answer
+Write permission: none
 ```
 
 ## Session plugin alternative
@@ -41,4 +51,5 @@ The skill-directory install needs no extra flags and is the recommended path.
 [`bootstrap.md`](bootstrap.md) prepares missing Compforge and OOPforge packs. It
 does not install or update FuseForge itself.
 
-`/fuseforge:consult` remains Skeleton-only.
+`/fuseforge:consult` is experimental advisory behavior. It does not implement
+product work; use `/fuseforge:craft` for that.

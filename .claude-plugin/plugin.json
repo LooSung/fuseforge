@@ -1,6 +1,6 @@
 {
   "name": "fuseforge",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Experimental FuseForge full-stack coordination policy for Claude Code.",
   "author": {
     "name": "Mr.Louis",

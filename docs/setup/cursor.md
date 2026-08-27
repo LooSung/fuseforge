@@ -10,12 +10,14 @@ Invoke:
 
 ```text
 Use FuseForge craft: <product request>
+Use FuseForge consult: <coordination question>
 ```
 
 Activation probe:
 
 ```bash
 cursor-agent --trust -p "FUSEFORGE_ACTIVATION_PROBE"
+cursor-agent --trust -p "FUSEFORGE_CONSULT_PROBE"
 ```
 
 Expected output:
@@ -26,11 +28,19 @@ Assumptions
 Selection Gate
 ```
 
+Consult probe output:
+
+```text
+FUSEFORGE_CONSULT_LOADED
+Mode: answer
+Write permission: none
+```
+
 `cursor-agent --plugin-dir <fuseforge-checkout>` does not load the skill and is
 not a supported install path. See
 [`install.md`](install.md#unsupported-install-paths) for the observed behavior.
 
-The approved evidence covers activation, the read-only selection gate, an
-exact-path workspace plan, confirmed workspace creation, specialist Design
-delegation, and approval-gated `rev-2`. It does not include calendar
-application implementation or connected verification.
+Consult is experimental advisory behavior. It does not implement product work;
+use Craft for that. Current harness evidence is in
+[support scope](../reference/support-scope.md) and
+[consult verification](../verification/consult-2026-08-27.md).

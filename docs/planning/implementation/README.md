@@ -8,10 +8,11 @@
 - [Slice 6 plan](implementation-slice-6-plan.md) and [evidence](implementation-slice-6.md)
 - [Slice 7 plan](implementation-slice-7-plan.md) and [evidence](implementation-slice-7.md)
 - [Slice 8 plan](implementation-slice-8-plan.md) and [evidence](implementation-slice-8.md)
+- [Slice 9 plan](implementation-slice-9-plan.md) and [evidence](implementation-slice-9.md)
 
 Each slice preserves its approved scope and checkpoint evidence.
 
-Slices 1 through 8 are implemented and statically verified. This pack contains no
+Slices 1 through 9 are implemented and statically verified. This pack contains no
 calendar application source by design.
 
 The coordinator flow has since been executed once end to end against a separate
@@ -25,3 +26,7 @@ the change, in
 Slice 8 gives FuseForge the installer, uninstaller, and self-aware doctor that its
 sibling packs already had. Evidence:
 [self-install](../../verification/self-install-2026-08-27.md).
+
+Slice 9 turns `/fuseforge:consult` from a Skeleton interface into experimental
+advisory behavior. Evidence:
+[consult](../../verification/consult-2026-08-27.md).

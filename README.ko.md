@@ -8,7 +8,7 @@ FuseForge는 [Compforge](https://github.com/LooSung/compforge)와
 
 ## 현재 상태
 
-Discovery, Design, Delivery Plan, Skeleton, 여덟 개 구현 슬라이스와 실험적
+Discovery, Design, Delivery Plan, Skeleton, 아홉 개 구현 슬라이스와 실험적
 코디네이터 Test 체크포인트가 승인됐다. 아직 완성된 코디네이터는 아니다.
 
 ### 실제로 증명된 것
@@ -103,6 +103,7 @@ FuseForge 자신은 `install.sh`가 설치한다. 릴리스 고정, 플래그, �
 | 6 | 부모가 소유하는 연결 검증과 슬라이스 완료 장벽 |
 | 7 | 백엔드 트랙을 임의로 결정하지 않고 영속성을 묻는다 |
 | 8 | 형제 팩과 동일한 자체 설치·제거·doctor |
+| 9 | 읽기 전용 Consult: 답변, 비교, 검토, 또는 기획 문서 하나 작성 |
 
 슬라이스는 한 번에 하나씩 승인되며, 계획서 승인 전에 구현된 슬라이스는 없다.
 

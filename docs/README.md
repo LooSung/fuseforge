@@ -47,7 +47,7 @@ canonical policy remains under [`../skills/`](../skills/).
 
 Every slice plan and evidence record is indexed in
 [planning/implementation/README.md](planning/implementation/README.md). Slices 1
-through 8 are implemented.
+through 9 are implemented.
 
 ## Verification
 
@@ -57,6 +57,7 @@ through 8 are implemented.
 - [Calendar Slice 1 connected proof](verification/calendar-slice-1-2026-08-27.md)
 - [Track classification](verification/track-classification-2026-08-27.md)
 - [Self-install](verification/self-install-2026-08-27.md)
+- [Consult](verification/consult-2026-08-27.md)
 
 ## Governance
 

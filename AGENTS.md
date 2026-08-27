@@ -9,7 +9,7 @@ feature-level workflow, shared contract, and integrated approval experience.
 ## Current stage
 
 FuseForge's **coordinator Test checkpoint is approved**. Discovery, Design,
-Delivery Plan, Skeleton, and eight Implement slices are approved.
+Delivery Plan, Skeleton, and nine Implement slices are approved.
 
 The whole flow has been executed once against a real product workspace and
 produced calendar Slice 1 with a passing connected check. Read

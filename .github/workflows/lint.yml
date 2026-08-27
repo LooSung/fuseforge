@@ -49,6 +49,9 @@ jobs:
       - name: Check connected verification
         run: python3 scripts/ci/check-connected-verification.py
 
+      - name: Check consult
+        run: python3 scripts/ci/check-consult.py
+
       - name: Bootstrap smoke test
         run: bash scripts/ci/bootstrap-smoke.sh
 

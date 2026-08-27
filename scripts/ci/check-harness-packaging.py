@@ -98,6 +98,12 @@ def check_skill_claims(root: Path) -> None:
         ),
         None,
     )
+    if not registry["skeleton"]:
+        assert claim is None, (
+            "skills/SKILL.md still names a Skeleton interface after the "
+            "registry has no skeleton entries"
+        )
+        return
     assert claim is not None, f"skills/SKILL.md must state which files are {marker}s"
     for relative in registry["implemented"]:
         assert relative not in claim, (
@@ -201,6 +207,18 @@ def check_activation_probes(root: Path) -> None:
         content = (root / relative).read_text(encoding="utf-8")
         assert "FUSEFORGE_ACTIVATION_PROBE" in content, f"missing probe: {relative}"
         assert "FUSEFORGE_LOADED" in content, f"missing probe result: {relative}"
+    for relative in (
+        "commands/consult.md",
+        "skills/SKILL.md",
+        ".cursor-plugin/skills/fuseforge/SKILL.md",
+    ):
+        content = (root / relative).read_text(encoding="utf-8")
+        assert "FUSEFORGE_CONSULT_PROBE" in content, (
+            f"missing consult probe: {relative}"
+        )
+        assert "FUSEFORGE_CONSULT_LOADED" in content, (
+            f"missing consult probe result: {relative}"
+        )
 
 
 def main() -> None:

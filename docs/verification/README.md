@@ -25,6 +25,11 @@ stability.
 uninstaller, and self-aware doctor, with a live install, activation probe, and
 removal. Read it before describing how FuseForge is installed.
 
+[`consult-2026-08-27.md`](consult-2026-08-27.md) records Consult moving from
+Skeleton to experimental advisory behavior, including the live probe and the
+Codex and Cursor Craft activation probes that slice 8 did not run after
+installing.
+
 ## Baseline contents
 
 A coordinator Test record states:

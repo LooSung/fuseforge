@@ -9,7 +9,7 @@ flow.
 
 ## Status
 
-Discovery, Design, Delivery Plan, Skeleton, eight implementation slices, and the
+Discovery, Design, Delivery Plan, Skeleton, nine implementation slices, and the
 experimental coordinator Test checkpoint are approved. The package is not yet a
 complete coordinator.
 
@@ -126,6 +126,7 @@ Each slice has an approved plan and an evidence record. The index is
 | 6 | Parent-owned connected verification and the slice completion barrier |
 | 7 | Asking about persistence instead of silently deciding the backend track |
 | 8 | Self-install, uninstall, and doctor parity with the sibling packs |
+| 9 | Read-only Consult: answer, compare, review, or write one planning document |
 
 Slices are approved one at a time, and no slice was implemented before its plan
 was approved.

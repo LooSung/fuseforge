@@ -1,14 +1,28 @@
 ---
 name: consult
-description: Skeleton for the future read-only FuseForge advisory workflow. Not implemented.
+description: Answer, compare, review, or write one planning document for coordinated full-stack work without implementation changes.
 ---
 
-# Consult Command Interface
+If the user request is exactly `FUSEFORGE_CONSULT_PROBE`, output these three
+lines and stop without reading other files:
 
-Status: **Skeleton only**.
+```text
+FUSEFORGE_CONSULT_LOADED
+Mode: answer
+Write permission: none
+```
 
-The future Claude command will route to the canonical Consult policy under
-`skills/workflow/consult.md`.
+Read and execute the first path that exists:
 
-Argument forwarding, workflow execution, and fallback paths are not
-implemented.
+1. `~/.claude/skills/fuseforge/workflow/consult.md` — skill-directory install
+2. `${CLAUDE_PLUGIN_ROOT}/skills/workflow/consult.md` — session plugin
+
+Prefer the first path. Reading `CLAUDE_PLUGIN_ROOT` can require an extra
+approval that stops a non-interactive session before the workflow loads.
+
+Consult is read-only by default. It must not implement product behavior,
+change specialist source, or create a shared contract.
+
+User request:
+
+**$ARGUMENTS**

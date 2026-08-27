@@ -1,11 +1,11 @@
 ---
 name: fuseforge
-description: Use FuseForge for coordinated selection, confirmed greenfield setup, and approved specialist Design integration across Compforge and OOPforge.
+description: Use FuseForge for coordinated selection, confirmed greenfield setup, approved specialist Design integration, and read-only consult across Compforge and OOPforge.
 ---
 
 # FuseForge
 
-Status: **Experimental — approved coordinator slices 1–8**.
+Status: **Experimental — approved coordinator slices 1–9**.
 
 For `FUSEFORGE_ACTIVATION_PROBE`, output these three lines and stop without
 reading other files:
@@ -15,6 +15,27 @@ FUSEFORGE_LOADED
 Assumptions
 Selection Gate
 ```
+
+For `FUSEFORGE_CONSULT_PROBE`, output these three lines and stop without
+reading other files:
+
+```text
+FUSEFORGE_CONSULT_LOADED
+Mode: answer
+Write permission: none
+```
+
+For a FuseForge Consult request:
+
+1. Read `workflow/consult.md`.
+2. Execute only the implemented Consult workflow.
+3. Never implement product behavior, change specialist source, or create a
+   shared contract from Consult.
+
+If a required Consult policy file cannot be read, stop and report which file
+and why. Never reconstruct Consult from memory, and never emit `Mode` or any
+other section of the Consult response contract without having read the policy
+that defines it.
 
 For a FuseForge Craft request:
 
@@ -50,5 +71,3 @@ become authoritative only through the integrated checkpoint and parent-owned
 A product slice is complete only after the parent-owned connected check passed
 and was recorded. Never claim that a frontend client was proven against a
 running backend without that record.
-
-`workflow/consult.md` remains a Skeleton interface.

@@ -15,12 +15,18 @@ claim that the complete calendar workflow is available.
   dependency ownership, result validation, and partial-completion reporting;
 - parent-owned connected-verification policy, covering the real client and HTTP
   adapter boundary, backend lifecycle, evidence record, and the rule that a
-  slice is incomplete without a passing recorded check.
+  slice is incomplete without a passing recorded check;
+- read-only Consult: answer, compare, review, or write one planning document
+  without implementing product behavior.
 
-Both have been exercised once, end to end, on Cursor Agent with Compforge 1.3.1
+Implement delegation and connected verification have been exercised once, end to
+end, on Cursor Agent with Compforge 1.3.1
 and OOPforge 1.4.2: calendar Slice 1 was built by delegated specialists and the
 real frontend client was proven against a running backend. See
 [calendar Slice 1](../verification/calendar-slice-1-2026-08-27.md).
+
+Consult is experimental advisory policy. Live probe evidence is in
+[consult](../verification/consult-2026-08-27.md).
 
 That is one slice of one product with one stack pair. It is evidence that the
 flow works, not a guarantee for other stacks, harnesses, or later slices.
@@ -55,7 +61,9 @@ OOPforge that filename is the self-install entry point, so the habit transfers t
 the wrong action; FuseForge itself is `install.sh`.
 
 Not covered: Windows, a package registry, and updating or repairing a specialist
-pack that is already installed.
+pack that is already installed. Isolated `install-smoke.sh` also runs on GitHub
+Actions `ubuntu-latest`. A live `install.sh` round trip has been run on macOS
+only.
 
 ## Harness evidence
 
@@ -64,16 +72,24 @@ Support requires the skill-directory install in
 
 | Harness | Invocation | Evidence |
 |---|---|---|
-| Claude Code | `/fuseforge:craft …` | Live activation and the full coordinator flow passed |
-| Codex CLI | `Use FuseForge craft: …` | Live activation passed |
-| Cursor Agent | `Use FuseForge craft: …` | Live activation and isolated workspace behavior passed |
+| Claude Code | `/fuseforge:craft …`, `/fuseforge:consult …` | Live Craft activation, the full coordinator flow, and the Consult probe passed |
+| Codex CLI | `Use FuseForge craft: …`, `Use FuseForge consult: …` | Live Craft and Consult activation passed; one live Consult comparison loaded `consult.md` |
+| Cursor Agent | `Use FuseForge craft: …`, `Use FuseForge consult: …` | Live Craft and Consult activation passed |
 
-The activation response is:
+The Craft activation response is:
 
 ```text
 FUSEFORGE_LOADED
 Assumptions
 Selection Gate
+```
+
+The Consult probe response is:
+
+```text
+FUSEFORGE_CONSULT_LOADED
+Mode: answer
+Write permission: none
 ```
 
 `cursor-agent --plugin-dir` is not a supported install path; it does not load
@@ -93,7 +109,6 @@ capabilities.
 
 ## Not currently implemented
 
-- FuseForge Consult behavior;
 - calendar slices 2 through 6;
 - browser-driven end-to-end coverage;
 - calendar application source inside this pack, which is by design;

@@ -47,7 +47,14 @@ FuseForge는 누락된 기술 선택을 조용히 추정하지 않는다.
 
 선택이 끝나기 전에는 제품 파일을 만들지 않는다.
 
-## 4. 논리 작업공간
+## 4. Consult
+
+`/fuseforge:consult`는 구현 허가 없이 조율 질문에 답하거나, 코디네이터 선택지를
+비교하거나, 공유 계약 정렬을 검토하거나, 요청한 기획 문서 하나를 쓴다. 침묵한
+스택·트랙·topology를 정하는 일과 제품 구현은 Craft다. 프런트엔드나 백엔드
+방법론 질문은 해당 전문 팩 Consult로 넘긴다.
+
+## 5. 논리 작업공간
 
 FuseForge는 모노레포와 세 개의 work target 구성을 같은 논리 모델로 다룬다.
 
@@ -62,7 +69,7 @@ local coordinator state
 greenfield 생성은 정확한 절대 경로를 현재 응답에서 승인받은 뒤에만 진행한다.
 Git 초기화, 의존성 설치와 애플리케이션 소스 생성은 별도 승인 범위다.
 
-## 5. 공유 계약과 로컬 상태
+## 6. 공유 계약과 로컬 상태
 
 크로스스택 제품 의미의 정본은 다음 tracked 문서다.
 
@@ -80,7 +87,7 @@ docs/features/<feature-slug>/contract.md
 상태에는 절대 경로, 현재 단계, 팩 버전과 다음 결정을 둔다. 로컬 상태가 두
 번째 제품 계약이 되어서는 안 된다.
 
-## 6. 전문 팩 위임
+## 7. 전문 팩 위임
 
 부모는 두 전문 팩에 같은 계약 revision을 전달한다.
 
@@ -94,7 +101,7 @@ docs/features/<feature-slug>/contract.md
 병렬 실행은 계약이 고정되고 write root가 겹치지 않을 때만 가능한 최적화다.
 순차 실행은 항상 유효한 기본 경로로 남는다.
 
-## 7. stage barrier와 revision
+## 8. stage barrier와 revision
 
 필요한 결과가 없거나 failed, cancelled, decision-required, stale이면 다음
 단계로 넘어가지 않는다.
@@ -104,7 +111,7 @@ docs/features/<feature-slug>/contract.md
 묻는다. 사용자가 통합 제안을 승인한 뒤에만 부모가 공유 계약을 `rev-2`로
 갱신한다.
 
-## 8. 검증 수준
+## 9. 검증 수준
 
 증거는 서로 구분한다.
 
@@ -117,7 +124,7 @@ docs/features/<feature-slug>/contract.md
 승인됐으며 live activation은 미증명이다. 캘린더 애플리케이션이 없으므로
 connected verification도 아직 없다.
 
-## 9. 현재 범위와 다음 증명
+## 10. 현재 범위와 다음 증명
 
 현재 구현된 것은 선택, 전문 팩 bootstrap, greenfield workspace, 공유 계약과
 Design 통합 정책이다. 완성된 풀스택 하네스라고 주장하려면 실제 캘린더 수직
