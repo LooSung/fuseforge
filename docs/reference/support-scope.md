@@ -12,11 +12,15 @@ claim that the complete calendar workflow is available.
 - Design-only specialist delegation, result validation, stale handling, and
   approval-gated `rev-2` policy;
 - Implement-stage delegation policy for calendar Slice 1, covering write roots,
-  dependency ownership, result validation, and partial-completion reporting.
+  dependency ownership, result validation, and partial-completion reporting;
+- parent-owned connected-verification policy, covering the real client and HTTP
+  adapter boundary, backend lifecycle, evidence record, and the rule that a
+  slice is incomplete without a passing recorded check.
 
-Implement delegation is defined and statically verified. It has **not** been
-exercised against a live specialist, and no calendar application source exists.
-Treat it as policy, not as demonstrated behavior.
+Implement delegation and connected verification are defined and statically
+verified. Neither has been exercised against a live specialist or a running
+backend, and no calendar application source exists. Treat both as policy, not as
+demonstrated behavior.
 
 ## Harness evidence
 
@@ -55,7 +59,7 @@ capabilities.
 ## Not currently implemented
 
 - FuseForge Consult behavior;
-- connected frontend-client-to-backend verification;
+- any executed connected frontend-client-to-backend check;
 - calendar frontend or backend application source;
 - production deployment;
 - automatic updates or repair of existing specialist installations;

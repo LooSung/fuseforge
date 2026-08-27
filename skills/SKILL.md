@@ -5,7 +5,7 @@ description: Use FuseForge for coordinated selection, confirmed greenfield setup
 
 # FuseForge
 
-Status: **Experimental — approved coordinator slices 1–5**.
+Status: **Experimental — approved coordinator slices 1–6**.
 
 For `FUSEFORGE_ACTIVATION_PROBE`, output these three lines and stop without
 reading other files:
@@ -23,8 +23,10 @@ For a FuseForge Craft request:
 3. Read `coordination/shared-contract.md`.
 4. For an approved Design or Implement turn, read `coordination/delegation.md`
    and `coordination/stage-barrier.md`.
-5. Execute only the implemented selection-gate, confirmed greenfield
-   workspace, Design-integration, and Implement-delegation slices.
+5. Before reporting a product slice complete, read
+   `coordination/connected-verification.md`.
+6. Execute only the implemented selection-gate, confirmed greenfield workspace,
+   Design-integration, Implement-delegation, and connected-verification slices.
 
 Before exact path confirmation, remain read-only. After confirmation, create
 only the approved workspace directories, product-semantics contract `rev-1`,
@@ -36,8 +38,9 @@ work target, and only under an approved Implement delegation. Wire semantics
 become authoritative only through the integrated checkpoint and parent-owned
 `rev-2`.
 
-Connected verification remains unimplemented, so never claim that a frontend
-client was proven against a running backend.
+A product slice is complete only after the parent-owned connected check passed
+and was recorded. Never claim that a frontend client was proven against a
+running backend without that record.
 
 `workflow/consult.md` and `coordination/connected-verification.md` remain
 Skeleton interfaces.

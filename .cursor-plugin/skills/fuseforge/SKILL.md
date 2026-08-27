@@ -17,5 +17,5 @@ Selection Gate
 Read and follow `../../../skills/SKILL.md`.
 
 Treat `../../../skills/` as the canonical skill root. The coordinator delegates
-specialist work and must not create calendar product source itself. Connected
-frontend-to-backend verification is not implemented.
+specialist work and must not create calendar product source itself. A product
+slice is complete only after the parent-owned connected check was recorded.

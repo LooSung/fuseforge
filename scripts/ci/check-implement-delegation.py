@@ -47,7 +47,8 @@ def check_delegation() -> None:
         "without reporting `scope_drift`",
         "edits the shared contract",
         "reports passing evidence without a command and an observed result",
-        "FuseForge writes no application source and runs no specialist test suite",
+        "FuseForge writes no application source and runs no specialist suite to",
+        "manufacture specialist evidence",
         "against unchanged `rev-2`",
     )
 
@@ -77,13 +78,11 @@ def check_entry_points() -> None:
         "## 9. Specialist Implement delegation",
         "Delegate calendar Slice 1 against `rev-2`",
         "runs no package manager",
-        "do not claim connected verification",
     )
     require(
         "skills/SKILL.md",
         "Do not create frontend or backend source",
         "only under an approved Implement delegation",
-        "Connected verification remains unimplemented",
     )
     require(
         ".cursor-plugin/skills/fuseforge/SKILL.md",
@@ -91,15 +90,9 @@ def check_entry_points() -> None:
     )
 
 
-def check_connected_verification_unclaimed() -> None:
-    """Slice 5 must not present connected verification as implemented."""
-    connected = "skills/coordination/connected-verification.md"
-    if "Skeleton only" not in (ROOT / connected).read_text(encoding="utf-8"):
-        raise AssertionError(f"{connected} must remain Skeleton-only in this slice")
-
+def check_registry() -> None:
+    """Implement policy lives in registered, implemented policy files."""
     registry = json.loads((ROOT / "skills/stability.json").read_text(encoding="utf-8"))
-    if "coordination/connected-verification.md" not in registry["skeleton"]:
-        raise AssertionError("connected-verification.md must stay in the skeleton list")
     for relative in ("coordination/delegation.md", "coordination/stage-barrier.md"):
         if relative not in registry["implemented"]:
             raise AssertionError(f"{relative} is not marked implemented")
@@ -122,7 +115,7 @@ def main() -> None:
     check_delegation()
     check_barrier()
     check_entry_points()
-    check_connected_verification_unclaimed()
+    check_registry()
     check_no_calendar_source()
     print("FuseForge implement-delegation checks passed")
 

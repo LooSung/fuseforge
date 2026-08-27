@@ -74,3 +74,13 @@ connected frontend-to-backend verification has not run.
 Approval moves the feature to the Test stage. It does not by itself change the
 contract. A genuine wire gap found during integration returns as a decision
 request, and only an approved integrated checkpoint may produce `rev-3`.
+
+## Slice completion barrier
+
+A product slice is complete only when every required track is complete on the
+approved revision and the parent-owned connected check in
+`connected-verification.md` passed and was recorded. A missing, failed, or
+unrecorded check keeps the slice incomplete.
+
+Until then, report the feature as not proven end to end, using the same wording
+rule as partial completion. Specialist tests alone never satisfy this barrier.

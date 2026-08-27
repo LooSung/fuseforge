@@ -119,9 +119,10 @@ Reject an Implement result when it:
 - reports passing evidence without a command and an observed result;
 - introduces a database server, container, or external service.
 
-FuseForge writes no application source and runs no specialist test suite on a
-specialist's behalf. A write outside the assigned target invalidates the result
-even when the code is otherwise correct.
+FuseForge writes no application source and runs no specialist suite to
+manufacture specialist evidence. The one parent-run exception is the commissioned
+connected check in `connected-verification.md`. A write outside the assigned
+target invalidates the result even when the code is otherwise correct.
 
 Without Git, `base_revision` is `unavailable`. Disclose the reduced code-drift
 assurance, which matters more once application source exists.

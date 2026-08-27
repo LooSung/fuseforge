@@ -46,5 +46,8 @@ jobs:
       - name: Check implement delegation
         run: python3 scripts/ci/check-implement-delegation.py
 
+      - name: Check connected verification
+        run: python3 scripts/ci/check-connected-verification.py
+
       - name: Bootstrap smoke test
         run: bash scripts/ci/bootstrap-smoke.sh

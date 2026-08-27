@@ -191,6 +191,8 @@ tests, and their own dependency installation; FuseForge writes no application
 source and runs no package manager.
 
 Keep the barrier closed for any incomplete track. When one track completes and
-the other fails, report that the feature does not work end to end, retry only
-the failed track, and do not claim connected verification, which is not
-implemented.
+the other fails, report that the feature does not work end to end and retry only
+the failed track.
+
+A slice is complete only after the parent-owned check in
+`../coordination/connected-verification.md` passed and was recorded.

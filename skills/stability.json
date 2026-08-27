@@ -6,10 +6,10 @@
     "coordination/logical-workspace.md",
     "coordination/shared-contract.md",
     "coordination/delegation.md",
-    "coordination/stage-barrier.md"
+    "coordination/stage-barrier.md",
+    "coordination/connected-verification.md"
   ],
   "skeleton": [
-    "workflow/consult.md",
-    "coordination/connected-verification.md"
+    "workflow/consult.md"
   ]
 }
