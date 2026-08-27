@@ -29,6 +29,7 @@ they do not create commits, tags, pushes, or GitHub Releases.
    python3 scripts/ci/check-selection-gate.py
    python3 scripts/ci/check-workspace-contract.py
    python3 scripts/ci/check-delegation-barrier.py
+   python3 scripts/ci/check-implement-delegation.py
    bash scripts/ci/bootstrap-smoke.sh
    python3 scripts/ci/check-release-readiness.py --tag v0.1.1
    git diff --check

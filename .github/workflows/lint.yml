@@ -43,5 +43,8 @@ jobs:
       - name: Check delegation barrier
         run: python3 scripts/ci/check-delegation-barrier.py
 
+      - name: Check implement delegation
+        run: python3 scripts/ci/check-implement-delegation.py
+
       - name: Bootstrap smoke test
         run: bash scripts/ci/bootstrap-smoke.sh

@@ -16,6 +16,6 @@ Selection Gate
 
 Read and follow `../../../skills/SKILL.md`.
 
-Treat `../../../skills/` as the canonical skill root. The current implementation
-ends after approved specialist Design integration and must not create calendar
-product source.
+Treat `../../../skills/` as the canonical skill root. The coordinator delegates
+specialist work and must not create calendar product source itself. Connected
+frontend-to-backend verification is not implemented.

@@ -179,5 +179,18 @@ When both results are valid, create a local proposed revision and present one
 product-language checkpoint. Do not edit the tracked shared contract before
 explicit approval. After approval, only the parent applies `rev-2`.
 
-Stop after the approved contract update. Application implementation remains a
-separate slice.
+Stop after the approved contract update. Application implementation is a
+separately approved turn and a separate slice.
+
+## 9. Specialist Implement delegation
+
+For an approved Implement turn, read `../coordination/delegation.md` and
+`../coordination/stage-barrier.md`. Delegate calendar Slice 1 against `rev-2`
+with one work-target write root per track. Specialists own application source,
+tests, and their own dependency installation; FuseForge writes no application
+source and runs no package manager.
+
+Keep the barrier closed for any incomplete track. When one track completes and
+the other fails, report that the feature does not work end to end, retry only
+the failed track, and do not claim connected verification, which is not
+implemented.

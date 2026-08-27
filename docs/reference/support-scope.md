@@ -10,7 +10,13 @@ claim that the complete calendar workflow is available.
 - exact-path greenfield monorepo or three-work-target workspace setup;
 - product-semantics shared contract `rev-1` and local continuity state;
 - Design-only specialist delegation, result validation, stale handling, and
-  approval-gated `rev-2` policy.
+  approval-gated `rev-2` policy;
+- Implement-stage delegation policy for calendar Slice 1, covering write roots,
+  dependency ownership, result validation, and partial-completion reporting.
+
+Implement delegation is defined and statically verified. It has **not** been
+exercised against a live specialist, and no calendar application source exists.
+Treat it as policy, not as demonstrated behavior.
 
 ## Harness evidence
 
