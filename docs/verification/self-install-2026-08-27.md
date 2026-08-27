@@ -183,3 +183,20 @@ Two output defects were found by reading that doctor output and fixed in
 
 Both are cosmetic, and both were only visible by running the real user path
 rather than the smoke suite, which asserts filesystem state rather than wording.
+
+### Full user path at `v0.3.1`
+
+Run in an isolated `HOME` with all three harness directories present:
+
+- quickstart cloned `~/.fuseforge` at `ec6c6cc` and created all four links;
+- `doctor.sh` failed for the specialists only, and its hint named only
+  `bootstrap.sh`, not `install.sh`;
+- `uninstall.sh` removed all four links, left the pack source, and no symlink
+  remained.
+
+One caveat worth recording: the first remote run after pushing `0.3.1` still
+printed the duplicated next steps, because `raw.githubusercontent.com` served a
+cached copy of the previous commit. The fetched script contained no reference to
+the new variable while the local file did, and the same run cloned the current
+commit. A curl-based quickstart is therefore up to a few minutes stale after a
+push; the clone it performs is not.
