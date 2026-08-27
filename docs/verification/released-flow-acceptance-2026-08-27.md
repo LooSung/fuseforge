@@ -94,8 +94,15 @@ plugin alternative now documents the required grant.
 
 `doctor.sh` exited `1` because `~/.cursor/plugins/local/{compforge,oopforge}`
 were absent, while the links that actually make the packs load were present and
-all three harnesses worked. Resolution: doctor and bootstrap now check and
-create `~/.agents/skills/{compforge,oopforge}`.
+all three harnesses worked. Resolution at the time: doctor and bootstrap moved
+to `~/.agents/skills/{compforge,oopforge}`.
+
+That resolution was incomplete. Changing the path left the rule that every
+harness link is required, so an environment set up for only one harness still
+failed. Doctor now requires both packs and at least one harness that can load
+them, and it recognizes that Cursor Agent reads the Claude and Codex skill
+directories too. See the `0.1.1` entry onward in
+[`../../CHANGELOG.md`](../../CHANGELOG.md).
 
 ### F4 — a checkout outside `$HOME` loads `SKILL.md` but not the workflow
 
