@@ -2,7 +2,7 @@
   "name": "fuseforge",
   "displayName": "FuseForge",
   "description": "Experimental FuseForge full-stack coordination policy for Cursor.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "Mr.Louis",
     "url": "https://github.com/LooSung"

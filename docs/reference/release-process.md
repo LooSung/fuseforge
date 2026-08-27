@@ -10,7 +10,7 @@ they do not create commits, tags, pushes, or GitHub Releases.
 - Keep the release version identical in all three plugin manifests and
   `skills/stability.json`.
 - Treat `0.x` as initial development and keep experimental support boundaries
-  explicit. The current release version is `0.1.0`.
+  explicit. The current release version is `0.1.1`.
 
 ## Procedure
 
@@ -30,7 +30,7 @@ they do not create commits, tags, pushes, or GitHub Releases.
    python3 scripts/ci/check-workspace-contract.py
    python3 scripts/ci/check-delegation-barrier.py
    bash scripts/ci/bootstrap-smoke.sh
-   python3 scripts/ci/check-release-readiness.py --tag v0.1.0
+   python3 scripts/ci/check-release-readiness.py --tag v0.1.1
    git diff --check
    ```
 
@@ -51,6 +51,10 @@ license and changelog presence, verification evidence, and an optional tag.
 Without `--tag`, it checks repository preparation only. In GitHub tag CI it
 also reads `GITHUB_REF_NAME`.
 
-The checker intentionally reports the accepted static Codex and absent
-connected evidence as limitations. It does not require provider credentials
-and does not publish anything.
+The checker intentionally reports the documented-install requirement and the
+absent connected evidence as limitations. It does not require provider
+credentials and does not publish anything.
+
+A release that changes a load path must state which harnesses were exercised
+live and which were not. Do not convert a blocked authentication result into a
+pass.

@@ -8,7 +8,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-VERSION = "0.1.0"
+VERSION = "0.1.1"
 PROBE_LINES = (
     "FUSEFORGE_LOADED",
     "Assumptions",

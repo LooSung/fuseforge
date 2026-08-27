@@ -1,7 +1,8 @@
 # FuseForge — Released-Flow Acceptance
 
-- Status: Recorded; awaiting maintainer approval
+- Status: Approved
 - Date: 2026-08-27
+- Approved: 2026-08-27
 - Subject: published `v0.1.0`, commit `1c9ac96`
 - Method: fresh `git clone --branch v0.1.0` from the public remote, run from a
   clean session with an isolated temporary workspace
@@ -163,3 +164,17 @@ against the maintainer's real environment.
 
 Frontend-client-to-backend connected verification remains not applicable.
 Calendar application source has not been authorized or created.
+
+## Acceptance checkpoint — approved 2026-08-27
+
+The maintainer approved:
+
+- the clean-checkout automated evidence;
+- the five-turn coordinator flow results and boundary checks;
+- the harness matrix, including live Codex activation and the unsupported
+  Cursor plugin-directory path;
+- the resolutions recorded for F1 through F6;
+- the open items kept as future enhancements rather than fixed.
+
+This approval covers released-flow acceptance only. It does not authorize
+calendar product source, and it does not satisfy connected verification.
