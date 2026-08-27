@@ -41,7 +41,7 @@ Apply mode may:
 
 - clone a missing pack;
 - call that pack's default missing-link installer for Claude and Codex;
-- add a missing Cursor local plugin symlink.
+- add a missing Cursor skill symlink under `~/.agents/skills/`.
 
 It never pulls, updates, replaces, force-links, or deletes an existing
 installation.
@@ -104,8 +104,12 @@ Codex:
 Cursor:
 
 ```text
-~/.cursor/plugins/local/{compforge,oopforge}
+~/.agents/skills/{compforge,oopforge}
 ```
+
+Cursor Agent loads skills from vendor-neutral skill directories. A
+`~/.cursor/plugins/local` link has no observed effect on skill availability, so
+bootstrap no longer creates one.
 
 An occupied destination with a different target or a non-symlink blocks the
 entire apply preflight. FuseForge reports manual repair guidance and preserves

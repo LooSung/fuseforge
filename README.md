@@ -43,9 +43,10 @@ verification.
 Use [docs/README.md](docs/README.md) to find setup, reference, project,
 checkpoint, implementation, and verification documents.
 
+- [Install](docs/setup/install.md)
 - [Support scope](docs/reference/support-scope.md)
 - [Path convention](docs/reference/path-convention.md)
-- [Verification baseline](docs/verification/coordinator-test-2026-08-27.md)
+- [Released-flow acceptance](docs/verification/released-flow-acceptance-2026-08-27.md)
 
 ## Discovery
 
@@ -112,9 +113,14 @@ approved policy and static evidence.
 
 ## Coordinator Test
 
-Read [docs/verification/coordinator-test-2026-08-27.md](docs/verification/coordinator-test-2026-08-27.md) for automated and live harness evidence.
-Claude and Cursor activation pass. The experimental Test checkpoint is
-approved with static Codex evidence; live Codex activation remains unproven.
+Read [docs/verification/coordinator-test-2026-08-27.md](docs/verification/coordinator-test-2026-08-27.md) for the approved
+Test checkpoint, and
+[docs/verification/released-flow-acceptance-2026-08-27.md](docs/verification/released-flow-acceptance-2026-08-27.md) for the
+re-verification against the published `v0.1.0`. Claude Code, Codex CLI, and
+Cursor Agent activation all pass through the
+[skill-directory install](docs/setup/install.md). Acceptance recorded five
+install and documentation failures, all resolved, plus future enhancements that
+remain open.
 
 ## Repository checks and releases
 

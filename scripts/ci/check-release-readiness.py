@@ -52,11 +52,18 @@ def check(root: Path, tag: str | None) -> str:
 
     process = root / "docs/reference/release-process.md"
     evidence = root / "docs/verification/coordinator-test-2026-08-27.md"
+    acceptance = root / "docs/verification/released-flow-acceptance-2026-08-27.md"
+    install = root / "docs/setup/install.md"
     assert process.is_file(), "manual release process is missing"
     assert evidence.is_file(), "coordinator verification evidence is missing"
+    assert acceptance.is_file(), "released-flow acceptance evidence is missing"
+    assert install.is_file(), "install documentation is missing"
     evidence_text = evidence.read_text(encoding="utf-8")
     assert "Approved with static Codex evidence" in evidence_text
     assert "Connected evidence" in evidence_text
+    acceptance_text = acceptance.read_text(encoding="utf-8")
+    assert "Observed failures" in acceptance_text
+    assert "Connected evidence" in acceptance_text
 
     if tag is not None:
         assert tag == f"v{version}", (
@@ -77,7 +84,7 @@ def main() -> None:
         print(f"PASS release tag matches: {tag}")
     else:
         print("NOTICE no tag supplied; repository preparation checked only")
-    print("NOTICE Codex live activation is static-only at the approved checkpoint")
+    print("NOTICE harness support requires the documented skill-directory install")
     print("NOTICE connected calendar verification is not yet applicable")
 
 

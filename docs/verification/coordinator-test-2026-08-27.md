@@ -40,3 +40,11 @@ experimental checkpoint. Claude and Cursor retain live activation evidence.
 
 This approval does not claim live Codex activation and does not satisfy future
 calendar connected verification.
+
+## Superseded harness claims
+
+This record is preserved as the historical checkpoint. Its harness results were
+re-verified against the published `v0.1.0` in
+[`released-flow-acceptance-2026-08-27.md`](released-flow-acceptance-2026-08-27.md),
+which found the Cursor `--plugin-dir` path does not load the skill and proved
+live Codex activation. Use that record for current install and support claims.

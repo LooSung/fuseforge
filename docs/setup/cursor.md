@@ -1,12 +1,10 @@
 # FuseForge with Cursor Agent
 
-Status: **Experimental; live activation and isolated workspace flow verified**.
+Status: **Experimental; live activation verified through the skill-directory
+install**.
 
-Start Cursor Agent with the FuseForge checkout:
-
-```bash
-cursor-agent --plugin-dir /path/to/fuseforge
-```
+Install with [`install.md`](install.md), which links
+`~/.agents/skills/fuseforge` to the canonical `skills/` directory.
 
 Invoke:
 
@@ -17,8 +15,7 @@ Use FuseForge craft: <product request>
 Activation probe:
 
 ```bash
-cursor-agent --trust --plugin-dir /path/to/fuseforge \
-  -p "FUSEFORGE_ACTIVATION_PROBE"
+cursor-agent --trust -p "FUSEFORGE_ACTIVATION_PROBE"
 ```
 
 Expected output:
@@ -29,9 +26,11 @@ Assumptions
 Selection Gate
 ```
 
-The approved Test evidence includes a read-only unconfirmed path flow and an
-isolated exact-path workspace creation. It does not include calendar
-application implementation or connected verification.
+`cursor-agent --plugin-dir <fuseforge-checkout>` does not load the skill and is
+not a supported install path. See
+[`install.md`](install.md#unsupported-install-paths) for the observed behavior.
 
-[`bootstrap.md`](bootstrap.md) can add missing local Cursor links for Compforge
-and OOPforge. It does not install FuseForge itself.
+The approved evidence covers activation, the read-only selection gate, an
+exact-path workspace plan, confirmed workspace creation, specialist Design
+delegation, and approval-gated `rev-2`. It does not include calendar
+application implementation or connected verification.

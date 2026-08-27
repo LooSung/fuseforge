@@ -14,10 +14,13 @@ claim that the complete calendar workflow is available.
 
 ## Harness evidence
 
+Support requires the skill-directory install in
+[setup/install.md](../setup/install.md).
+
 | Harness | Invocation | Evidence |
 |---|---|---|
-| Claude Code | `/fuseforge:craft …` | Live activation passed |
-| Codex CLI | `Use FuseForge craft: …` | Static packaging and routing passed; live activation unproven |
+| Claude Code | `/fuseforge:craft …` | Live activation and the full coordinator flow passed |
+| Codex CLI | `Use FuseForge craft: …` | Live activation passed |
 | Cursor Agent | `Use FuseForge craft: …` | Live activation and isolated workspace behavior passed |
 
 The activation response is:
@@ -27,6 +30,10 @@ FUSEFORGE_LOADED
 Assumptions
 Selection Gate
 ```
+
+`cursor-agent --plugin-dir` is not a supported install path; it does not load
+the skill. A FuseForge checkout outside `$HOME` is also unsupported because the
+canonical workflow files then become unreadable.
 
 ## Specialist and stack scope
 
@@ -45,10 +52,11 @@ capabilities.
 - connected frontend-client-to-backend verification;
 - calendar frontend or backend application source;
 - production deployment;
-- live Codex activation evidence;
 - automatic updates or repair of existing specialist installations;
 - a general-purpose multi-agent runtime.
 
 See
+[released-flow acceptance](../verification/released-flow-acceptance-2026-08-27.md)
+for the current evidence boundary and
 [coordinator Test evidence](../verification/coordinator-test-2026-08-27.md)
-for the approved evidence boundary.
+for the approved checkpoint it re-verified.

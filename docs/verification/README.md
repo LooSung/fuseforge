@@ -3,8 +3,12 @@
 Verification records packaging and coordinator behavior evidence. It is
 separate from future product connected verification.
 
-The current approved baseline is
+The approved coordinator Test baseline is
 [`coordinator-test-2026-08-27.md`](coordinator-test-2026-08-27.md).
+
+[`released-flow-acceptance-2026-08-27.md`](released-flow-acceptance-2026-08-27.md)
+re-verifies that baseline against the published `v0.1.0` and supersedes its
+harness claims. Read it before describing install or harness support.
 
 ## Baseline contents
 
@@ -23,5 +27,5 @@ Evidence levels must remain distinct:
 - authenticated live harness activation;
 - connected frontend-client-to-backend behavior.
 
-The current baseline has live Claude and Cursor activation, accepted static
-Codex evidence, and no connected calendar evidence.
+Released-flow acceptance has live Claude, Codex, and Cursor activation through
+the skill-directory install, and no connected calendar evidence.

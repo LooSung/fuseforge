@@ -140,7 +140,7 @@ assert_missing "$PLAN_HOME/.compforge"
 assert_missing "$PLAN_HOME/.oopforge"
 assert_missing "$PLAN_HOME/.claude"
 assert_missing "$PLAN_HOME/.codex"
-assert_missing "$PLAN_HOME/.cursor"
+assert_missing "$PLAN_HOME/.agents"
 
 APPLY_OUTPUT="$(
   HOME="$PLAN_HOME" \
@@ -159,8 +159,8 @@ for path in \
   "$PLAN_HOME/.claude/commands/oopforge" \
   "$PLAN_HOME/.codex/skills/compforge" \
   "$PLAN_HOME/.codex/skills/oopforge" \
-  "$PLAN_HOME/.cursor/plugins/local/compforge" \
-  "$PLAN_HOME/.cursor/plugins/local/oopforge"; do
+  "$PLAN_HOME/.agents/skills/compforge" \
+  "$PLAN_HOME/.agents/skills/oopforge"; do
   if [ ! -e "$path" ] && [ ! -L "$path" ]; then
     fail "expected applied path: $path"
   fi
@@ -202,7 +202,7 @@ if HOME="$NONLINK_HOME" \
 fi
 [ "$(<"$NONLINK_HOME/.codex/skills/oopforge")" = "preserve me" ] ||
   fail "blocked bootstrap changed an existing non-symlink destination"
-assert_missing "$NONLINK_HOME/.cursor"
+assert_missing "$NONLINK_HOME/.agents"
 
 MISMATCH_PACK="$TEMP_ROOT/mismatch-compforge"
 cp -R "$COMP_REMOTE" "$MISMATCH_PACK"
@@ -240,7 +240,7 @@ if HOME="$CAPABILITY_HOME" \
   fail "missing capability should block bootstrap"
 fi
 assert_contains "$(<"$TEMP_ROOT/capability-output")" "missing capability marker: Python with FastAPI"
-assert_missing "$CAPABILITY_HOME/.cursor"
+assert_missing "$CAPABILITY_HOME/.agents"
 
 python3 - "$BOOTSTRAP" <<'PY'
 import sys

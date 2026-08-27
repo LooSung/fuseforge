@@ -112,8 +112,8 @@ preflight_link "Claude OOPforge skills" "$HOME/.claude/skills/oopforge" "$OOP_RO
 preflight_link "Claude OOPforge commands" "$HOME/.claude/commands/oopforge" "$OOP_ROOT/commands"
 preflight_link "Codex Compforge skills" "$HOME/.codex/skills/compforge" "$COMP_ROOT/skills"
 preflight_link "Codex OOPforge skills" "$HOME/.codex/skills/oopforge" "$OOP_ROOT/skills"
-preflight_link "Cursor Compforge plugin" "$HOME/.cursor/plugins/local/compforge" "$COMP_ROOT"
-preflight_link "Cursor OOPforge plugin" "$HOME/.cursor/plugins/local/oopforge" "$OOP_ROOT"
+preflight_link "Cursor Compforge skills" "$HOME/.agents/skills/compforge" "$COMP_ROOT/skills"
+preflight_link "Cursor OOPforge skills" "$HOME/.agents/skills/oopforge" "$OOP_ROOT/skills"
 
 printf '\n'
 if [ "$BLOCKED" -eq 1 ]; then
@@ -203,7 +203,9 @@ install_specialist_links() {
 install_specialist_links "Compforge" "$COMP_ROOT"
 install_specialist_links "OOPforge" "$OOP_ROOT"
 
-create_cursor_link() {
+# Cursor Agent loads skills from vendor-neutral skill directories. A
+# ~/.cursor/plugins/local link has no observed effect on skill availability.
+create_agent_skill_link() {
   local source="$1"
   local destination="$2"
 
@@ -212,11 +214,11 @@ create_cursor_link() {
   fi
   mkdir -p "$(dirname "$destination")"
   ln -s "$source" "$destination"
-  printf 'Linked Cursor plugin: %s -> %s\n' "$destination" "$source"
+  printf 'Linked Cursor skills: %s -> %s\n' "$destination" "$source"
 }
 
-create_cursor_link "$COMP_ROOT" "$HOME/.cursor/plugins/local/compforge"
-create_cursor_link "$OOP_ROOT" "$HOME/.cursor/plugins/local/oopforge"
+create_agent_skill_link "$COMP_ROOT/skills" "$HOME/.agents/skills/compforge"
+create_agent_skill_link "$OOP_ROOT/skills" "$HOME/.agents/skills/oopforge"
 
 if ! env COMPFORGE_HOME="$COMP_ROOT" bash "$COMP_ROOT/scripts/setup/doctor.sh"; then
   printf 'Compforge doctor failed. Existing installations were not changed or removed.\n' >&2

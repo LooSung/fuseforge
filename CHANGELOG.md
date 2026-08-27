@@ -6,6 +6,31 @@ future plans, private backlogs, and unsupported claims do not belong here.
 
 ## [Unreleased]
 
+### Added
+
+- `docs/setup/install.md` with the verified skill-directory install for Claude
+  Code, Codex CLI, and Cursor Agent.
+- `docs/verification/released-flow-acceptance-2026-08-27.md` recording
+  clean-checkout acceptance of `v0.1.0`, including live Codex activation.
+
+### Changed
+
+- Bootstrap and doctor now manage `~/.agents/skills/{compforge,oopforge}`
+  instead of `~/.cursor/plugins/local/`, which had no observed effect on skill
+  availability in Cursor Agent.
+- The Claude `craft` command adapter prefers the skill-directory path so a
+  non-interactive session is not stopped by a plugin-root approval prompt.
+- Setup, support-scope, verification, and README harness claims now describe the
+  install path that was actually verified.
+
+### Fixed
+
+- `cursor-agent --plugin-dir` was documented as a working install path but did
+  not load the FuseForge skill.
+- `claude --plugin-dir` needed an undocumented `--add-dir` grant when the
+  working directory differed from the checkout.
+- `doctor.sh` reported a working environment as not ready.
+
 ## [0.1.0] - 2026-08-27
 
 ### Added

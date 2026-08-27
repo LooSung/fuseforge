@@ -59,8 +59,8 @@ check_link "Claude OOPforge skills" "$HOME/.claude/skills/oopforge" "$OOP_ROOT/s
 check_link "Claude OOPforge commands" "$HOME/.claude/commands/oopforge" "$OOP_ROOT/commands"
 check_link "Codex Compforge skills" "$HOME/.codex/skills/compforge" "$COMP_ROOT/skills"
 check_link "Codex OOPforge skills" "$HOME/.codex/skills/oopforge" "$OOP_ROOT/skills"
-check_link "Cursor Compforge plugin" "$HOME/.cursor/plugins/local/compforge" "$COMP_ROOT"
-check_link "Cursor OOPforge plugin" "$HOME/.cursor/plugins/local/oopforge" "$OOP_ROOT"
+check_link "Cursor Compforge skills" "$HOME/.agents/skills/compforge" "$COMP_ROOT/skills"
+check_link "Cursor OOPforge skills" "$HOME/.agents/skills/oopforge" "$OOP_ROOT/skills"
 
 printf '\n'
 if [ "$FAILED" -eq 0 ]; then

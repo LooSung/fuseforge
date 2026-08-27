@@ -37,9 +37,10 @@ Spring·Python FastAPI 백엔드 OOP/DDD 규율을 소유한다. FuseForge는
 구현과 검증 문서를 찾을 수 있다.
 
 - [한국어 개념 가이드](docs/reference/methodology.ko.md)
+- [설치](docs/setup/install.md)
 - [지원 범위](docs/reference/support-scope.md)
 - [경로 규약](docs/reference/path-convention.md)
-- [검증 기준선](docs/verification/coordinator-test-2026-08-27.md)
+- [릴리스 흐름 인수 결과](docs/verification/released-flow-acceptance-2026-08-27.md)
 
 ## 승인된 단계
 
@@ -61,11 +62,16 @@ Spring·Python FastAPI 백엔드 OOP/DDD 규율을 소유한다. FuseForge는
 
 ## 코디네이터 Test
 
-[docs/verification/coordinator-test-2026-08-27.md](docs/verification/coordinator-test-2026-08-27.md)에 자동 검사와 하네스 증거가 기록돼 있다.
+[docs/verification/coordinator-test-2026-08-27.md](docs/verification/coordinator-test-2026-08-27.md)에 승인된 Test
+체크포인트가, [docs/verification/released-flow-acceptance-2026-08-27.md](docs/verification/released-flow-acceptance-2026-08-27.md)에
+공개된 `v0.1.0` 재검증 결과가 기록돼 있다.
 
-- Claude Code: live activation 통과
+세 하네스 모두 [스킬 디렉터리 설치](docs/setup/install.md)에서 통과한다.
+
+- Claude Code: live activation과 Craft 전체 흐름 통과
+- Codex CLI: live activation 통과
 - Cursor Agent: live activation과 격리 workspace 흐름 통과
-- Codex CLI: 정적 packaging·routing 통과, live activation은 미증명
+- `cursor-agent --plugin-dir`: 스킬이 로드되지 않아 지원하지 않는 설치 경로
 - 실제 프런트엔드 API client → 백엔드 연결 검증: 캘린더 구현 전이므로 미수행
 
 ## 저장소 검사와 릴리스
@@ -86,6 +92,7 @@ commit, tag, push, GitHub Release를 자동 생성하지 않는다.
 - 프로덕션 배포
 - 기존 전문 팩의 자동 업데이트·수리
 - 범용 멀티에이전트 런타임
+- FuseForge 자체 설치 스크립트 (설치는 문서화된 symlink 명령으로 한다)
 
 ## 언어 정책
 

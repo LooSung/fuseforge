@@ -17,6 +17,7 @@ canonical policy remains under [`../skills/`](../skills/).
 
 ## Setup
 
+- [Install FuseForge](setup/install.md)
 - [Specialist pack bootstrap](setup/bootstrap.md)
 - [Claude Code](setup/claude-code.md)
 - [Codex CLI](setup/codex.md)
@@ -55,6 +56,7 @@ canonical policy remains under [`../skills/`](../skills/).
 ## Verification
 
 - [Verification index](verification/README.md)
+- [Released-flow acceptance](verification/released-flow-acceptance-2026-08-27.md)
 - [Approved coordinator Test evidence](verification/coordinator-test-2026-08-27.md)
 
 ## Release
