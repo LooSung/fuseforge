@@ -6,6 +6,29 @@ future plans, private backlogs, and unsupported claims do not belong here.
 
 ## [Unreleased]
 
+### Added
+
+- Implement-stage delegation for calendar Slice 1. Specialists create source and
+  install dependencies inside their own work target; FuseForge runs no package
+  manager and writes no application source.
+- Parent-owned connected verification. The real frontend API client must be
+  proven against a running backend before a slice is reported complete, with
+  polled readiness, guaranteed teardown, and an evidence record in the product
+  workspace.
+- `docs/verification/calendar-slice-1-2026-08-27.md` recording the first
+  execution of the whole coordinator flow, including a passing connected check
+  and a Design result the barrier rejected and made retry.
+
+### Changed
+
+- A half-finished feature can no longer read as success. When one track
+  completes and the other fails, the checkpoint states that the feature does not
+  work end to end and offers retry of the failed track only.
+- `skills/coordination/connected-verification.md` moved from Skeleton to
+  implemented policy.
+- Support scope now distinguishes what has been exercised end to end from what
+  remains policy only.
+
 ## [0.1.1] - 2026-08-27
 
 ### Added

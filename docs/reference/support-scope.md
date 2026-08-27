@@ -17,10 +17,13 @@ claim that the complete calendar workflow is available.
   adapter boundary, backend lifecycle, evidence record, and the rule that a
   slice is incomplete without a passing recorded check.
 
-Implement delegation and connected verification are defined and statically
-verified. Neither has been exercised against a live specialist or a running
-backend, and no calendar application source exists. Treat both as policy, not as
-demonstrated behavior.
+Both have been exercised once, end to end, on Cursor Agent with Compforge 1.3.1
+and OOPforge 1.4.2: calendar Slice 1 was built by delegated specialists and the
+real frontend client was proven against a running backend. See
+[calendar Slice 1](../verification/calendar-slice-1-2026-08-27.md).
+
+That is one slice of one product with one stack pair. It is evidence that the
+flow works, not a guarantee for other stacks, harnesses, or later slices.
 
 ## Harness evidence
 
@@ -59,8 +62,9 @@ capabilities.
 ## Not currently implemented
 
 - FuseForge Consult behavior;
-- any executed connected frontend-client-to-backend check;
-- calendar frontend or backend application source;
+- calendar slices 2 through 6;
+- browser-driven end-to-end coverage;
+- calendar application source inside this pack, which is by design;
 - production deployment;
 - automatic updates or repair of existing specialist installations;
 - a general-purpose multi-agent runtime.

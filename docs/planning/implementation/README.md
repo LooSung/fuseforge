@@ -9,5 +9,9 @@
 
 Each slice preserves its approved scope and checkpoint evidence.
 
-Slices 1 through 6 are implemented and statically verified. No slice has created
-calendar application source, and no connected check has been executed.
+Slices 1 through 6 are implemented and statically verified. This pack contains no
+calendar application source by design.
+
+The coordinator flow has since been executed once end to end against a separate
+product workspace, with a passing connected check. See
+[calendar Slice 1](../../verification/calendar-slice-1-2026-08-27.md).
