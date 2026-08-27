@@ -29,6 +29,16 @@ future plans, private backlogs, and unsupported claims do not belong here.
 - Support scope now distinguishes what has been exercised end to end from what
   remains policy only.
 
+### Fixed
+
+- `doctor.sh` reported a working environment as not ready when a harness you do
+  not use had no links. Readiness now requires both packs and at least one
+  harness that can load them, while a partly linked harness still fails.
+- `doctor.sh` reported Cursor Agent as missing the packs even when they were
+  loadable. Cursor reads `~/.claude/skills/`, `~/.codex/skills/`, and
+  `~/.agents/skills/`, so packs linked for Claude or Codex already reach it, and
+  doctor now names the directory that supplies them.
+
 ## [0.1.1] - 2026-08-27
 
 ### Added

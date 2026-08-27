@@ -26,8 +26,16 @@ Read-only readiness check:
 bash scripts/setup/doctor.sh
 ```
 
-Doctor exits successfully only when both packs and all managed Claude, Codex,
-and Cursor links are structurally ready.
+Doctor exits successfully when both packs are compatible and at least one
+harness can load them. A harness you have not set up is reported as absent, not
+as a failure, so installing for Claude Code alone is a ready environment.
+
+It still fails when a harness is only partly linked, because that loads some
+packs and silently omits others.
+
+Cursor Agent reads `~/.claude/skills/`, `~/.codex/skills/`, and
+`~/.agents/skills/`, so packs linked for Claude or Codex are already available
+to it. Doctor reports which directory supplies them.
 
 ## Apply missing items
 
