@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Read the contributing guide
+    url: https://github.com/LooSung/fuseforge/blob/main/.github/CONTRIBUTING.md
+    about: Check the stage rule and contribution scope before opening an issue.
+  - name: Current support boundaries
+    url: https://github.com/LooSung/fuseforge/blob/main/docs/reference/support-scope.md
+    about: Confirm whether the behavior you expected is implemented yet.
+  - name: Report a security issue privately
+    url: https://github.com/LooSung/fuseforge/security/advisories/new
+    about: Do not open a public issue for a vulnerability.

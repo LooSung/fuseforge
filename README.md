@@ -133,6 +133,19 @@ FuseForge is MIT licensed and uses a manual release process. See the
 [release process](docs/reference/release-process.md). Readiness automation does
 not create commits, tags, pushes, or GitHub Releases.
 
+## Contributing
+
+Read [`AGENTS.md`](AGENTS.md) and
+[`.github/CONTRIBUTING.md`](.github/CONTRIBUTING.md) before opening a pull
+request. FuseForge approves one stage at a time, so a change that implements an
+unapproved stage becomes an issue rather than a merge. An overstated support
+claim is treated as a defect; report one with the
+[claim-gap template](.github/ISSUE_TEMPLATE/claim-gap.md).
+
+- [Code of Conduct](.github/CODE_OF_CONDUCT.md)
+- [Security policy](.github/SECURITY.md)
+- [Reviewer checklist](docs/reference/reviewer-checklist.md)
+
 ## Language policy
 
 Skills, scripts, harness instructions, and enforceable policy use English as

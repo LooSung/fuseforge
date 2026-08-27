@@ -59,6 +59,12 @@ canonical policy remains under [`../skills/`](../skills/).
 - [Released-flow acceptance](verification/released-flow-acceptance-2026-08-27.md)
 - [Approved coordinator Test evidence](verification/coordinator-test-2026-08-27.md)
 
+## Governance
+
+- [Contributing](../.github/CONTRIBUTING.md)
+- [Code of Conduct](../.github/CODE_OF_CONDUCT.md)
+- [Security policy](../.github/SECURITY.md)
+
 ## Release
 
 Current completed changes are recorded in [`../CHANGELOG.md`](../CHANGELOG.md).

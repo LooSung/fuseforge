@@ -84,6 +84,18 @@ FuseForge는 MIT License를 사용하며 릴리스는 수동으로 진행한다.
 [릴리스 절차](docs/reference/release-process.md)를 참고한다. readiness 검사는
 commit, tag, push, GitHub Release를 자동 생성하지 않는다.
 
+## 기여
+
+Pull request 전에 [`AGENTS.md`](AGENTS.md)와
+[`.github/CONTRIBUTING.md`](.github/CONTRIBUTING.md)를 읽는다. FuseForge는 한
+번에 한 단계만 승인하므로, 승인되지 않은 단계를 구현한 변경은 병합 대신 이슈로
+전환된다. 근거를 넘어서는 지원 주장은 결함으로 취급하며
+[claim-gap 템플릿](.github/ISSUE_TEMPLATE/claim-gap.md)으로 신고한다.
+
+- [행동 강령](.github/CODE_OF_CONDUCT.md)
+- [보안 정책](.github/SECURITY.md)
+- [리뷰어 체크리스트](docs/reference/reviewer-checklist.md)
+
 ## 아직 구현되지 않은 것
 
 - FuseForge Consult 동작

@@ -12,6 +12,8 @@ future plans, private backlogs, and unsupported claims do not belong here.
   Code, Codex CLI, and Cursor Agent.
 - `docs/verification/released-flow-acceptance-2026-08-27.md` recording
   clean-checkout acceptance of `v0.1.0`, including live Codex activation.
+- Contribution, conduct, security, pull-request, and issue guidance under
+  `.github/`, including a template for reporting an overstated support claim.
 
 ### Changed
 
