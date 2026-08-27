@@ -4,7 +4,7 @@
 - Date: 2026-08-27
 - Approved: 2026-08-27
 - Subject: published `v0.1.0`, commit `1c9ac96`
-- Method: fresh `git clone --branch v0.1.0` from the public remote, run from a
+- Method: fresh `git clone --branch v0.1.0` from the GitHub remote, run from a
   clean session with an isolated temporary workspace
 
 This record supersedes the harness claims in

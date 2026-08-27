@@ -1,6 +1,6 @@
 {
   "name": "fuseforge",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Experimental FuseForge full-stack coordination policy for Codex.",
   "author": {
     "name": "Mr.Louis",
@@ -13,7 +13,7 @@
   "interface": {
     "displayName": "FuseForge",
     "shortDescription": "Full-stack coordination policy",
-    "longDescription": "Coordinates selection, confirmed greenfield setup, and approved specialist Design integration without creating calendar product source.",
+    "longDescription": "Coordinates stack selection, confirmed greenfield setup, one shared contract, and specialist Design and Implement delegation, then proves the frontend client against a running backend before calling a slice done.",
     "developerName": "Mr.Louis",
     "category": "Coding",
     "capabilities": [

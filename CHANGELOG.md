@@ -6,6 +6,8 @@ future plans, private backlogs, and unsupported claims do not belong here.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-08-27
+
 ### Added
 
 - Implement-stage delegation for calendar Slice 1. Specialists create source and
@@ -28,6 +30,8 @@ future plans, private backlogs, and unsupported claims do not belong here.
   implemented policy.
 - Support scope now distinguishes what has been exercised end to end from what
   remains policy only.
+- The READMEs lead with what the coordinator has actually produced, with the
+  one-slice, one-stack-pair limit attached to it.
 
 ### Fixed
 
@@ -38,6 +42,17 @@ future plans, private backlogs, and unsupported claims do not belong here.
   loadable. Cursor reads `~/.claude/skills/`, `~/.codex/skills/`, and
   `~/.agents/skills/`, so packs linked for Claude or Codex already reach it, and
   doctor now names the directory that supplies them.
+
+### Known limitations
+
+- The whole flow has been executed once, for one slice, on one harness, with one
+  stack pair: React with Vite and Python FastAPI on Cursor Agent. Other stacks
+  and harnesses are supported by policy, not by evidence.
+- Required-track classification is still not stable across runs. No run has
+  invented a stack or created a file.
+- The connected check exercises the frontend transport client, not a browser, so
+  rendering is covered by specialist tests only.
+- FuseForge has no self-installer; install is a documented clone plus symlinks.
 
 ## [0.1.1] - 2026-08-27
 
