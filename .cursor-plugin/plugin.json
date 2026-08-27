@@ -1,0 +1,14 @@
+{
+  "name": "fuseforge",
+  "displayName": "FuseForge",
+  "description": "Experimental FuseForge full-stack coordination policy for Cursor.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Mr.Louis",
+    "url": "https://github.com/LooSung"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/LooSung/fuseforge",
+  "repository": "https://github.com/LooSung/fuseforge",
+  "skills": "./.cursor-plugin/skills/"
+}

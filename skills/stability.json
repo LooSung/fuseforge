@@ -1,0 +1,15 @@
+{
+  "version": "0.1.0",
+  "status": "experimental",
+  "implemented": [
+    "workflow/craft.md",
+    "coordination/logical-workspace.md",
+    "coordination/shared-contract.md",
+    "coordination/delegation.md",
+    "coordination/stage-barrier.md"
+  ],
+  "skeleton": [
+    "workflow/consult.md",
+    "coordination/connected-verification.md"
+  ]
+}

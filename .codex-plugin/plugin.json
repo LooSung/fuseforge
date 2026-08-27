@@ -1,0 +1,30 @@
+{
+  "name": "fuseforge",
+  "version": "0.1.0",
+  "description": "Experimental FuseForge full-stack coordination policy for Codex.",
+  "author": {
+    "name": "Mr.Louis",
+    "url": "https://github.com/LooSung"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/LooSung/fuseforge",
+  "repository": "https://github.com/LooSung/fuseforge",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "FuseForge",
+    "shortDescription": "Full-stack coordination policy",
+    "longDescription": "Coordinates selection, confirmed greenfield setup, and approved specialist Design integration without creating calendar product source.",
+    "developerName": "Mr.Louis",
+    "category": "Coding",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use FuseForge craft: 캘린더 앱을 만들어줘."
+    ],
+    "websiteURL": "https://github.com/LooSung/fuseforge",
+    "screenshots": []
+  }
+}

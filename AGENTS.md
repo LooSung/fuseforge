@@ -8,13 +8,27 @@ feature-level workflow, shared contract, and integrated approval experience.
 
 ## Current stage
 
-FuseForge is in **Discovery**.
+FuseForge's **coordinator Test checkpoint is approved**. Discovery, Design,
+Delivery Plan, Skeleton, and the first four Implement slices are approved.
 
-- Read `docs/discovery.md` before proposing product structure.
+- Read `docs/planning/checkpoints/discovery.md`,
+  `docs/planning/checkpoints/design.md`,
+  `docs/planning/checkpoints/delivery-plan.md`, and
+  `docs/planning/checkpoints/skeleton.md` before implementing behavior. Read
+  `docs/planning/implementation/implementation-slice-1.md` and
+  `docs/planning/implementation/implementation-slice-2-plan.md` before the
+  second slice, and its evidence before review. Apply the same plan-before-work
+  and evidence-before-review rule to slices 3 and 4 listed in
+  `docs/planning/implementation/README.md`.
+- Use `docs/README.md` as the human documentation index. Read
+  `docs/reference/support-scope.md` before describing current support and
+  `docs/verification/README.md` before changing evidence claims.
 - Separate observed facts, hypotheses, decisions, and open questions.
-- Do not create implementation code, `SKILL.md`, installers, manifests, CI, or
-  reference applications before the Discovery checkpoint is approved.
-- Do not describe a candidate design as implemented or supported.
+- Implement only one explicitly approved vertical slice.
+- Do not add unrelated installers, CI, dependencies, calendar source, or
+  coordinator behavior outside that slice.
+- Do not describe later slices or unverified harnesses as implemented or
+  supported.
 
 ## Required workflow
 
@@ -47,14 +61,27 @@ Ask for human approval before moving from one stage to the next.
 
 - Keep future decisions in Discovery or the currently approved planning
   artifact; do not present them as current capabilities.
+- Keep authoritative checkpoints and implementation records under
+  `docs/planning/`. Root-level historical document paths are compatibility
+  stubs, not sources to edit.
+- Keep setup, stable reference, project positioning, and verification evidence
+  in their corresponding `docs/` subdirectories.
+- Keep agent-facing skills, scripts, and enforceable policy in English.
+  Maintain Korean user guidance in `README.ko.md` and
+  `docs/reference/methodology.ko.md` instead of per-skill translations.
 - Keep one source of truth for cross-stack semantics.
 - Preserve monorepo and polyrepo as distinct contexts without assuming atomic
   commits across repositories.
 - Do not add dependencies or external services during planning stages.
+- Record only completed user-visible changes in `CHANGELOG.md`. Follow
+  `docs/reference/release-process.md`; repository automation must not create
+  tags or publish GitHub Releases.
 - Keep changes surgical and remove only artifacts created by the same change.
 - Comments explain why; names explain what.
 
 ## Discovery checkpoint
+
+Status: **Approved 2026-08-26**.
 
 Discovery is complete only when the maintainer can decide:
 
@@ -63,3 +90,53 @@ Discovery is complete only when the maintainer can decide:
 - what must be shared between specialist tracks;
 - what belongs explicitly outside the first Design;
 - which open questions must be answered before Design.
+
+## Design checkpoint
+
+Status: **Approved 2026-08-26**.
+
+Design is complete only when the maintainer can decide:
+
+- the coordinator contract and one source of truth for shared semantics;
+- ownership and escalation rules across the parent and specialist tracks;
+- the logical-workspace, contract-revision, track-result, and stage-barrier
+  state models;
+- the smallest sibling-aligned harness structure and interfaces;
+- the default user flow, including mandatory stack ambiguity checks;
+- the calendar proof semantics and boundaries needed for Delivery Planning.
+
+## Delivery Plan checkpoint
+
+Status: **Approved 2026-08-26**.
+
+Delivery Planning is complete only when the maintainer can decide:
+
+- the first proof's frontend stack, backend stack, topology, and local database;
+- the ordered vertical slices and acceptance examples;
+- the Skeleton scope and non-overlapping write roots;
+- static, specialist, and connected verification for each slice;
+- compatibility assumptions, failure handling, and delivery risks.
+
+## Skeleton checkpoint
+
+Status: **Approved 2026-08-26**.
+
+Skeleton is complete only when the maintainer can decide:
+
+- whether the file tree matches the approved sibling-aligned boundary;
+- whether canonical policy and harness adapters are separated;
+- whether every created file expresses an approved interface;
+- whether any implementation behavior, dependency, or empty placeholder scope
+  was introduced early;
+- whether the first implementation slice can begin without restructuring the
+  package.
+
+## Implement checkpoint
+
+An implementation slice is complete only when:
+
+- its product-language outcome and write scope were approved in advance;
+- it preserves the shared contract and specialist ownership boundaries;
+- focused static and behavior checks pass;
+- no later slice or unsupported harness behavior was added;
+- the maintainer approves moving to the next slice or Test.
