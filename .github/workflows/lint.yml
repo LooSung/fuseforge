@@ -1,0 +1,47 @@
+name: Lint
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Install shellcheck
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck
+
+      - name: Check shell syntax
+        run: bash -n scripts/setup/*.sh scripts/setup/lib/*.sh scripts/ci/*.sh
+
+      - name: Shellcheck
+        run: shellcheck scripts/setup/*.sh scripts/setup/lib/*.sh scripts/ci/*.sh
+
+      - name: Lint skills and repository
+        run: bash scripts/ci/lint-skills.sh
+
+      - name: Self-test documentation links
+        run: python3 scripts/ci/test-doc-links.py
+
+      - name: Check release readiness
+        run: python3 scripts/ci/check-release-readiness.py
+
+      - name: Check selection gate
+        run: python3 scripts/ci/check-selection-gate.py
+
+      - name: Check workspace contract
+        run: python3 scripts/ci/check-workspace-contract.py
+
+      - name: Check delegation barrier
+        run: python3 scripts/ci/check-delegation-barrier.py
+
+      - name: Bootstrap smoke test
+        run: bash scripts/ci/bootstrap-smoke.sh

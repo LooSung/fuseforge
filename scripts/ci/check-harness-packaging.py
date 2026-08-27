@@ -1,0 +1,147 @@
+#!/usr/bin/env python3
+"""Validate FuseForge harness packaging and skill registry contracts."""
+
+from __future__ import annotations
+
+import json
+import re
+import sys
+from pathlib import Path
+
+SEMVER_RE = re.compile(
+    r"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)"
+    r"(?:-[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?"
+    r"(?:\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?$"
+)
+
+
+def load_json(path: Path) -> dict:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def frontmatter(path: Path) -> dict[str, str]:
+    text = path.read_text(encoding="utf-8")
+    assert text.startswith("---\n"), f"{path}: missing frontmatter"
+    parts = text.split("---", 2)
+    assert len(parts) == 3, f"{path}: unclosed frontmatter"
+    values: dict[str, str] = {}
+    for line in parts[1].splitlines():
+        if ": " in line:
+            key, value = line.split(": ", 1)
+            values[key] = value
+    return values
+
+
+def check_manifests(root: Path) -> str:
+    paths = (
+        ".claude-plugin/plugin.json",
+        ".codex-plugin/plugin.json",
+        ".cursor-plugin/plugin.json",
+    )
+    claude, codex, cursor = [load_json(root / path) for path in paths]
+    versions = {item["version"] for item in (claude, codex, cursor)}
+    assert len(versions) == 1, "plugin manifest versions differ"
+    version = versions.pop()
+    assert SEMVER_RE.fullmatch(version), f"invalid SemVer: {version}"
+    for manifest in (claude, codex, cursor):
+        assert manifest["name"] == "fuseforge"
+        assert manifest.get("license") == "MIT"
+        assert isinstance(manifest.get("repository"), str)
+    assert claude.get("skills") == ["./skills/"]
+    assert claude.get("commands") == ["./commands/"]
+    assert codex.get("skills") == "./skills/"
+    assert cursor.get("skills") == "./.cursor-plugin/skills/"
+    assert "commands" not in cursor, "Cursor must not package Claude commands"
+    return version
+
+
+def check_registry(root: Path, version: str) -> None:
+    registry = load_json(root / "skills/stability.json")
+    assert registry["version"] == version, "manifest and registry versions differ"
+    assert registry["status"] == "experimental"
+    listed = registry["implemented"] + registry["skeleton"]
+    assert len(listed) == len(set(listed)), "stability registry has duplicates"
+    for relative in listed:
+        assert (root / "skills" / relative).is_file(), (
+            f"stability registry references missing file: {relative}"
+        )
+    actual = sorted(
+        str(path.relative_to(root / "skills"))
+        for path in (root / "skills").rglob("*.md")
+        if path.name != "SKILL.md"
+    )
+    assert sorted(listed) == actual, "stability registry differs from policy files"
+    for relative in registry["implemented"]:
+        assert "Experimental" in (root / "skills" / relative).read_text(encoding="utf-8")
+    for relative in registry["skeleton"]:
+        assert "Skeleton only" in (root / "skills" / relative).read_text(
+            encoding="utf-8"
+        )
+
+
+def check_required_paths(root: Path) -> None:
+    required = (
+        "commands/craft.md",
+        "commands/consult.md",
+        ".cursor-plugin/skills/fuseforge/SKILL.md",
+        "skills/SKILL.md",
+        "skills/workflow/craft.md",
+        "skills/workflow/consult.md",
+        "skills/coordination/logical-workspace.md",
+        "skills/coordination/shared-contract.md",
+        "skills/coordination/delegation.md",
+        "skills/coordination/stage-barrier.md",
+        "skills/coordination/connected-verification.md",
+        "docs/setup/claude-code.md",
+        "docs/setup/codex.md",
+        "docs/setup/cursor.md",
+        "docs/reference/support-scope.md",
+    )
+    for relative in required:
+        assert (root / relative).is_file(), f"missing packaging path: {relative}"
+
+
+def check_frontmatter(root: Path) -> None:
+    expected = {
+        "commands/craft.md": "craft",
+        "commands/consult.md": "consult",
+        "skills/SKILL.md": "fuseforge",
+        ".cursor-plugin/skills/fuseforge/SKILL.md": "fuseforge",
+    }
+    for relative, name in expected.items():
+        metadata = frontmatter(root / relative)
+        assert metadata.get("name") == name, f"{relative}: unexpected name"
+        assert metadata.get("description"), f"{relative}: missing description"
+
+
+def check_skill_size(root: Path) -> None:
+    limit = 200
+    for path in (root / "skills").rglob("*.md"):
+        lines = len(path.read_text(encoding="utf-8").splitlines())
+        assert lines <= limit, f"{path.relative_to(root)}: {lines} lines (limit {limit})"
+
+
+def check_activation_probes(root: Path) -> None:
+    for relative in (
+        "commands/craft.md",
+        "skills/SKILL.md",
+        ".cursor-plugin/skills/fuseforge/SKILL.md",
+    ):
+        content = (root / relative).read_text(encoding="utf-8")
+        assert "FUSEFORGE_ACTIVATION_PROBE" in content, f"missing probe: {relative}"
+        assert "FUSEFORGE_LOADED" in content, f"missing probe result: {relative}"
+
+
+def main() -> None:
+    root = Path(sys.argv[1] if len(sys.argv) > 1 else Path(__file__).parents[2]).resolve()
+    version = check_manifests(root)
+    check_registry(root, version)
+    check_required_paths(root)
+    check_frontmatter(root)
+    check_skill_size(root)
+    check_activation_probes(root)
+    print("PASS static harness packaging")
+
+
+if __name__ == "__main__":
+    main()
