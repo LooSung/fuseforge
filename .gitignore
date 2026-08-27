@@ -1,2 +1,4 @@
 .DS_Store
 .craft/
+__pycache__/
+*.py[cod]
