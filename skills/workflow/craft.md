@@ -38,10 +38,17 @@ outside this slice.
 
 For each required track:
 
-1. inspect the loaded specialist skill or its support-scope document;
+1. read the stack scope stated by the loaded specialist skill;
 2. list only stacks that the observed pack version supports;
-3. if the required pack cannot be found or its support cannot be verified,
+3. consult the pack's support-scope document only to refine that list;
+4. if the required pack cannot be found or its support cannot be verified,
    report the blocker instead of inventing choices.
+
+Prefer the loaded skill. Its stack scope is already available, while the pack's
+support-scope document sits outside the linked skill directory and may be
+unreadable. Treat an unreadable support-scope document as missing detail, not as
+a missing pack, and do not report a blocker when the loaded skill already states
+the supported stacks.
 
 For a missing or incompatible pack, point the user to
 `docs/setup/bootstrap.md` and stop. Craft must never invoke bootstrap or apply

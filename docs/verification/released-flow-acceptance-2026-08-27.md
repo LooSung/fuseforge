@@ -109,6 +109,21 @@ requires a `~/.fuseforge` checkout, matching `~/.compforge` and `~/.oopforge`.
 extra approval and stopped a non-interactive session before the workflow
 loaded. Resolution: the adapter now prefers the skill-directory path.
 
+### F6 — the selection gate blocked on an unreadable support-scope document
+
+In one run the gate reported the linked Compforge and OOPforge skill
+directories as empty and stopped with the bootstrap blocker, although both
+resolve correctly and state their stack scope in `SKILL.md`. A repeat run listed
+the real supported options, including the Compforge structure choices and the
+OOPforge architecture choices, so the behavior was not deterministic.
+
+The gate's step 3 accepted either the loaded specialist skill or the pack's
+`docs/reference/support-scope.md`, and that document sits outside the linked
+skill directory. Resolution: `skills/workflow/craft.md` now reads the loaded
+skill's stack scope first, treats an unreadable support-scope document as
+missing detail rather than a missing pack, and reports a blocker only when the
+loaded skill itself cannot be found.
+
 ## Future enhancements
 
 These are recorded observations, not failures of an approved boundary.
@@ -117,15 +132,6 @@ These are recorded observations, not failures of an approved boundary.
   request was classified as frontend and backend in one run, frontend-only in
   another, and as a user question about whether a backend is needed in a third.
   The gate never invented a stack, so no product file was written either way.
-- Specialist pack inspection was not stable. In one run the gate reported the
-  linked Compforge and OOPforge skill directories as empty and stopped with the
-  bootstrap blocker, although both directories resolve correctly and state their
-  stack scope. A repeat run listed the real supported options, including the
-  Compforge structure choices and the OOPforge architecture choices. The
-  blocking path is safe but costs a turn. `skills/workflow/craft.md` step 3
-  offers both the loaded specialist skill and its support-scope document as
-  inspection sources; preferring the already-loaded skill would remove the
-  dependency on reading a file outside the linked skills directory.
 - The generated `rev-1` contract covered all six planned calendar slices rather
   than the Delivery Plan's Slice 1 boundary. Wire decisions were still
   deferred, so no approved boundary was crossed.
