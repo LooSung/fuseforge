@@ -1,0 +1,64 @@
+# FuseForge documentation
+
+Use this index to find the smallest document for the job. Agent-facing
+canonical policy remains under [`../skills/`](../skills/).
+
+## Directory roles
+
+- [`assets/`](assets/README.md) — versioned assets required by verified docs
+- [`guides/`](guides/README.md) — approved end-to-end walkthroughs
+- [`planning/`](planning/README.md) — approved checkpoints and implementation slices
+- [`project/`](project/positioning.md) — project positioning and ownership
+- [`proof/`](proof/README.md) — separately approved effectiveness protocols
+- [`reference/`](reference/support-scope.md) — stable concepts and support boundaries
+- [`releases/`](releases/README.md) — archived historical release notes
+- [`setup/`](setup/bootstrap.md) — harness and specialist setup
+- [`verification/`](verification/README.md) — packaging and behavior evidence
+
+## Setup
+
+- [Specialist pack bootstrap](setup/bootstrap.md)
+- [Claude Code](setup/claude-code.md)
+- [Codex CLI](setup/codex.md)
+- [Cursor Agent CLI](setup/cursor.md)
+
+## Reference
+
+- [Korean methodology guide](reference/methodology.ko.md)
+- [Support scope and compatibility](reference/support-scope.md)
+- [Path convention](reference/path-convention.md)
+- [Skill stability](reference/skill-stability.md)
+- [Reviewer checklist](reference/reviewer-checklist.md)
+- [Manual release process](reference/release-process.md)
+
+## Project
+
+- [Positioning](project/positioning.md)
+
+## Approved checkpoints
+
+- [Discovery](planning/checkpoints/discovery.md)
+- [Design](planning/checkpoints/design.md)
+- [Delivery Plan](planning/checkpoints/delivery-plan.md)
+- [Skeleton](planning/checkpoints/skeleton.md)
+
+## Implementation
+
+- [Slice 1](planning/implementation/implementation-slice-1.md)
+- [Slice 2 plan](planning/implementation/implementation-slice-2-plan.md) and
+  [evidence](planning/implementation/implementation-slice-2.md)
+- [Slice 3 plan](planning/implementation/implementation-slice-3-plan.md) and
+  [evidence](planning/implementation/implementation-slice-3.md)
+- [Slice 4 plan](planning/implementation/implementation-slice-4-plan.md) and
+  [evidence](planning/implementation/implementation-slice-4.md)
+
+## Verification
+
+- [Verification index](verification/README.md)
+- [Approved coordinator Test evidence](verification/coordinator-test-2026-08-27.md)
+
+## Release
+
+Current completed changes are recorded in [`../CHANGELOG.md`](../CHANGELOG.md).
+FuseForge uses a manual release process; repository automation checks readiness
+but does not commit, tag, push, or publish.

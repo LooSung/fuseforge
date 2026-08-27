@@ -1,0 +1,96 @@
+# FuseForge
+
+FuseForge는 [Compforge](https://github.com/LooSung/compforge)와
+[OOPforge](https://github.com/LooSung/oopforge)를 하나의 풀스택 기능 흐름으로
+연결하는 실험적이고 얇은 풀스택 코디네이터다.
+
+[English](./README.md) · [한국어](./README.ko.md)
+
+## 현재 상태
+
+Discovery, Design, Delivery Plan, Skeleton, 첫 네 개 구현 슬라이스와 실험적
+코디네이터 Test 체크포인트가 승인됐다. 아직 완성된 코디네이터는 아니다.
+
+승인된 제품 방향은 다음과 같다.
+
+> 개발자는 제품 기능을 한 번 설명하고 단계마다 통합 결과 하나를 승인한다.
+> 프런트엔드와 백엔드 전문 팩은 같은 제품·API 계약을 기준으로 작업한다.
+
+Compforge는 TypeScript·React 프런트엔드 규율을 소유한다. OOPforge는 Java
+Spring·Python FastAPI 백엔드 OOP/DDD 규율을 소유한다. FuseForge는
+크로스스택 조정, 공유 계약 일관성, 통합 체크포인트와 연결 검증만 소유한다.
+
+## 현재 경계
+
+- 하나의 풀스택 기능 흐름이 제품 목표다.
+- 네이티브 서브에이전트는 실행 수단일 수 있지만 제품 자체는 아니다.
+- tmux 기반 멀티에이전트 오케스트레이션은 범위 밖이다.
+- 모노레포와 프런트엔드·백엔드 분리 구성을 모두 다룬다.
+- 신규 프로젝트와 기존 프로젝트는 서로 다른 작업 맥락이다.
+- 누락된 스택은 로드된 전문 팩이 실제 지원하는 선택지에서 사용자가 고른다.
+- 첫 증명 대상은 수직 슬라이스로 나눈 제한된 캘린더다.
+- Design, Delivery Plan, Skeleton 승인 전에는 구현을 시작하지 않는다.
+
+## 문서
+
+[docs/README.md](docs/README.md)에서 설정, 레퍼런스, 프로젝트, 체크포인트,
+구현과 검증 문서를 찾을 수 있다.
+
+- [한국어 개념 가이드](docs/reference/methodology.ko.md)
+- [지원 범위](docs/reference/support-scope.md)
+- [경로 규약](docs/reference/path-convention.md)
+- [검증 기준선](docs/verification/coordinator-test-2026-08-27.md)
+
+## 승인된 단계
+
+- [Discovery](docs/planning/checkpoints/discovery.md) — 제품 경계, 결정, 위험, Design 질문
+- [Design](docs/planning/checkpoints/design.md) — 코디네이터 계약, workspace·state 모델, 전문 팩 인터페이스
+- [Delivery Plan](docs/planning/checkpoints/delivery-plan.md) — 선택 게이트, 수직 슬라이스, 검증과 위험
+- [Skeleton](docs/planning/checkpoints/skeleton.md) — canonical policy와 harness adapter 구조
+
+## 구현 슬라이스
+
+1. [선택 게이트](docs/planning/implementation/implementation-slice-1.md)
+   - 요청 맥락·의도·필요 트랙을 분류하고 누락된 스택·topology를 묻는다.
+2. [전문 팩 bootstrap](docs/planning/implementation/implementation-slice-2.md)
+   - 환경을 먼저 검사하고 `--apply`에서 누락된 팩과 링크만 설치한다.
+3. [greenfield workspace](docs/planning/implementation/implementation-slice-3.md)
+   - 정확한 경로 승인 후 workspace, 공유 계약 `rev-1`, 로컬 상태를 만든다.
+4. [Design 통합](docs/planning/implementation/implementation-slice-4.md)
+   - 전문 팩 결과를 검증하고 사용자 승인 후에만 계약 `rev-2`를 허용한다.
+
+## 코디네이터 Test
+
+[docs/verification/coordinator-test-2026-08-27.md](docs/verification/coordinator-test-2026-08-27.md)에 자동 검사와 하네스 증거가 기록돼 있다.
+
+- Claude Code: live activation 통과
+- Cursor Agent: live activation과 격리 workspace 흐름 통과
+- Codex CLI: 정적 packaging·routing 통과, live activation은 미증명
+- 실제 프런트엔드 API client → 백엔드 연결 검증: 캘린더 구현 전이므로 미수행
+
+## 저장소 검사와 릴리스
+
+`bash scripts/ci/lint-skills.sh`로 하네스 packaging, skill registry, 문서 링크를
+검사한다. Pull request CI는 승인된 코디네이터 회귀 검사도 함께 실행한다.
+
+FuseForge는 MIT License를 사용하며 릴리스는 수동으로 진행한다.
+[변경 이력](CHANGELOG.md)과
+[릴리스 절차](docs/reference/release-process.md)를 참고한다. readiness 검사는
+commit, tag, push, GitHub Release를 자동 생성하지 않는다.
+
+## 아직 구현되지 않은 것
+
+- FuseForge Consult 동작
+- 실제 calendar 프런트엔드·백엔드 소스
+- connected frontend-client-to-backend 검증
+- 프로덕션 배포
+- 기존 전문 팩의 자동 업데이트·수리
+- 범용 멀티에이전트 런타임
+
+## 언어 정책
+
+실제 에이전트가 읽는 `skills/`, script, 하네스 지시문과 정책 문서는 영어를
+정본으로 사용한다. 한국어 독자는 이 README와
+[`docs/reference/methodology.ko.md`](docs/reference/methodology.ko.md)를 사용한다.
+스킬 전체를 1:1 번역하지 않아 번역 드리프트를 막고, 한국어 개념 가이드는
+제품 개념이나 프로세스가 바뀔 때 갱신한다.
