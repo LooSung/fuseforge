@@ -79,6 +79,38 @@ def check_registry(root: Path, version: str) -> None:
         )
 
 
+def check_skill_claims(root: Path) -> None:
+    """SKILL.md must not contradict the registry about another file's status.
+
+    Slice 6 promoted connected-verification.md and updated the registry but left
+    SKILL.md calling it Skeleton, and every check passed, because each policy
+    file's own status line was validated while SKILL.md's claims about other
+    files were not.
+    """
+    registry = load_json(root / "skills/stability.json")
+    skill = (root / "skills/SKILL.md").read_text(encoding="utf-8")
+    marker = "Skeleton interface"
+    claim = next(
+        (
+            " ".join(block.split())
+            for block in skill.split("\n\n")
+            if marker in block
+        ),
+        None,
+    )
+    assert claim is not None, f"skills/SKILL.md must state which files are {marker}s"
+    for relative in registry["implemented"]:
+        assert relative not in claim, (
+            f"skills/SKILL.md calls {relative} a {marker} while the registry "
+            "lists it as implemented"
+        )
+    for relative in registry["skeleton"]:
+        assert relative in claim, (
+            f"skills/SKILL.md omits skeleton policy {relative} from its "
+            f"{marker} statement"
+        )
+
+
 def check_required_paths(root: Path) -> None:
     required = (
         "commands/craft.md",
@@ -136,6 +168,7 @@ def main() -> None:
     root = Path(sys.argv[1] if len(sys.argv) > 1 else Path(__file__).parents[2]).resolve()
     version = check_manifests(root)
     check_registry(root, version)
+    check_skill_claims(root)
     check_required_paths(root)
     check_frontmatter(root)
     check_skill_size(root)

@@ -25,6 +25,18 @@ real frontend client was proven against a running backend. See
 That is one slice of one product with one stack pair. It is evidence that the
 flow works, not a guarantee for other stacks, harnesses, or later slices.
 
+## Classification stability
+
+A request that does not say whether its data must outlive the browser leaves the
+backend track unresolved, and the selection gate asks. Measured on Claude Code
+over eight runs of one request, the gate asked in 8 of 8, against 3 of 8 at
+`v0.2.0`. See
+[track classification](../verification/track-classification-2026-08-27.md).
+
+Eight runs are a distribution, not a guarantee, and only one phrasing on one
+harness was measured. Context, intent, and topology classification have not been
+measured this way.
+
 ## Harness evidence
 
 Support requires the skill-directory install in

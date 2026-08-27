@@ -14,9 +14,19 @@ def read(relative_path: str) -> str:
     return (ROOT / relative_path).read_text(encoding="utf-8")
 
 
+def flatten(text: str) -> str:
+    """Collapse whitespace so a marker survives Markdown reflow.
+
+    These assertions describe sentences, not line layout. Matching raw text made
+    them fail when an unrelated edit rewrapped a paragraph, which hides the real
+    signal and invites weakening the marker instead of reading it.
+    """
+    return " ".join(text.split())
+
+
 def require(source: str, *markers: str) -> None:
-    text = read(source)
-    missing = [marker for marker in markers if marker not in text]
+    text = flatten(read(source))
+    missing = [marker for marker in markers if flatten(marker) not in text]
     if missing:
         raise AssertionError(f"{source} is missing: {', '.join(missing)}")
 
@@ -31,8 +41,9 @@ def main() -> None:
     require(
         "skills/workflow/craft.md",
         "A prior generic approval is not path confirmation.",
-        "Confirmation is incomplete unless it covers coordination, frontend, backend,",
-        "and `.gitignore` paths from the current plan.",
+        "Confirmation is incomplete unless it covers coordination, frontend,"
+        " backend, contract, local-state, and `.gitignore` paths from the"
+        " current plan.",
         "existing empty directories may be reused only when named",
         "a non-empty directory, file, or symlink blocks",
         "Stop after workspace creation. Specialist Design begins only",

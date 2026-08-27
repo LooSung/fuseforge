@@ -19,3 +19,7 @@ Read and follow `../../../skills/SKILL.md`.
 Treat `../../../skills/` as the canonical skill root. The coordinator delegates
 specialist work and must not create calendar product source itself. A product
 slice is complete only after the parent-owned connected check was recorded.
+
+If a required policy file cannot be read, stop and report it. Never reconstruct
+the workflow from memory or emit the response contract without having read the
+policy that defines it. Never settle a track the request left silent.

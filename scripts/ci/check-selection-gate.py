@@ -8,7 +8,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-VERSION = "0.2.0"
+VERSION = "0.2.1"
 PROBE_LINES = (
     "FUSEFORGE_LOADED",
     "Assumptions",
@@ -24,8 +24,14 @@ def load_json(relative_path: str) -> dict[str, object]:
     return json.loads(read(relative_path))
 
 
+def flatten(text: str) -> str:
+    """Collapse whitespace so a marker survives Markdown reflow."""
+    return " ".join(text.split())
+
+
 def require(text: str, markers: tuple[str, ...], source: str) -> None:
-    missing = [marker for marker in markers if marker not in text]
+    flat = flatten(text)
+    missing = [marker for marker in markers if flatten(marker) not in flat]
     if missing:
         raise AssertionError(f"{source} is missing: {', '.join(missing)}")
 
@@ -58,12 +64,46 @@ def main() -> None:
         craft,
         (
             "This slice is read-only.",
-            "A missing required stack is always a user decision.",
+            "An unresolved track and a missing required stack are always user",
             "Ask all missing stack and topology choices in one checkpoint.",
             "Never ask the user to select Cursor, Claude, or Codex",
             "After presenting unresolved choices, stop.",
         ),
         "skills/workflow/craft.md",
+    )
+
+    require(
+        craft,
+        (
+            "### 2.1 A track is never inferred from silence",
+            "A track is settled only when the request states it or an existing"
+            " project shows it. Silence is not a decision.",
+            "If the request does not say whether the data must still be there"
+            " after the browser is closed, the backend track is unresolved and"
+            " belongs in the selection gate. Ask; do not choose.",
+            "unresolved track, stack, and topology choices",
+        ),
+        "skills/workflow/craft.md",
+    )
+
+    if "a backend choice for frontend-only work" in craft:
+        raise AssertionError(
+            "craft.md must not let a self-made frontend-only classification "
+            "forbid the backend question"
+        )
+
+    require(
+        read("skills/SKILL.md"),
+        (
+            "If a required policy file cannot be read, stop and report which"
+            " file and why.",
+            "Never reconstruct the workflow from memory, and never emit"
+            " `Assumptions`, `Selection Gate`, or any other section of the"
+            " response contract without having read the policy that defines it.",
+            "Never settle a frontend or backend track that the request left"
+            " silent.",
+        ),
+        "skills/SKILL.md",
     )
 
     command = read("commands/craft.md")
@@ -80,7 +120,12 @@ def main() -> None:
     cursor_wrapper = read(".cursor-plugin/skills/fuseforge/SKILL.md")
     require(
         cursor_wrapper,
-        ("../../../skills/SKILL.md", "must not create calendar"),
+        (
+            "../../../skills/SKILL.md",
+            "must not create calendar",
+            "If a required policy file cannot be read, stop and report it.",
+            "Never settle a track the request left silent.",
+        ),
         ".cursor-plugin/skills/fuseforge/SKILL.md",
     )
 

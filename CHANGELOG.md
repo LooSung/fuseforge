@@ -6,6 +6,40 @@ future plans, private backlogs, and unsupported claims do not belong here.
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-08-27
+
+### Fixed
+
+- A request that did not say whether its data must outlive the browser was
+  classified as frontend-only in most runs, which dropped the backend track
+  without asking and took a product decision from the user. An unresolved track
+  is now a selection-gate question. Measured on Claude Code, the gate asks in 8
+  of 8 runs against 3 of 8 before.
+- `skills/SKILL.md` required a parent-owned connected check for slice completion
+  and, two sentences later, called that policy a Skeleton interface. Shipped in
+  `0.2.0`.
+- Nothing stopped the coordinator from emitting `Assumptions` and `Selection
+  Gate` without having read the policy that defines them. An unreadable required
+  policy file now stops the turn.
+
+### Changed
+
+- Static checks now compare `SKILL.md`'s claims about other policy files against
+  the stability registry, which is the gap that let the `0.2.0` contradiction
+  ship with every check passing.
+- Policy assertions no longer depend on Markdown line wrapping, so rewrapping a
+  paragraph cannot fail a check that its meaning still satisfies.
+
+### Known limitations
+
+- The classification measurement covers one request phrasing on Claude Code.
+  Eight runs are a distribution, not a guarantee, and context, intent, and
+  topology classification were not measured this way.
+- One post-fix run omitted the "no product files have been created" sentence
+  while still writing nothing.
+- `skills/workflow/craft.md` is at 199 of its 200-line cap, so the next slice
+  needing Craft routing must move detail into a coordination policy file.
+
 ## [0.2.0] - 2026-08-27
 
 ### Added

@@ -28,6 +28,15 @@ For a FuseForge Craft request:
 6. Execute only the implemented selection-gate, confirmed greenfield workspace,
    Design-integration, Implement-delegation, and connected-verification slices.
 
+If a required policy file cannot be read, stop and report which file and why.
+Never reconstruct the workflow from memory, and never emit `Assumptions`,
+`Selection Gate`, or any other section of the response contract without having
+read the policy that defines it. Output shaped like the gate, produced without
+the gate, is indistinguishable from the real thing to the reader.
+
+Never settle a frontend or backend track that the request left silent. Section
+2.1 of `workflow/craft.md` makes an unresolved track a user decision.
+
 Before exact path confirmation, remain read-only. After confirmation, create
 only the approved workspace directories, product-semantics contract `rev-1`,
 local task state, and `.craft/` ignore entry.
@@ -42,5 +51,4 @@ A product slice is complete only after the parent-owned connected check passed
 and was recorded. Never claim that a frontend client was proven against a
 running backend without that record.
 
-`workflow/consult.md` and `coordination/connected-verification.md` remain
-Skeleton interfaces.
+`workflow/consult.md` remains a Skeleton interface.
