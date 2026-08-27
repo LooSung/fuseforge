@@ -6,6 +6,16 @@ future plans, private backlogs, and unsupported claims do not belong here.
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-08-27
+
+### Fixed
+
+- `doctor.sh` told a user to run `install.sh` whenever anything failed, including
+  when FuseForge was installed and only the specialist packs were missing. The
+  closing hint now names only the part that actually failed.
+- `install.sh` and `quickstart.sh` printed the same next steps twice during a
+  first install.
+
 ## [0.3.0] - 2026-08-27
 
 ### Added

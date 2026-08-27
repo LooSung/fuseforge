@@ -59,14 +59,19 @@ print_pack_row "FuseForge" "self" "$SELF_VERSION" "$SELF_ROOT"
 print_pack_row "Compforge" "$COMP_STATUS" "$COMP_VERSION" "$COMP_ROOT"
 print_pack_row "OOPforge" "$OOP_STATUS" "$OOP_VERSION" "$OOP_ROOT"
 
+# Tracked apart from FAILED so the closing hint names only what is actually
+# wrong, rather than telling a user to install something already installed.
 FAILED=0
+SPEC_FAILED=0
 if [ "$COMP_STATUS" != "compatible" ]; then
   printf 'Compforge: %s\n' "$COMP_REASON"
   FAILED=1
+  SPEC_FAILED=1
 fi
 if [ "$OOP_STATUS" != "compatible" ]; then
   printf 'OOPforge: %s\n' "$OOP_REASON"
   FAILED=1
+  SPEC_FAILED=1
 fi
 
 READY_HARNESSES=""
@@ -109,6 +114,7 @@ end_harness() {
   if [ "$BROKEN" -gt 0 ] || { [ "$OK" -gt 0 ] && [ "$MISSING" -gt 0 ]; }; then
     printf '  %s is only partly linked and will load some packs but not others.\n' "$harness"
     FAILED=1
+    SPEC_FAILED=1
   elif [ "$OK" -gt 0 ]; then
     READY_HARNESSES="$READY_HARNESSES $harness,"
   else
@@ -156,6 +162,7 @@ EOF
 # environment while the coordinator was not installed in any harness.
 SELF_READY=""
 SELF_BROKEN=0
+SELF_FAILED=0
 
 tally_self() {
   local harness="$1"
@@ -200,9 +207,11 @@ if [ "$SCOPE" = "all" ]; then
   if [ "$SELF_BROKEN" -eq 1 ]; then
     printf '\n  FuseForge is partly installed. Run scripts/setup/install.sh --force\n'
     FAILED=1
+    SELF_FAILED=1
   elif [ -z "$SELF_READY" ]; then
     printf '\n  FuseForge is not installed in any harness. Run scripts/setup/install.sh\n'
     FAILED=1
+    SELF_FAILED=1
   else
     printf '\n  FuseForge is available in:%s\n' "${SELF_READY%,}"
   fi
@@ -235,16 +244,21 @@ if [ -n "$ABSENT_HARNESSES" ]; then
   printf 'Not set up, which only matters if you use it:%s\n' "${ABSENT_HARNESSES%,}"
 fi
 
-if [ "$FAILED" -eq 0 ] && [ -z "$READY_HARNESSES" ]; then
+if [ -z "$READY_HARNESSES" ]; then
   printf 'No harness can load the specialist packs.\n'
   FAILED=1
+  SPEC_FAILED=1
 fi
 
 if [ "$FAILED" -eq 0 ]; then
   printf 'No changes required.\n'
 else
   printf 'Environment is not ready.\n'
-  printf 'FuseForge itself:  bash scripts/setup/install.sh\n'
-  printf 'Specialist packs:  bash scripts/setup/bootstrap.sh   (prints a plan first)\n'
+  if [ "$SELF_FAILED" -eq 1 ]; then
+    printf 'FuseForge itself:  bash scripts/setup/install.sh\n'
+  fi
+  if [ "$SPEC_FAILED" -eq 1 ]; then
+    printf 'Specialist packs:  bash scripts/setup/bootstrap.sh   (prints a plan first)\n'
+  fi
   exit 1
 fi

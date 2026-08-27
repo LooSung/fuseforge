@@ -89,7 +89,7 @@ else
 fi
 
 printf '\n'
-bash "$PACK_DIR/scripts/setup/install.sh"
+FUSEFORGE_QUICKSTART=1 bash "$PACK_DIR/scripts/setup/install.sh"
 
 printf '\n'
 cyan "==> Next"

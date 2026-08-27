@@ -155,10 +155,31 @@ recorded below.
 - Concurrent installs from two checkouts at once.
 - `quickstart.sh` update path against a real remote with local commits present.
 
-## Post-push remote verification
+## Remote verification, after `v0.3.0`
 
-Recorded after the release, from the published `main`:
+Run from the published `main` in an isolated `HOME` with `~/.claude` and
+`~/.codex` present and `~/.agents` absent:
 
-- `bash -c "$(curl -fsSL .../scripts/setup/quickstart.sh)"` into a clean
-  `FUSEFORGE_HOME`, followed by `doctor.sh`.
-- Result: see the closing section of this file.
+```bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/LooSung/fuseforge/main/scripts/setup/quickstart.sh)"
+```
+
+- Cloned `~/.fuseforge` at `5d85327` and created three links. Cursor Agent was
+  correctly skipped because `~/.agents` did not exist.
+- Rerunning the same command reported "Updating existing checkout", stayed at
+  `5d85327`, and reported all three links as already linked.
+- `doctor.sh` then failed, correctly, because no specialist pack was present.
+
+Two output defects were found by reading that doctor output and fixed in
+`0.3.1`:
+
+- The closing hint printed both "FuseForge itself: install.sh" and "Specialist
+  packs: bootstrap.sh" whenever anything failed, so it told a user to install
+  FuseForge while FuseForge was installed and only the specialists were missing.
+  The hint now names only the part that failed.
+- `install.sh` and `quickstart.sh` each printed the same two next-step lines, so
+  a first-time user saw them twice. The installer now suppresses its own when
+  quickstart will print them with context.
+
+Both are cosmetic, and both were only visible by running the real user path
+rather than the smoke suite, which asserts filesystem state rather than wording.

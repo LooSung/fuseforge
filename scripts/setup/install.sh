@@ -175,7 +175,8 @@ fi
 green "==> Done. Restart each agent to pick up changes."
 if [ "$DRY_RUN" -eq 1 ]; then
   yellow "Run again without --dry-run to apply changes."
-else
-  printf 'Check the install:      bash %s/scripts/setup/doctor.sh\n' "${PACK_DIR/#$HOME/~}"
-  printf 'Specialist packs:       bash %s/scripts/setup/bootstrap.sh\n' "${PACK_DIR/#$HOME/~}"
+elif [ "${FUSEFORGE_QUICKSTART:-0}" != 1 ]; then
+  # quickstart.sh prints the same next steps with more context.
+  printf 'Check the install:  bash %s/scripts/setup/doctor.sh\n' "${PACK_DIR/#$HOME/~}"
+  printf 'Specialist packs:   bash %s/scripts/setup/bootstrap.sh\n' "${PACK_DIR/#$HOME/~}"
 fi
