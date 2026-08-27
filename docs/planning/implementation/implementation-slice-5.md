@@ -68,6 +68,20 @@ scope, dependency, envelope, barrier, and partial-completion rules, confirms tha
 `connected-verification.md` is still registered as Skeleton, and fails if calendar
 source appears inside the pack.
 
+### Negative tests
+
+A check that only ever passes proves nothing, so four violations were injected
+and reverted. Each was rejected with the expected message:
+
+| Injected violation | Result |
+|---|---|
+| `rev-2` requirement removed from the Implement delegation | `missing: shared contract reached rev-2` |
+| Partial-completion heading weakened in the barrier | `missing: ### Partial completion is not success` |
+| `connected-verification.md` relabelled as implemented | `must remain Skeleton-only in this slice` |
+| `backend/main.py` created inside the pack | `calendar source must not live in the pack` |
+
+The working tree was restored after each test and the full suite passes again.
+
 ### Not verified
 
 Live specialist Implement generation was not run. It is real product work that
