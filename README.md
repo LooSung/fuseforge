@@ -9,9 +9,28 @@ flow.
 
 ## Status
 
-Discovery, Design, Delivery Plan, Skeleton, the first four implementation
-slices, and the experimental coordinator Test checkpoint are approved. The
-package is not yet a complete coordinator.
+Discovery, Design, Delivery Plan, Skeleton, six implementation slices, and the
+experimental coordinator Test checkpoint are approved. The package is not yet a
+complete coordinator.
+
+### What has actually been proven
+
+On 2026-08-27 the whole flow ran once, end to end, and produced a working
+feature:
+
+> A user creates a schedule and sees it on the month view after it is saved.
+
+FuseForge took one feature request, fixed a shared contract, delegated Design and
+then Implement to Compforge and OOPforge, rejected a specialist result that
+claimed an artifact it had not written, and proved the real frontend API client
+against a running backend. The calendar product lives outside this repository by
+design; this package holds only coordinator policy and evidence.
+
+Evidence: [calendar Slice 1](docs/verification/calendar-slice-1-2026-08-27.md).
+
+That is one slice, one stack pair, one harness. It shows the flow works; it does
+not promise other stacks, harnesses, or later slices. Read the
+[support scope](docs/reference/support-scope.md) before relying on anything.
 
 The approved product direction is:
 
@@ -47,6 +66,7 @@ checkpoint, implementation, and verification documents.
 - [Support scope](docs/reference/support-scope.md)
 - [Path convention](docs/reference/path-convention.md)
 - [Released-flow acceptance](docs/verification/released-flow-acceptance-2026-08-27.md)
+- [Calendar Slice 1 proof](docs/verification/calendar-slice-1-2026-08-27.md)
 
 ## Discovery
 
@@ -71,45 +91,22 @@ approved.
 Read [docs/planning/checkpoints/skeleton.md](docs/planning/checkpoints/skeleton.md) for the approved package and
 interface-only file tree that preceded the first implementation slice.
 
-## First implementation slice
+## Implementation slices
 
-Read [docs/planning/implementation/implementation-slice-1.md](docs/planning/implementation/implementation-slice-1.md) for the
-approved experimental selection-gate behavior and evidence. Cursor activation
-and the read-only stop boundary were exercised live; Claude Code and Codex
-adapter structure is statically verified only.
+Each slice has an approved plan and an evidence record. The index is
+[docs/planning/implementation/README.md](docs/planning/implementation/README.md).
 
-## Second implementation slice plan
+| Slice | Scope |
+|---|---|
+| 1 | Request classification and the selection gate |
+| 2 | Read-only pack doctor and explicit missing-only bootstrap |
+| 3 | Exact-path greenfield workspace and shared contract `rev-1` |
+| 4 | Specialist Design delegation and parent-owned `rev-2` |
+| 5 | Specialist Implement delegation, write roots, and dependency ownership |
+| 6 | Parent-owned connected verification and the slice completion barrier |
 
-Read
-[docs/planning/implementation/implementation-slice-2-plan.md](docs/planning/implementation/implementation-slice-2-plan.md) for
-the approved read-only pack doctor and explicit missing-only bootstrap plan.
-
-## Second implementation slice
-
-Read [docs/planning/implementation/implementation-slice-2.md](docs/planning/implementation/implementation-slice-2.md) for the
-approved bootstrap behavior, safety boundaries, and evidence. Usage is in
-[docs/setup/bootstrap.md](docs/setup/bootstrap.md). No apply was run against the
-maintainer's real home during verification.
-
-## Third implementation slice plan
-
-Read
-[docs/planning/implementation/implementation-slice-3-plan.md](docs/planning/implementation/implementation-slice-3-plan.md) for
-the approved exact-path confirmation, greenfield directory creation, shared
-contract `rev-1`, and local continuity plan.
-
-Read [docs/planning/implementation/implementation-slice-3.md](docs/planning/implementation/implementation-slice-3.md) for the
-approved policy and isolated Cursor evidence.
-
-## Fourth implementation slice plan
-
-Read
-[docs/planning/implementation/implementation-slice-4-plan.md](docs/planning/implementation/implementation-slice-4-plan.md) for
-the approved specialist Design delegation, result validation, integrated wire
-checkpoint, and parent-owned contract `rev-2`.
-
-Read [docs/planning/implementation/implementation-slice-4.md](docs/planning/implementation/implementation-slice-4.md) for the
-approved policy and static evidence.
+Slices are approved one at a time, and no slice was implemented before its plan
+was approved.
 
 ## Coordinator Test
 
@@ -121,6 +118,10 @@ Cursor Agent activation all pass through the
 [skill-directory install](docs/setup/install.md). Acceptance recorded five
 install and documentation failures, all resolved, plus future enhancements that
 remain open.
+
+Read [docs/verification/calendar-slice-1-2026-08-27.md](docs/verification/calendar-slice-1-2026-08-27.md)
+for the first execution of the full flow, including the connected check and the
+Design result the barrier rejected.
 
 ## Repository checks and releases
 

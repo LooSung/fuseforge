@@ -9,17 +9,19 @@ feature-level workflow, shared contract, and integrated approval experience.
 ## Current stage
 
 FuseForge's **coordinator Test checkpoint is approved**. Discovery, Design,
-Delivery Plan, Skeleton, and the first four Implement slices are approved.
+Delivery Plan, Skeleton, and six Implement slices are approved.
+
+The whole flow has been executed once against a real product workspace and
+produced calendar Slice 1 with a passing connected check. Read
+`docs/verification/calendar-slice-1-2026-08-27.md` before describing what
+FuseForge has coordinated. It is one slice, one stack pair, one harness.
 
 - Read `docs/planning/checkpoints/discovery.md`,
   `docs/planning/checkpoints/design.md`,
   `docs/planning/checkpoints/delivery-plan.md`, and
-  `docs/planning/checkpoints/skeleton.md` before implementing behavior. Read
-  `docs/planning/implementation/implementation-slice-1.md` and
-  `docs/planning/implementation/implementation-slice-2-plan.md` before the
-  second slice, and its evidence before review. Apply the same plan-before-work
-  and evidence-before-review rule to slices 3 and 4 listed in
-  `docs/planning/implementation/README.md`.
+  `docs/planning/checkpoints/skeleton.md` before implementing behavior.
+- Read a slice's plan before working on it and its evidence before reviewing it.
+  `docs/planning/implementation/README.md` indexes every slice.
 - Use `docs/README.md` as the human documentation index. Read
   `docs/reference/support-scope.md` before describing current support and
   `docs/verification/README.md` before changing evidence claims.

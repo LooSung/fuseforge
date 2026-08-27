@@ -8,8 +8,26 @@ FuseForge는 [Compforge](https://github.com/LooSung/compforge)와
 
 ## 현재 상태
 
-Discovery, Design, Delivery Plan, Skeleton, 첫 네 개 구현 슬라이스와 실험적
+Discovery, Design, Delivery Plan, Skeleton, 여섯 개 구현 슬라이스와 실험적
 코디네이터 Test 체크포인트가 승인됐다. 아직 완성된 코디네이터는 아니다.
+
+### 실제로 증명된 것
+
+2026-08-27에 전체 흐름을 한 번 끝까지 실행해 작동하는 기능을 만들었다.
+
+> 사용자가 일정을 만들면 저장 후 월 보기에서 그 일정을 본다.
+
+FuseForge가 기능 요청 하나를 받아 공유 계약을 고정하고, Design과 Implement를
+Compforge·OOPforge에 위임하고, 쓰지 않은 산출물을 썼다고 보고한 전문 팩 결과를
+거부한 뒤, 실제 프런트엔드 API client를 실행 중인 백엔드에 대해 증명했다.
+캘린더 제품은 설계상 이 저장소 밖에 있고, 이 패키지는 코디네이터 정책과 증거만
+담는다.
+
+증거: [캘린더 Slice 1](docs/verification/calendar-slice-1-2026-08-27.md)
+
+이는 슬라이스 하나, 스택 조합 하나, 하네스 하나에 대한 결과다. 흐름이 작동함을
+보여주지만 다른 스택·하네스·이후 슬라이스를 보장하지는 않는다. 무엇에 의존할 수
+있는지는 [지원 범위](docs/reference/support-scope.md)를 읽는다.
 
 승인된 제품 방향은 다음과 같다.
 
@@ -41,6 +59,7 @@ Spring·Python FastAPI 백엔드 OOP/DDD 규율을 소유한다. FuseForge는
 - [지원 범위](docs/reference/support-scope.md)
 - [경로 규약](docs/reference/path-convention.md)
 - [릴리스 흐름 인수 결과](docs/verification/released-flow-acceptance-2026-08-27.md)
+- [캘린더 Slice 1 증명](docs/verification/calendar-slice-1-2026-08-27.md)
 
 ## 승인된 단계
 
@@ -59,6 +78,11 @@ Spring·Python FastAPI 백엔드 OOP/DDD 규율을 소유한다. FuseForge는
    - 정확한 경로 승인 후 workspace, 공유 계약 `rev-1`, 로컬 상태를 만든다.
 4. [Design 통합](docs/planning/implementation/implementation-slice-4.md)
    - 전문 팩 결과를 검증하고 사용자 승인 후에만 계약 `rev-2`를 허용한다.
+5. [Implement 위임](docs/planning/implementation/implementation-slice-5.md)
+   - 트랙마다 작업 타깃 하나만 쓰게 하고, 의존성 설치는 소유 전문 팩에 맡긴다.
+6. [연결 검증](docs/planning/implementation/implementation-slice-6.md)
+   - 실제 client가 실행 중인 백엔드를 통과하기 전에는 슬라이스를 완료로 보지
+     않는다.
 
 ## 코디네이터 Test
 
@@ -72,7 +96,9 @@ Spring·Python FastAPI 백엔드 OOP/DDD 규율을 소유한다. FuseForge는
 - Codex CLI: live activation 통과
 - Cursor Agent: live activation과 격리 workspace 흐름 통과
 - `cursor-agent --plugin-dir`: 스킬이 로드되지 않아 지원하지 않는 설치 경로
-- 실제 프런트엔드 API client → 백엔드 연결 검증: 캘린더 구현 전이므로 미수행
+- 실제 프런트엔드 API client → 백엔드 연결 검증: Cursor Agent에서 캘린더
+  Slice 1에 대해 통과. 기록은
+  [캘린더 Slice 1](docs/verification/calendar-slice-1-2026-08-27.md)
 
 ## 저장소 검사와 릴리스
 
@@ -99,8 +125,8 @@ Pull request 전에 [`AGENTS.md`](AGENTS.md)와
 ## 아직 구현되지 않은 것
 
 - FuseForge Consult 동작
-- 실제 calendar 프런트엔드·백엔드 소스
-- connected frontend-client-to-backend 검증
+- 캘린더 슬라이스 2~6
+- 브라우저 기반 end-to-end 검증
 - 프로덕션 배포
 - 기존 전문 팩의 자동 업데이트·수리
 - 범용 멀티에이전트 런타임

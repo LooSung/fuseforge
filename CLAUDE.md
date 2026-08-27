@@ -5,13 +5,16 @@ Read and follow @AGENTS.md.
 The approved experimental coordinator slices provide:
 
 - `/fuseforge:craft` for request classification and mandatory stack/topology
-  choices;
+ choices;
 - confirmed greenfield workspace and shared-contract `rev-1` creation;
-- specialist Design delegation validation and parent-owned `rev-2` approval.
+- specialist Design delegation validation and parent-owned `rev-2` approval;
+- specialist Implement delegation with track-owned write roots and
+ specialist-owned dependency installation;
+- parent-owned connected verification, without which a slice is not complete.
 
-They stop before creating calendar product source. `/fuseforge:consult`,
-connected verification, and calendar implementation remain Skeleton-only or
-unimplemented. Specialist pack bootstrap is an explicit setup script, not an
+FuseForge itself never writes application source or runs a package manager;
+specialists do that inside their own work target. `/fuseforge:consult` remains
+Skeleton-only. Specialist pack bootstrap is an explicit setup script, not an
 implicit Craft mutation.
 
 Keep Claude-specific packaging in `.claude-plugin/` and `commands/`, and keep
