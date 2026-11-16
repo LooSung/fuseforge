@@ -6,6 +6,8 @@ future plans, private backlogs, and unsupported claims do not belong here.
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-11-16
+
 ### Added
 
 - Connected verification may use a harness launch skill (Claude Code: `run`)
