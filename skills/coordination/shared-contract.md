@@ -21,18 +21,18 @@ Its approved interface contains:
 Compforge and OOPforge artifacts reference this revision but remain separate.
 OpenAPI is a wire projection, not the complete product contract.
 
-## Initial calendar contract
+## Initial contract
 
 After exact workspace-path confirmation, the parent may create:
 
 ```text
-docs/features/calendar/contract.md
+docs/features/<feature-slug>/contract.md
 ```
 
 Use these top-level sections:
 
 ```markdown
-# Calendar Shared Feature Contract
+# <Feature> Shared Feature Contract
 
 - Revision: rev-1
 - Status: Product semantics approved; wire semantics unresolved
@@ -40,27 +40,24 @@ Use these top-level sections:
 ## Approved scope
 ## Product concepts
 ## Acceptance examples
-## Time and timezone
-## Recurrence
+## Cross-stack rules
 ## Product states and errors
 ## Exclusions
 ## Evidence ownership
 ## Unresolved wire decisions
 ```
 
-Record the approved meanings of schedules, internal calendars and colors,
-year/month/week/day views, weekly and yearly recurrence, whole-series
-edit/delete, foreground reminders, UTC persistence, application-timezone
-offset display, and the initial KST default.
+Record the product meanings the user approved. Under cross-stack rules, record
+what both tracks must apply the same way — time zones and stored time, units,
+identifiers, ordering — and the defaults the user chose. Add a feature-specific
+section, such as recurrence for a calendar, only when the feature needs one.
 
-Acceptance examples must remain in product language. Include create/read/update/
-delete, view switching, calendar distinction, whole-series recurrence changes,
-foreground reminders, invalid time ranges, not found, and retryable connection
-outcomes.
+Acceptance examples must remain in product language. Cover each in-scope
+operation, every state the frontend must name, invalid input, not found, and a
+retryable connection failure.
 
-The exclusions remain external synchronization, background/email/push
-delivery, per-user timezones, per-occurrence recurrence exceptions, and
-production operations.
+Exclusions list what the user ruled out for this feature. Production operations
+stay excluded unless the user asks for them.
 
 Under unresolved wire decisions, explicitly defer HTTP operations, endpoint
 paths, request and response schemas, transport status mapping, error codes,

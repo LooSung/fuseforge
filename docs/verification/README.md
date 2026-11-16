@@ -30,6 +30,9 @@ Skeleton to experimental advisory behavior, including the live probe and the
 Codex and Cursor Craft activation probes that slice 8 did not run after
 installing.
 
+[`evals-2026-11-16.md`](evals-2026-11-16.md) records `claude plugin eval` with
+and without the plugin, plus Haiku and Sonnet, for v0.5.0.
+
 ## Baseline contents
 
 A coordinator Test record states:

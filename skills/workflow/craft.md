@@ -1,6 +1,8 @@
 # Craft Selection Gate
 
-Status: **Experimental — first implementation slice**.
+Contents: 1. Safety boundary · 2. Classify what can be inferred · 3. Verify available choices · 4. Build one combined selection gate · 5. Response contract · 6. Greenfield workspace checkpoint · 7. Confirmed workspace creation · 8. Specialist Design integration · 9. Specialist Implement delegation
+
+Status: **Experimental**.
 
 This slice classifies a request and resolves only the choices required before
 product files can exist.
@@ -13,7 +15,7 @@ This slice is read-only. It must not:
 - initialize Git;
 - create a shared contract or `.craft/fuseforge/` state;
 - invoke a specialist implementation workflow;
-- create frontend, backend, installer, CI, or calendar files;
+- create frontend, backend, installer, CI, or product files;
 - claim that later FuseForge slices are implemented.
 
 ## 2. Classify what can be inferred
@@ -165,8 +167,7 @@ Track created and reused artifacts separately. On failure, remove only files and
 still-empty directories created by this operation. Never remove a reused
 directory or unrelated `.gitignore` content.
 
-Stop after workspace creation. Specialist Design begins only in a separately
-approved user turn.
+Stop after workspace creation. Specialist Design begins only in a separately approved user turn.
 
 ## 8. Specialist Design integration
 
@@ -188,7 +189,7 @@ separately approved turn and a separate slice.
 ## 9. Specialist Implement delegation
 
 For an approved Implement turn, read `../coordination/delegation.md` and
-`../coordination/stage-barrier.md`. Delegate calendar Slice 1 against `rev-2`
+`../coordination/stage-barrier.md`. Delegate the approved slice against `rev-2`
 with one work-target write root per track. Specialists own application source,
 tests, and their own dependency installation; FuseForge writes no application
 source and runs no package manager.

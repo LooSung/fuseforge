@@ -1,6 +1,7 @@
 ---
 name: craft
-description: Coordinate selection, confirmed greenfield setup, and approved specialist Design integration without creating product source.
+description: Coordinate one full-stack feature across Compforge and OOPforge — selection gate, confirmed workspace, shared contract, specialist Design and Implement delegation, and connected verification.
+argument-hint: "[full-stack feature request]"
 ---
 
 If the user request is exactly `FUSEFORGE_ACTIVATION_PROBE`, output these three
@@ -20,8 +21,8 @@ Read and execute the first path that exists:
 Prefer the first path. Reading `CLAUDE_PLUGIN_ROOT` can require an extra
 approval that stops a non-interactive session before the workflow loads.
 
-The current implementation ends after approved specialist Design integration.
-It must not create calendar product source.
+FuseForge writes no product source. Specialists write it under an approved
+Implement delegation.
 
 User request:
 

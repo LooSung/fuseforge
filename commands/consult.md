@@ -1,6 +1,7 @@
 ---
 name: consult
 description: Answer, compare, review, or write one planning document for coordinated full-stack work without implementation changes.
+argument-hint: "[question, comparison, review, or document request]"
 ---
 
 If the user request is exactly `FUSEFORGE_CONSULT_PROBE`, output these three

@@ -52,9 +52,18 @@ The parent:
 6. records the outcome.
 
 Poll for readiness rather than sleeping a fixed interval. A readiness timeout is
-a failed check, never a pass. Teardown always runs. Persistence stays
-application-local, so introduce no database server, container, or external
-service. Report a port conflict instead of editing product source.
+a failed check, never a pass. Teardown always runs. Introduce no database server,
+container, or external service the approved contract does not name.
+Report a port conflict instead of editing product source.
+
+### Harness launch support
+
+When the harness provides a skill that launches and drives an application
+(Claude Code: `run`), the parent may use it to carry out steps 2–5. It changes
+how the steps run, not what they require: the readiness poll, teardown, the one
+named check, and the evidence record below all still apply. It must not write
+product source, install dependencies, or replace the named check with a browser
+session. Without such a skill, run the steps directly.
 
 ## Evidence record
 
@@ -71,7 +80,7 @@ Product evidence never lands in a pack repository. The record states:
 - the frontend and backend commands actually run;
 - the accepted flow proven, in product language;
 - the error case proven and the frontend state it maps to;
-- the timezone behavior observed;
+- the time behavior observed, when the slice involves time;
 - what was not proven, including browser behavior and deployment;
 - the specialist test results this complements.
 

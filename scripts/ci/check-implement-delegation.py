@@ -28,7 +28,7 @@ def check_delegation() -> None:
     """Revision, activation, write roots, scope, and dependency rules."""
     require(
         "skills/coordination/delegation.md",
-        "## Calendar Implement delegation",
+        "## Implement delegation",
         "run its activation probe",
         "shared contract reached `rev-2`",
         "A result on an earlier revision is stale.",
@@ -36,12 +36,11 @@ def check_delegation() -> None:
         "<coordination-root>/backend/",
         "never in a pack repository",
         "parent-owned and are never assigned to a specialist",
-        "recurrence, reminders, multiple calendars, and other views",
+        "inclusions and exclusions exactly as the approved",
         "write roots verified disjoint immediately before delegation",
         "The owning specialist installs dependencies inside its own work target",
         "FuseForge never runs a package manager",
-        "no database server,",
-        "container, or external service may be introduced",
+        "introduced only when the approved contract names it",
         "omits source, tests, or `dependencies_added`",
         "writes outside its assigned work target",
         "without reporting `scope_drift`",
@@ -76,7 +75,7 @@ def check_entry_points() -> None:
     require(
         "skills/workflow/craft.md",
         "## 9. Specialist Implement delegation",
-        "Delegate calendar Slice 1 against `rev-2`",
+        "Delegate the approved slice against `rev-2`",
         "runs no package manager",
     )
     require(
@@ -86,7 +85,7 @@ def check_entry_points() -> None:
     )
     require(
         ".cursor-plugin/skills/fuseforge/SKILL.md",
-        "must not create calendar",
+        "must not create product source",
     )
 
 
@@ -96,6 +95,25 @@ def check_registry() -> None:
     for relative in ("coordination/delegation.md", "coordination/stage-barrier.md"):
         if relative not in registry["implemented"]:
             raise AssertionError(f"{relative} is not marked implemented")
+
+
+def check_feature_neutral_policy() -> None:
+    """Coordinator policy names no one product; the first proof lives in docs."""
+    for relative in (
+        "skills/SKILL.md",
+        "skills/workflow/craft.md",
+        "skills/coordination/delegation.md",
+        "skills/coordination/stage-barrier.md",
+        "skills/coordination/shared-contract.md",
+        "skills/coordination/connected-verification.md",
+        "commands/craft.md",
+        ".cursor-plugin/skills/fuseforge/SKILL.md",
+    ):
+        for word in ("Calendar", "Slice 1", "month view"):
+            forbid(relative, word)
+    text = (ROOT / "skills/coordination/delegation.md").read_text(encoding="utf-8")
+    if "calendar" in text:
+        raise AssertionError("delegation.md must not name a product")
 
 
 def check_no_calendar_source() -> None:
@@ -116,6 +134,7 @@ def main() -> None:
     check_barrier()
     check_entry_points()
     check_registry()
+    check_feature_neutral_policy()
     check_no_calendar_source()
     print("FuseForge implement-delegation checks passed")
 

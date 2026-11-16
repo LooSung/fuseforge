@@ -29,7 +29,7 @@ def main() -> None:
     )
     require(
         "skills/coordination/stage-barrier.md",
-        ".craft/fuseforge/proposed-rev-2-calendar.md",
+        ".craft/fuseforge/proposed-rev-2-<feature-slug>.md",
         "It is not authoritative.",
         "Only explicit approval permits the parent",
         "Specialists never edit the shared contract.",

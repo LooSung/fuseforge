@@ -1,11 +1,11 @@
 ---
 name: fuseforge
-description: Use FuseForge for coordinated selection, confirmed greenfield setup, approved specialist Design integration, and read-only consult across Compforge and OOPforge.
+description: Coordinates one full-stack feature across Compforge (frontend) and OOPforge (backend) — selection gate, confirmed greenfield workspace, shared contract, specialist Design and Implement delegation, connected client-to-backend verification, and read-only consult. Use when one feature spans a TypeScript + React frontend and a Java Spring or Python FastAPI backend, or for the /fuseforge:craft and /fuseforge:consult prompts.
 ---
 
 # FuseForge
 
-Status: **Experimental — approved coordinator slices 1–9**.
+Status: **Experimental**.
 
 For `FUSEFORGE_ACTIVATION_PROBE`, output these three lines and stop without
 reading other files:
@@ -48,6 +48,9 @@ For a FuseForge Craft request:
    `coordination/connected-verification.md`.
 6. Execute only the implemented selection-gate, confirmed greenfield workspace,
    Design-integration, Implement-delegation, and connected-verification slices.
+
+After context compaction, read the policy files the current step needs again
+before continuing: files read earlier in the session are not re-attached.
 
 If a required policy file cannot be read, stop and report which file and why.
 Never reconstruct the workflow from memory, and never emit `Assumptions`,

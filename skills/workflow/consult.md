@@ -1,5 +1,7 @@
 # Consult Workflow
 
+Contents: When to use · Startup · Coordinator vs specialist · Mode selection · Answer · Proposal · Review · Document · Prohibited · Completion
+
 Status: **Experimental**.
 
 The Consult workflow is read-only by default. It may:

@@ -43,7 +43,7 @@ def check_excluded_scopes() -> None:
         "OpenAPI-only validation is insufficient",
         "Browser E2E, deployment, and",
         "production readiness remain separate opt-in scopes",
-        "no database server, container, or external",
+        "container, or external service the approved contract does not name",
         "A browser is not required",
     )
 

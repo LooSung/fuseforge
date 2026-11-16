@@ -6,6 +6,36 @@ future plans, private backlogs, and unsupported claims do not belong here.
 
 ## [Unreleased]
 
+### Added
+
+- Connected verification may use a harness launch skill (Claude Code: `run`)
+  to start the backend, poll readiness, run the one named check, and tear down.
+  The lifecycle, evidence record, and no-install rules are unchanged.
+- `evals/` holds three `claude plugin eval` cases: the activation probe, the
+  selection gate asking about server persistence and topology, and a read-only
+  Consult answer. Each run compares the plugin against a no-plugin baseline.
+
+### Changed
+
+- Coordinator policy no longer names one product. The `rev-1` contract template,
+  Design and Implement delegation, the stage barriers, and connected
+  verification use `<feature-slug>` and the slice recorded in the approved
+  contract. The calendar slice that first proved the flow stays as evidence
+  under `docs/verification/`. A check keeps product names out of the policy
+  files.
+- `skills/SKILL.md` and the Cursor wrapper describe the whole implemented flow
+  in the third person, and tell the agent to re-read policy files after context
+  compaction. Long policy files open with a one-line contents list. Commands
+  carry an `argument-hint`.
+- The packaging check rejects SKILL.md frontmatter keys outside the Agent
+  Skills spec and unquoted `: ` that would break YAML.
+
+### Fixed
+
+- A moved checkout left the Claude Code, Codex, and Cursor links pointing at
+  the old path, so FuseForge did not load. Re-running
+  `scripts/setup/install.sh --force` from the new checkout repairs them.
+
 ## [0.4.0] - 2026-08-27
 
 ### Added

@@ -2,3 +2,6 @@
 .craft/
 __pycache__/
 *.py[cod]
+
+# claude plugin eval output
+evals/results/

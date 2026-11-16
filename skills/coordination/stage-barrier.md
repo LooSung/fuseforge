@@ -22,7 +22,7 @@ and returns to the smallest affected decision.
 
 ## Integrated Design checkpoint
 
-For calendar Design, the barrier also requires:
+For Design, the barrier also requires:
 
 - Compforge and OOPforge activation evidence;
 - frontend and backend `design.md` artifacts;
@@ -33,7 +33,7 @@ For calendar Design, the barrier also requires:
 When valid, create only a local proposal:
 
 ```text
-.craft/fuseforge/proposed-rev-2-calendar.md
+.craft/fuseforge/proposed-rev-2-<feature-slug>.md
 ```
 
 The proposal combines HTTP operations, schemas, error mapping, timezone rules,
@@ -50,7 +50,7 @@ correction. Specialists never edit the shared contract.
 
 ## Integrated Implement checkpoint
 
-For calendar Slice 1 Implement, the barrier also requires:
+For Implement, the barrier also requires:
 
 - Compforge and OOPforge activation evidence;
 - both tracks on the current `rev-2`;
@@ -66,8 +66,8 @@ work end to end, name which half exists, preserve the valid track's work, and
 offer retry of the failed track only. Never present a working application before
 both tracks are complete and connected verification has run.
 
-Present one product-language checkpoint stating whether a user can create a
-schedule and see it on the month view, what each track built, which specialist
+Present one product-language checkpoint stating whether a user can complete the
+slice's primary acceptance example, what each track built, which specialist
 checks ran and what they showed, which dependencies were introduced, and that
 connected frontend-to-backend verification has not run.
 

@@ -122,7 +122,7 @@ def main() -> None:
         cursor_wrapper,
         (
             "../../../skills/SKILL.md",
-            "must not create calendar",
+            "must not create product source",
             "If a required policy file cannot be read, stop and report it.",
             "Never settle a track the request left silent.",
         ),

@@ -1,6 +1,6 @@
 ---
 name: fuseforge
-description: Use FuseForge in Cursor for selection, confirmed greenfield setup, approved specialist Design integration, and read-only consult without creating product source.
+description: Coordinates one full-stack feature across Compforge and OOPforge in Cursor — selection gate, confirmed greenfield workspace, shared contract, specialist delegation, connected verification, and read-only consult. Use when one feature spans a React frontend and a Spring or FastAPI backend.
 ---
 
 # FuseForge Cursor Wrapper
@@ -26,9 +26,12 @@ Write permission: none
 Read and follow `../../../skills/SKILL.md`.
 
 Treat `../../../skills/` as the canonical skill root. The coordinator delegates
-specialist work and must not create calendar product source itself. A product
+specialist work and must not create product source itself. A product
 slice is complete only after the parent-owned connected check was recorded.
 Consult is read-only by default and must not implement product behavior.
+
+After context compaction, read the policy files the current step needs again
+before continuing.
 
 If a required policy file cannot be read, stop and report it. Never reconstruct
 the workflow from memory or emit the response contract without having read the

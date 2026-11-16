@@ -221,6 +221,37 @@ def check_activation_probes(root: Path) -> None:
         )
 
 
+SPEC_FRONTMATTER_KEYS = {
+    "name", "description", "license", "compatibility", "metadata", "allowed-tools",
+}
+
+
+def check_spec_frontmatter(root) -> None:
+    """Keep SKILL.md loadable everywhere.
+
+    Keys outside the Agent Skills spec are ignored by Claude Code but rejected
+    by claude.ai uploads and the Skills API. An unquoted ': ' or ' #' in a
+    value breaks YAML, and Claude Code then loads the skill with no fields.
+    """
+    paths = [root / "skills/SKILL.md", *sorted(root.glob(".cursor-plugin/skills/*/SKILL.md"))]
+    for path in paths:
+        relative = path.relative_to(root)
+        block = path.read_text(encoding="utf-8").split("---", 2)[1]
+        for line in block.splitlines():
+            if not line or line[0] in " \t#":
+                continue
+            key, sep, value = line.partition(":")
+            if not sep:
+                raise SystemExit(f"{relative}: unparsable frontmatter line: {line}")
+            if key not in SPEC_FRONTMATTER_KEYS:
+                raise SystemExit(
+                    f"{relative}: non-spec frontmatter key {key!r}; move it under metadata"
+                )
+            value = value.strip()
+            if value and value[0] not in "'\"|>" and (": " in value or " #" in value):
+                raise SystemExit(f"{relative}: unquoted ': ' or ' #' in {key} breaks YAML")
+
+
 def main() -> None:
     root = Path(sys.argv[1] if len(sys.argv) > 1 else Path(__file__).parents[2]).resolve()
     version = check_manifests(root)
@@ -229,6 +260,7 @@ def main() -> None:
     check_required_paths(root)
     check_setup_parity(root)
     check_frontmatter(root)
+    check_spec_frontmatter(root)
     check_skill_size(root)
     check_activation_probes(root)
     print("PASS static harness packaging")
