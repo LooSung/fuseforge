@@ -98,6 +98,25 @@ Sequential execution is the baseline. Because both tracks write source, parallel
 Implement additionally requires an approved `rev-2`, no cross-track dependency at
 start, and write roots verified disjoint immediately before delegation.
 
+### Long-running delegation
+
+Give each phase to a fresh agent by default. Continue the same agent into the
+next phase only when that phase builds directly on the code it just wrote and
+the agent has not been summarized; this saves re-reading the target.
+
+Replace a running agent — stop it, then start a fresh one with a handoff of
+commit hashes, the task doc, and the remaining scope — when any is true:
+
+- the agent's context was automatically summarized;
+- no file has changed for about ten minutes while it is not waiting on a
+  command;
+- it repeats steps it already finished;
+- its reported usage passes about 400K tokens.
+
+Tell the user before replacing and why. Run full verification suites and slow
+integration tests once at the end of a multi-phase plan when the user has
+chosen speed; say that problems then surface late.
+
 ### Dependencies
 
 The owning specialist installs dependencies inside its own work target and

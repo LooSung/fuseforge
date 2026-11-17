@@ -6,6 +6,12 @@ future plans, private backlogs, and unsupported claims do not belong here.
 
 ## [Unreleased]
 
+### Added
+
+- Long-running delegation: a fresh agent per phase by default; replace a running
+  agent after automatic summarization, ten minutes without file progress, repeated
+  finished steps, or about 400K tokens of usage, and tell the user first.
+
 ## [0.5.0] - 2026-11-16
 
 ### Added
