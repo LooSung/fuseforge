@@ -120,16 +120,17 @@ docs/features/<feature-slug>/contract.md
 3. 인증된 live harness activation
 4. 실제 frontend client → running backend 연결
 
-현재 Claude와 Cursor live activation은 통과했다. Codex는 정적 증거만
-승인됐으며 live activation은 미증명이다. 캘린더 애플리케이션이 없으므로
-connected verification도 아직 없다.
+Claude, Codex, Cursor live activation은 통과했다. 캘린더 Slice 1에서 실제
+프런트엔드 client가 실행 중인 백엔드를 호출한 connected check가 한 번 통과했다
+(`docs/verification/calendar-slice-1-2026-08-27.md`). 인증이 있는 백엔드는
+`rev-2`에 자격증명 출처를 정하고, 없으면 `blocked — credentials`로 기록한다.
 
 ## 10. 현재 범위와 다음 증명
 
-현재 구현된 것은 선택, 전문 팩 bootstrap, greenfield workspace, 공유 계약과
-Design 통합 정책이다. 완성된 풀스택 하네스라고 주장하려면 실제 캘린더 수직
-슬라이스를 Compforge와 OOPforge로 구현하고, 실제 프런트엔드 API client가
-실행 중인 백엔드를 호출하는 증거가 필요하다.
+현재 구현된 것은 선택, 전문 팩 bootstrap, greenfield workspace, 공유 계약,
+Design 통합, Implement 위임, connected verification, Consult다. 증거는 한 제품의
+한 슬라이스, 한 스택 조합이다. 기존 저장소 두 개를 잇는 흐름은 아직 정해지지
+않았고, 한 번 더 실행한 뒤 규칙으로 정한다.
 
 더 읽기:
 

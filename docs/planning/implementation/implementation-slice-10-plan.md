@@ -48,7 +48,7 @@ confirm or refute this.
 - One topology name in the workspace table.
 - `rev-2` names a connected-check credential source for authenticated
   operations; an unavailable credential is recorded as blocked; browser E2E stays
-  supplementary; a user-accepted gap is recorded as accepted, never complete.
+  supplementary and never completes a slice.
 - Design delegation splits public names (asked) from internal names (defaulted
   and listed).
 - Static assertions for each rule.

@@ -89,8 +89,12 @@ def check_authenticated_backends() -> None:
         "never creates accounts, edits authentication configuration",
         "`blocked — credentials`, never as passed",
         "it never satisfies the completion rule",
-        "accepted but not proven end to end, never as complete",
+        "Moving on to other work does not change",
     )
+    text = read(POLICY)
+    for loophole in ("accepted but not proven", "accept the slice anyway"):
+        if loophole in text:
+            raise AssertionError(f"{POLICY} must not offer a status that bypasses the check: {loophole}")
     require(
         "skills/coordination/shared-contract.md",
         "name the connected-check",

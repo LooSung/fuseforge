@@ -83,8 +83,8 @@ a credential to a file, the contract, or the evidence record.
 If the credential is unavailable when the check runs, record the check as
 `blocked — credentials`, never as passed. A browser E2E run or a manual session
 may be recorded beside it as supplementary evidence that names what it showed;
-it never satisfies the completion rule. The user may accept the slice anyway;
-then record it as accepted but not proven end to end, never as complete.
+it never satisfies the completion rule. Moving on to other work does not change
+that record.
 
 ## Evidence record
 

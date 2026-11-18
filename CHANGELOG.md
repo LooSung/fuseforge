@@ -6,6 +6,20 @@ future plans, private backlogs, and unsupported claims do not belong here.
 
 ## [Unreleased]
 
+## [0.6.1] - 2026-11-18
+
+### Removed
+
+- The "accepted but not proven" status for a slice whose connected check is
+  blocked. The completion rule already reports such a slice as not proven end to
+  end; a separate accepted status read as approval and invited skipping the
+  check. The policy check now rejects that wording.
+
+### Fixed
+
+- The Korean methodology guide no longer says connected verification does not
+  exist, and states the current coordinator scope.
+
 ## [0.6.0] - 2026-11-18
 
 ### Added

@@ -24,7 +24,8 @@ Three gaps that one field run exposed are closed in policy and pinned by checks.
 - `connected-verification.md`, Authenticated backends: the credential comes from
   the environment; the parent never creates accounts or writes credentials; an
   unavailable credential is `blocked — credentials`; browser E2E is
-  supplementary; a user-accepted gap is recorded as accepted but not proven.
+  supplementary and never completes a slice. (`v0.6.0` also offered an
+  "accepted but not proven" status; `v0.6.1` removed it — see the changelog.)
 - `logical-workspace.md`: one topology name.
 
 ## Not changed
