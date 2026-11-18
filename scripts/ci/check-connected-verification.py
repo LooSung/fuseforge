@@ -79,6 +79,24 @@ def check_lifecycle() -> None:
     )
 
 
+def check_authenticated_backends() -> None:
+    """An authenticated backend needs a named credential source, or the check is blocked."""
+    require(
+        POLICY,
+        "## Authenticated backends",
+        "`rev-2` names how the",
+        "and any required credential, from the environment",
+        "never creates accounts, edits authentication configuration",
+        "`blocked — credentials`, never as passed",
+        "it never satisfies the completion rule",
+        "accepted but not proven end to end, never as complete",
+    )
+    require(
+        "skills/coordination/shared-contract.md",
+        "name the connected-check",
+    )
+
+
 def check_evidence_record() -> None:
     """Evidence is parent-written, product-located, and observation-only."""
     require(
@@ -148,6 +166,7 @@ def main() -> None:
     check_excluded_scopes()
     check_ownership()
     check_lifecycle()
+    check_authenticated_backends()
     check_evidence_record()
     check_completion_rule()
     check_registry()

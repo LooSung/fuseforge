@@ -6,11 +6,25 @@ future plans, private backlogs, and unsupported claims do not belong here.
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-11-18
+
 ### Added
 
+- Authenticated backends: `rev-2` names how the connected check obtains a
+  credential. An unavailable credential is recorded as `blocked — credentials`;
+  browser E2E stays supplementary and never completes a slice.
+- Names: specialist Design asks only about public names — endpoint paths, error
+  codes, user-visible text, domain concepts — and lists internal names as
+  defaults the user may override.
 - Long-running delegation: a fresh agent per phase by default; replace a running
   agent after automatic summarization, ten minutes without file progress, repeated
   finished steps, or about 400K tokens of usage, and tell the user first.
+
+### Fixed
+
+- Implement write roots come from the confirmed frontend and backend work
+  targets. They were fixed under the coordination root, which is wrong for the
+  three-work-target layout.
 
 ## [0.5.0] - 2026-11-16
 

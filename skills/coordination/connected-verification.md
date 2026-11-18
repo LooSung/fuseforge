@@ -16,7 +16,7 @@ production readiness remain separate opt-in scopes.
 ## Ownership
 
 The frontend specialist writes the connected check inside its own work target,
-reading the backend base URL from the environment. The parent starts the backend,
+reading the backend base URL, and any required credential, from the environment. The parent starts the backend,
 runs that one named check, and writes the evidence record.
 
 The parent runs no specialist suite to manufacture specialist evidence. This
@@ -43,7 +43,8 @@ running backend is the actual client boundary.
 The parent:
 
 1. confirms every required track is complete and current on the approved
-   revision;
+   revision, and, when the contract requires authentication, that its named
+   credential source is available;
 2. starts the backend from the backend target using the command the backend
    specialist reported;
 3. waits for readiness by polling the backend's own endpoint;
@@ -64,6 +65,26 @@ how the steps run, not what they require: the readiness poll, teardown, the one
 named check, and the evidence record below all still apply. It must not write
 product source, install dependencies, or replace the named check with a browser
 session. Without such a skill, run the steps directly.
+
+## Authenticated backends
+
+When an approved operation requires authentication, `rev-2` names how the
+connected check obtains a credential, before Implement starts. Choose one:
+
+- a test credential the user supplies through an environment variable the check
+  reads;
+- a local or test authentication profile the backend already provides;
+- a token the user obtains and hands over for that one run.
+
+The check reads the credential from the environment, as it reads the base URL.
+The parent never creates accounts, edits authentication configuration, or writes
+a credential to a file, the contract, or the evidence record.
+
+If the credential is unavailable when the check runs, record the check as
+`blocked — credentials`, never as passed. A browser E2E run or a manual session
+may be recorded beside it as supplementary evidence that names what it showed;
+it never satisfies the completion rule. The user may accept the slice anyway;
+then record it as accepted but not proven end to end, never as complete.
 
 ## Evidence record
 

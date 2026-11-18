@@ -30,6 +30,10 @@ Skeleton to experimental advisory behavior, including the live probe and the
 Codex and Cursor Craft activation probes that slice 8 did not run after
 installing.
 
+[`field-gaps-2026-11-18.md`](field-gaps-2026-11-18.md) records the policy
+changes made after a run against two existing repositories behind an
+authenticated backend. Read it before describing authenticated connected checks.
+
 [`evals-2026-11-16.md`](evals-2026-11-16.md) records `claude plugin eval` with
 and without the plugin, plus Haiku and Sonnet, for v0.5.0.
 

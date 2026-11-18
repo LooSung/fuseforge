@@ -41,8 +41,12 @@ idempotency, concurrency, backend-outcome-to-frontend-state mapping, risks, and
 both artifact references. It is not authoritative.
 
 Present one product-language checkpoint. Technical naming that preserves
-meaning may be resolved by the parent. Observable behavior, accepted data,
-error recovery, acceptance criteria, or scope conflicts require the user.
+meaning may be resolved by the parent. Ask only about public names, and show
+internal names as one list of defaults the user may override (`delegation.md`,
+Names). When the contract requires authentication, the proposal names the
+connected-check credential source (`connected-verification.md`). Observable
+behavior, accepted data, error recovery, acceptance criteria, or scope conflicts
+require the user.
 
 Only explicit approval permits the parent to update the tracked contract to
 `rev-2`. Rejection preserves valid artifacts and returns to the smallest

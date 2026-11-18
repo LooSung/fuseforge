@@ -16,6 +16,8 @@ claim that the complete calendar workflow is available.
 - parent-owned connected-verification policy, covering the real client and HTTP
   adapter boundary, backend lifecycle, evidence record, and the rule that a
   slice is incomplete without a passing recorded check;
+- connected-check credentials for an authenticated backend, named in `rev-2`,
+  with an unavailable credential recorded as blocked rather than passed;
 - read-only Consult: answer, compare, review, or write one planning document
   without implementing product behavior.
 
@@ -110,6 +112,8 @@ capabilities.
 ## Not currently implemented
 
 - calendar slices 2 through 6;
+- attaching two existing repositories as a coordinator flow; one field run
+  decided the contract location and per-track approval ad hoc;
 - browser-driven end-to-end coverage;
 - calendar application source inside this pack, which is by design;
 - production deployment;

@@ -41,16 +41,30 @@ Before relying on a track, run its activation probe. A failed or missing probe
 blocks delegation.
 
 Both tracks receive the same shared contract `rev-1`, Design stage, feature
-intent, exact target, and disjoint write root:
+intent, exact target, and disjoint write root inside each work target:
 
 ```text
-frontend/docs/features/<feature-slug>/
-backend/docs/features/<feature-slug>/
+<frontend_target>/docs/features/<feature-slug>/
+<backend_target>/docs/features/<feature-slug>/
 ```
 
 Each specialist may create only `design.md` in its assigned root. The prompt
 uses Consult/Design-only behavior, forbids application source and `.craft/`
 execution continuity, and requires a Component Contract or OOP Contract.
+
+### Names
+
+The prompt tells each specialist to split names in two:
+
+- **public** — endpoint paths, error codes, user-visible text, and domain
+  concepts the user or another system will see; each becomes a decision request;
+- **internal** — classes, hooks, modules, files, and private fields; each gets a
+  default, following the existing project's convention when one exists, and is
+  listed in `design.md` without a question.
+
+The integrated checkpoint asks only about public names and shows internal names
+as one list the user may override. A specialist's "user's own word" rule is
+evidence that a structure is needed, not a reason to ask about every name.
 
 Sequential execution is the baseline. Parallel Design is allowed only with
 passing probes, identical contract revision, disjoint roots, isolated results,
@@ -79,11 +93,16 @@ Before relying on a track, run its activation probe. Delegate only after the
 shared contract reached `rev-2`. A result on an earlier revision is stale.
 
 Each track receives Implement stage, feature intent, its exact target, the
-approved `rev-2` wire semantics rather than a paraphrase, and one write root:
+approved `rev-2` wire semantics rather than a paraphrase, and one write root.
+The write root is the track's confirmed work target — `frontend_target` or
+`backend_target` in `logical-workspace.md` — never a path derived from the
+coordination root:
 
 ```text
-<coordination-root>/frontend/
-<coordination-root>/backend/
+monorepo:           <coordination-root>/frontend/
+                    <coordination-root>/backend/
+three-work-target:  <base>/<product-slug>-frontend/
+                    <base>/<product-slug>-backend/
 ```
 
 Those roots live in the user's product workspace, never in a pack repository.

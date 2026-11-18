@@ -10,11 +10,11 @@ The topology-neutral workspace shape contains:
 | `feature_id` | Stable feature identifier |
 | `context` | `greenfield` or `existing` |
 | `intent` | `feature`, `bug-fix`, or `refactor` |
-| `topology` | `monorepo` or `polyrepo` |
+| `topology` | `monorepo` or `three-work-target` (polyrepo) |
 | `frontend_target` | Optional frontend work target |
 | `backend_target` | Optional backend work target |
 | `required_tracks` | Required specialist tracks |
-| `write_roots` | Track-owned writable paths |
+| `write_roots` | Track-owned writable paths, taken from the work targets |
 | `base_revisions` | Optional target Git revisions |
 | `pack_versions` | Observed pack versions |
 | `harness` | Active verified harness |

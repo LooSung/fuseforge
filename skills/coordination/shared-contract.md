@@ -80,7 +80,9 @@ parent may:
 3. add request, response, error, authentication, time, idempotency, and
    concurrency semantics;
 4. map backend outcomes to frontend states;
-5. remove only resolved wire decisions from the unresolved section.
+5. when an operation requires authentication, name the connected-check
+   credential source (`connected-verification.md`, Authenticated backends);
+6. remove only resolved wire decisions from the unresolved section.
 
 Preserve approved product semantics and exclusions. Specialist Design
 documents remain evidence referencing `rev-1`; all later delegation must use

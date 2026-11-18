@@ -26,6 +26,10 @@ def main() -> None:
         "creates application source",
         "`base_revision` is `unavailable`",
         "Preserve a valid unrelated track",
+        "### Names",
+        "each becomes a decision request",
+        "listed in `design.md` without a question",
+        "not a reason to ask about every name",
     )
     require(
         "skills/coordination/stage-barrier.md",
@@ -33,6 +37,8 @@ def main() -> None:
         "It is not authoritative.",
         "Only explicit approval permits the parent",
         "Specialists never edit the shared contract.",
+        "Ask only about public names",
+        "connected-check credential source",
     )
     require(
         "skills/coordination/shared-contract.md",

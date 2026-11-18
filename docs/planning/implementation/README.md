@@ -9,10 +9,11 @@
 - [Slice 7 plan](implementation-slice-7-plan.md) and [evidence](implementation-slice-7.md)
 - [Slice 8 plan](implementation-slice-8-plan.md) and [evidence](implementation-slice-8.md)
 - [Slice 9 plan](implementation-slice-9-plan.md) and [evidence](implementation-slice-9.md)
+- [Slice 10 plan](implementation-slice-10-plan.md) and [evidence](implementation-slice-10.md)
 
 Each slice preserves its approved scope and checkpoint evidence.
 
-Slices 1 through 9 are implemented and statically verified. This pack contains no
+Slices 1 through 10 are implemented and statically verified. This pack contains no
 calendar application source by design.
 
 The coordinator flow has since been executed once end to end against a separate
@@ -30,3 +31,7 @@ sibling packs already had. Evidence:
 Slice 9 turns `/fuseforge:consult` from a Skeleton interface into experimental
 advisory behavior. Evidence:
 [consult](../../verification/consult-2026-08-27.md).
+
+Slice 10 closes three gaps one field run exposed: work-target write roots,
+credentials for an authenticated connected check, and public-versus-internal
+names. Evidence: [field gaps](../../verification/field-gaps-2026-11-18.md).
