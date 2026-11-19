@@ -1,8 +1,8 @@
 # Specialist Delegation Interface
 
-Contents: Request envelope · Result envelope · Design delegation · Design result validation · Implement delegation
+Contents: Request envelope · Result envelope · Design delegation · Design result validation · Implement delegation · Refactor and Test delegation
 
-Status: **Experimental — Design and Implement delegation**.
+Status: **Experimental — Design, Implement, Refactor, and Test delegation**.
 
 ## Request envelope
 
@@ -168,3 +168,21 @@ assurance, which matters more once application source exists.
 
 Preserve a valid unrelated track when another track fails, and retry only
 against unchanged `rev-2`.
+
+## Refactor and Test delegation
+
+Crucible uses these after a passing connected check. Run each track's
+activation probe first. A track receives stage `refactor` or `test`, the
+approved `rev-2`, its work-target write root, and the plan's refactor reason or
+test strategy. The prompt names that specialist's own `workflow/refactor.md` or
+`workflow/test.md`, never its crucible, and forbids a specialist `.craft/` doc.
+
+Reject a Refactor result when it changes visible behavior, a public name, or the
+contract; lacks a passing test run before and after, with commands and observed
+results; or carries feature work.
+
+Reject a Test result when it changes production code. A test that needs a
+production fix returns as a decision request, not as a Test result.
+
+Both report artifacts and a commit, or `unavailable` without Git. A Refactor
+result that changed source invalidates the last connected check.

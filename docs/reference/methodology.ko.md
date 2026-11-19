@@ -54,6 +54,14 @@ FuseForge는 누락된 기술 선택을 조용히 추정하지 않는다.
 스택·트랙·topology를 정하는 일과 제품 구현은 Craft다. 프런트엔드나 백엔드
 방법론 질문은 해당 전문 팩 Consult로 넘긴다.
 
+`/fuseforge:jira`는 풀스택 Jira 카드 1개, 또는 에픽·스토리 하나의 `[F.E]`·`[B.E]`
+하위 작업을 쓴다. 두 트랙 모두 이 코디네이터가 맡으므로 둘 다 home으로 쓰고,
+템플릿은 전문 팩(Compforge, 없으면 OOPforge)의 jira 파일을 읽어 쓴다.
+
+`/fuseforge:crucible`은 슬라이스 하나를 선택 게이트 → 계획 → 전문 팩 Design·Implement
+→ 연결 검증 → 전문 팩 Refactor(필요할 때만) → 전문 팩 Test → 필요 시 연결 재검증까지
+잇는다. 선택 게이트, 경로 확인, 계획 승인, `rev-2` 승인에서는 그대로 멈춘다.
+
 ## 5. 논리 작업공간
 
 FuseForge는 모노레포와 세 개의 work target 구성을 같은 논리 모델로 다룬다.
@@ -128,7 +136,8 @@ Claude, Codex, Cursor live activation은 통과했다. 캘린더 Slice 1에서 �
 ## 10. 현재 범위와 다음 증명
 
 현재 구현된 것은 선택, 전문 팩 bootstrap, greenfield workspace, 공유 계약,
-Design 통합, Implement 위임, connected verification, Consult다. 증거는 한 제품의
+Design 통합, Implement 위임, connected verification, Consult, Jira, Crucible이다.
+Crucible은 아직 선택 게이트 이후 단계를 실제로 실행해 본 적이 없다. 증거는 한 제품의
 한 슬라이스, 한 스택 조합이다. 기존 저장소 두 개를 잇는 흐름은 아직 정해지지
 않았고, 한 번 더 실행한 뒤 규칙으로 정한다.
 

@@ -64,17 +64,21 @@ bash ~/.fuseforge/scripts/setup/doctor.sh              # 셋 다 확인
 ```text
 /fuseforge:craft 사용자가 일정을 만들면 저장 후 월 보기에서 그 일정을 본다
 /fuseforge:consult 에러 코드를 공유 계약에 넣어야 할까?
+/fuseforge:crucible 일정 생성 슬라이스를 계획부터 정리·테스트까지 진행해줘
+/fuseforge:jira DEMO-12의 프론트·백엔드 하위 작업을 써줘
 ```
 
 | 하니스 | 호출 방법 |
 |---|---|
-| Claude Code | `/fuseforge:craft <요청>` · `/fuseforge:consult <질문>` |
-| Codex CLI · Cursor Agent CLI | `Use FuseForge craft: <요청>` · `Use FuseForge consult: <질문>` |
+| Claude Code | `/fuseforge:<명령> <요청>` |
+| Codex CLI · Cursor Agent CLI | `Use FuseForge <명령>: <요청>` |
 
 | 명령 | 언제 쓰나 | 절대 하지 않는 것 |
 |---|---|---|
 | `craft` | 풀스택 기능 하나를 선택 게이트부터 연결 검증까지 | 지정하지 않은 스택을 몰래 고르기, 앱 코드 직접 작성 |
 | `consult` | 질문, 비교, 리뷰, 계획 문서 1개 | 제품 동작 구현 |
+| `crucible` | 슬라이스 하나를 계획 → 구현 → 전문 팩 리팩터 → 전문 팩 테스트 → 연결 검증까지 (아직 선택 게이트 이후는 실행 기록 없음) | 계획·`rev-2` 승인 생략, 앱 코드 직접 작성 |
+| `jira` | 풀스택 Jira 카드 1개, 또는 에픽·스토리 하나의 `[F.E]`·`[B.E]` 하위 작업 | 해당 이슈 외의 변경, 자체 템플릿 복사 |
 
 ## 동작 방식
 

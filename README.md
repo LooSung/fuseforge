@@ -66,17 +66,21 @@ implemented yet.
 ```text
 /fuseforge:craft Users create a schedule and see it on the month view after saving
 /fuseforge:consult Should the error codes live in the shared contract?
+/fuseforge:crucible Plan, build, clean up, and test the schedule-creation slice
+/fuseforge:jira Write the frontend and backend child tasks of DEMO-12
 ```
 
 | Harness | How to call |
 |---|---|
-| Claude Code | `/fuseforge:craft <request>` · `/fuseforge:consult <question>` |
-| Codex CLI · Cursor Agent CLI | `Use FuseForge craft: <request>` · `Use FuseForge consult: <question>` |
+| Claude Code | `/fuseforge:<command> <request>` |
+| Codex CLI · Cursor Agent CLI | `Use FuseForge <command>: <request>` |
 
 | Command | Use it for | It never |
 |---|---|---|
 | `craft` | One full-stack feature, from selection gate to connected check | Picks a stack you left unspecified, or writes app code itself |
 | `consult` | Ask, compare, review, or write one planning document | Implements product behavior |
+| `crucible` | Plan → build → specialist refactor → specialist test → connected check, for one slice (not yet run past the selection gate) | Skips the plan or `rev-2` approval, or writes app code itself |
+| `jira` | One full-stack Jira card, or the `[F.E]` and `[B.E]` children of one epic or story | Writes anything but those issues, or copies its own template |
 
 ## How it works
 

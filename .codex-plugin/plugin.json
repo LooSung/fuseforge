@@ -1,6 +1,6 @@
 {
   "name": "fuseforge",
-  "version": "0.7.2",
+  "version": "0.8.0",
   "description": "Experimental FuseForge full-stack coordination policy for Codex.",
   "author": {
     "name": "Mr.Louis",
@@ -13,7 +13,7 @@
   "interface": {
     "displayName": "FuseForge",
     "shortDescription": "Full-stack coordination policy",
-    "longDescription": "Coordinates stack selection, confirmed greenfield setup, one shared contract, and specialist Design and Implement delegation, then proves the frontend client against a running backend before calling a slice done.",
+    "longDescription": "Coordinates stack selection, confirmed greenfield setup, one shared contract, and specialist Design and Implement delegation, then proves the frontend client against a running backend before calling a slice done. Also writes full-stack Jira cards and runs one slice end to end with Crucible.",
     "developerName": "Mr.Louis",
     "category": "Coding",
     "capabilities": [

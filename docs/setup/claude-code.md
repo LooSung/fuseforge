@@ -11,6 +11,8 @@ Invoke:
 ```text
 /fuseforge:craft <product request>
 /fuseforge:consult <coordination question>
+/fuseforge:crucible <one full-stack slice, plan to tested code>
+/fuseforge:jira <card request, or the parent key for child tasks>
 ```
 
 Activation probe:
@@ -52,7 +54,7 @@ If `forge` is already added from Compforge or OOPforge, skip the first line.
 `doctor.sh` and `bootstrap.sh` check script installs only, so skip them on this
 path; they report plugin-installed specialists as missing.
 
-`/fuseforge:craft` and `/fuseforge:consult` read their workflow from the plugin
+`/fuseforge:*` commands read their workflow from the plugin
 folder. Plugin files live in `~/.claude/plugins/cache/`, outside your project, so
 Claude Code asks before reading them. Approve the prompt when it appears, or
 add this rule to `~/.claude/settings.json` (required for `claude -p`):

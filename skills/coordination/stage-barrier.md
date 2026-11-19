@@ -76,7 +76,9 @@ checks ran and what they showed, which dependencies were introduced, and that
 connected frontend-to-backend verification has not run.
 
 Approval moves the feature to the Test stage. It does not by itself change the
-contract. A genuine wire gap found during integration returns as a decision
+contract. In Crucible, the approved slice plan is that approval when this barrier
+is fully ready and the connected check passed (`../workflow/crucible.md`); any
+unmet condition still stops. A genuine wire gap found during integration returns as a decision
 request, and only an approved integrated checkpoint may produce `rev-3`.
 
 ## Slice completion barrier

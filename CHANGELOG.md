@@ -6,6 +6,25 @@ future plans, private backlogs, and unsupported claims do not belong here.
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-11-19
+
+`/fuseforge:jira` and `/fuseforge:crucible`.
+
+### Added
+
+- `/fuseforge:jira` (slice 11): one full-stack Jira card, or the `[F.E]` and
+  `[B.E]` children of one epic or story, both written as home children. The
+  template is read from the loaded Compforge skill, then OOPforge; FuseForge
+  keeps no copy and stops instead of reconstructing it.
+- `/fuseforge:crucible` (slice 12): one slice through the gate, a plan,
+  specialist Design and Implement, the connected check, specialist Refactor when
+  earned, specialist Test, and a connected recheck when source changed. It keeps
+  the selection gate, path confirmation, plan approval, and `rev-2` approval; an
+  approved plan carries the slice past the Implement checkpoint only when that
+  barrier is ready and the connected check passed.
+- Refactor and Test delegation in `delegation.md`, and `check-jira.py` and
+  `check-crucible.py` in CI.
+
 ## [0.7.2] - 2026-11-19
 
 Documentation cleanup only; no behavior change.

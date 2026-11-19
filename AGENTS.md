@@ -1,7 +1,7 @@
 # FuseForge — agent notes
 
 These notes are for agents changing **FuseForge itself**. To *use* FuseForge on a
-product, follow `skills/SKILL.md` instead; it owns the Craft and Consult policy.
+product, follow `skills/SKILL.md` instead; it owns the Craft, Consult, Jira, and Crucible policy.
 
 ## What FuseForge is
 
@@ -11,7 +11,7 @@ A thin, experimental full-stack coordinator over
 one feature-level workflow, one shared contract, and one integrated approval per
 stage, while each specialist keeps its own scope.
 
-Current state: Discovery, Design, Delivery Plan, Skeleton, ten Implement slices,
+Current state: Discovery, Design, Delivery Plan, Skeleton, twelve Implement slices,
 and the coordinator Test checkpoint are approved. The whole flow ran once
 against a real product. Read `docs/verification/calendar-slice-1-2026-08-27.md`
 before describing what FuseForge has coordinated: one slice, one stack pair, one
@@ -21,9 +21,9 @@ harness.
 
 | Path | Holds |
 |---|---|
-| `skills/SKILL.md` | Entry point; routes Craft and Consult |
-| `skills/workflow/` | `craft.md` and `consult.md` |
-| `skills/coordination/` | Workspace, shared contract, delegation, stage barrier, connected verification |
+| `skills/SKILL.md` | Entry point; routes Craft, Consult, Jira, and Crucible |
+| `skills/workflow/` | `craft.md`, `consult.md`, `jira.md`, and `crucible.md` |
+| `skills/coordination/` | Workspace, shared contract, delegation (Design, Implement, Refactor, Test), stage barrier, connected verification |
 | `skills/stability.json` | Interface maturity, explained in `docs/reference/skill-stability.md` |
 | `commands/` | Claude Code entry points |
 | `.claude-plugin/`, `.codex-plugin/`, `.cursor-plugin/` | Harness packaging only; `.claude-plugin/marketplace.json` is the `forge` catalog of all three packs, kept identical across the three repositories except for which entry is `./` |
@@ -47,6 +47,8 @@ python3 scripts/ci/check-delegation-barrier.py
 python3 scripts/ci/check-implement-delegation.py
 python3 scripts/ci/check-connected-verification.py
 python3 scripts/ci/check-consult.py
+python3 scripts/ci/check-jira.py
+python3 scripts/ci/check-crucible.py
 bash scripts/ci/bootstrap-smoke.sh
 bash scripts/ci/install-smoke.sh
 ```

@@ -10,6 +10,8 @@ Invoke:
 ```text
 Use FuseForge craft: <product request>
 Use FuseForge consult: <coordination question>
+Use FuseForge crucible: <one full-stack slice, plan to tested code>
+Use FuseForge jira: <card request, or the parent key for child tasks>
 ```
 
 Activation request:

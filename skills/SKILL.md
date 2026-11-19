@@ -1,6 +1,6 @@
 ---
 name: fuseforge
-description: Coordinates one full-stack feature across Compforge (frontend) and OOPforge (backend) — selection gate, confirmed greenfield workspace, shared contract, specialist Design and Implement delegation, connected client-to-backend verification, and read-only consult. Use when one feature spans a TypeScript + React frontend and a Java Spring or Python FastAPI backend, or for the /fuseforge:craft and /fuseforge:consult prompts.
+description: Coordinates one full-stack feature across Compforge (frontend) and OOPforge (backend) — selection gate, confirmed greenfield workspace, shared contract, specialist Design and Implement delegation, connected client-to-backend verification, read-only consult, full-stack Jira cards, and crucible (plan → build → refactor → test for one slice). Use when one feature spans a TypeScript + React frontend and a Java Spring or Python FastAPI backend, or for the /fuseforge:craft, /fuseforge:consult, /fuseforge:jira, and /fuseforge:crucible prompts.
 ---
 
 # FuseForge
@@ -36,6 +36,21 @@ If a required Consult policy file cannot be read, stop and report which file
 and why. Never reconstruct Consult from memory, and never emit `Mode` or any
 other section of the Consult response contract without having read the policy
 that defines it.
+
+For a FuseForge Jira request:
+
+1. Read `workflow/jira.md`.
+2. Read the specialist Jira template it names. If neither specialist file can
+   be read, stop; never reconstruct the template.
+3. Write Jira issues only, and only on an explicit request.
+
+For a FuseForge Crucible request:
+
+1. Read `workflow/crucible.md`, then each stage's policy file when that stage
+   starts.
+2. Stop for the plan approval and the `rev-2` approval, and wherever Craft's
+   own checkpoints stop.
+3. Never write application source or tests; delegate them.
 
 For a FuseForge Craft request:
 

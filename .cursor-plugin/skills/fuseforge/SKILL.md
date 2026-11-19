@@ -1,6 +1,6 @@
 ---
 name: fuseforge
-description: Coordinates one full-stack feature across Compforge and OOPforge in Cursor — selection gate, confirmed greenfield workspace, shared contract, specialist delegation, connected verification, and read-only consult. Use when one feature spans a React frontend and a Spring or FastAPI backend.
+description: Coordinates one full-stack feature across Compforge and OOPforge in Cursor — selection gate, confirmed greenfield workspace, shared contract, specialist delegation, connected verification, read-only consult, full-stack Jira cards, and crucible. Use when one feature spans a React frontend and a Spring or FastAPI backend.
 ---
 
 # FuseForge Cursor Wrapper

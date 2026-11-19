@@ -78,7 +78,8 @@ Never run `git init`.
 - absolute work-target paths;
 - active harness and observed pack versions;
 - created and reused paths;
-- next pending decision.
+- next pending decision;
+- when Crucible runs, the plan path and each track's commit per stage.
 
 The coordination-root `.gitignore` contains one `.craft/` entry. Product
 meaning must not be copied into local state.

@@ -1,9 +1,11 @@
 {
-  "version": "0.7.2",
+  "version": "0.8.0",
   "status": "experimental",
   "implemented": [
     "workflow/craft.md",
     "workflow/consult.md",
+    "workflow/jira.md",
+    "workflow/crucible.md",
     "coordination/logical-workspace.md",
     "coordination/shared-contract.md",
     "coordination/delegation.md",

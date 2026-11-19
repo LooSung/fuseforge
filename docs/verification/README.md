@@ -25,6 +25,10 @@ stability.
 Code plugin marketplace install, update, and removal of all three packs, plus
 live root and activation probes on the installed copies.
 
+[`jira-crucible-2026-11-19.md`](jira-crucible-2026-11-19.md) records the live
+Jira and Crucible runs for slices 11 and 12, including the Jira run that wrote
+cards without its workflow before the stop rule was added.
+
 [`self-install-2026-08-27.md`](self-install-2026-08-27.md) records the installer,
 uninstaller, and self-aware doctor, with a live install, activation probe, and
 removal. Read it before describing how FuseForge is installed.

@@ -121,10 +121,14 @@ def check_required_paths(root: Path) -> None:
     required = (
         "commands/craft.md",
         "commands/consult.md",
+        "commands/jira.md",
+        "commands/crucible.md",
         ".cursor-plugin/skills/fuseforge/SKILL.md",
         "skills/SKILL.md",
         "skills/workflow/craft.md",
         "skills/workflow/consult.md",
+        "skills/workflow/jira.md",
+        "skills/workflow/crucible.md",
         "skills/coordination/logical-workspace.md",
         "skills/coordination/shared-contract.md",
         "skills/coordination/delegation.md",
@@ -182,6 +186,8 @@ def check_frontmatter(root: Path) -> None:
     expected = {
         "commands/craft.md": "craft",
         "commands/consult.md": "consult",
+        "commands/jira.md": "jira",
+        "commands/crucible.md": "crucible",
         "skills/SKILL.md": "fuseforge",
         ".cursor-plugin/skills/fuseforge/SKILL.md": "fuseforge",
     }
