@@ -6,6 +6,10 @@ future plans, private backlogs, and unsupported claims do not belong here.
 
 ## [Unreleased]
 
+## [0.7.2] - 2026-11-19
+
+Documentation cleanup only; no behavior change.
+
 ### Removed
 
 - Placeholder `docs/assets/`, `docs/guides/`, and `docs/proof/` READMEs that
