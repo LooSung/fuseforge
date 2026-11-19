@@ -6,6 +6,17 @@ future plans, private backlogs, and unsupported claims do not belong here.
 
 ## [Unreleased]
 
+## [0.7.1] - 2026-11-19
+
+Comment discipline aligned with Compforge and OOPforge.
+
+### Changed
+
+- `AGENTS.md`: a comment carries only a why that names, types, and checks
+  cannot, anchored to an existing test or link, and is a claim rather than
+  evidence; never change code or policy only to match one. Matches the
+  Compforge and OOPforge comment discipline.
+
 ## [0.7.0] - 2026-11-19
 
 Forge marketplace and shorter README, AGENTS, and CLAUDE files.

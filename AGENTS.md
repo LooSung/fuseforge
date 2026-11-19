@@ -93,4 +93,6 @@ bash scripts/ci/install-smoke.sh
   `docs/reference/release-process.md`; automation never creates tags or GitHub
   Releases.
 - Keep changes surgical and remove only artifacts created by the same change.
-  Comments explain why; names explain what.
+  Names, types, and checks carry intent; a comment carries only a why they
+  cannot, anchored to an existing test or link. A comment is a claim, not
+  evidence: never change code or policy only to match one.
