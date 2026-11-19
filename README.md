@@ -1,179 +1,126 @@
 # FuseForge
 
-FuseForge is an experimental thin full-stack coordinator for combining
-[Compforge](https://github.com/LooSung/compforge) and
-[OOPforge](https://github.com/LooSung/oopforge) through one full-stack feature
-flow.
+> **Describe one full-stack feature once. Approve one integrated result per stage.**
+
+FuseForge is a thin, **experimental** coordinator for coding agents. It takes one
+feature that spans a TypeScript + React frontend and a Java Spring or Python
+FastAPI backend, fixes a shared API contract, and hands each side to its
+specialist pack. Then it proves the real frontend client against the running
+backend before it calls the slice done.
+
+FuseForge writes no application code itself. Each specialist keeps its own
+rules.
+
+Installs into **Claude Code**, **Codex CLI**, and **Cursor Agent CLI**; live
+activation passed on all three. What each harness has actually run is in the
+[support scope](docs/reference/support-scope.md#harness-evidence).
 
 [English](./README.md) · [한국어](./README.ko.md)
 
-## Status
+## The Forge family
 
-Discovery, Design, Delivery Plan, Skeleton, nine implementation slices, and the
-experimental coordinator Test checkpoint are approved. The package is not yet a
-complete coordinator.
+| Pack | For | Stack |
+|---|---|---|
+| [Compforge](https://github.com/LooSung/compforge) | Frontend | TypeScript + React |
+| [OOPforge](https://github.com/LooSung/oopforge) | Backend | Java Spring · Python FastAPI |
+| **FuseForge** (this repo) | One feature across both | Coordinates Compforge + OOPforge (experimental) |
 
-### What has actually been proven
-
-On 2026-08-27 the whole flow ran once, end to end, and produced a working
-feature:
-
-> A user creates a schedule and sees it on the month view after it is saved.
-
-FuseForge took one feature request, fixed a shared contract, delegated Design and
-then Implement to Compforge and OOPforge, rejected a specialist result that
-claimed an artifact it had not written, and proved the real frontend API client
-against a running backend. The calendar product lives outside this repository by
-design; this package holds only coordinator policy and evidence.
-
-Evidence: [calendar Slice 1](docs/verification/calendar-slice-1-2026-08-27.md).
-
-That is one slice, one stack pair, one harness. It shows the flow works; it does
-not promise other stacks, harnesses, or later slices. Read the
-[support scope](docs/reference/support-scope.md) before relying on anything.
-
-The approved product direction is:
-
-> A developer should be able to describe one product feature once, approve one
-> integrated result per stage, and have the frontend and backend specialist
-> packs work from the same product and API contract.
-
-Compforge remains responsible for TypeScript and React frontend discipline.
-OOPforge remains responsible for Java Spring and Python FastAPI backend
-discipline. FuseForge is intended to own only cross-stack coordination,
-shared-contract consistency, integrated checkpoints, and connected
-verification.
+FuseForge needs both specialists. Either install below sets up all three.
 
 ## Install
 
+**Claude Code**, from the plugin marketplace (experimental):
+
+```text
+/plugin marketplace add LooSung/fuseforge
+/plugin install compforge@forge
+/plugin install oopforge@forge
+/plugin install fuseforge@forge
+```
+
+If `forge` is already added from another Forge repo, skip the first line. Skip
+`doctor.sh` and `bootstrap.sh` on this path; they check script installs only.
+Plugin files sit outside your project, so allow reading them once:
+[read permission](docs/setup/claude-code.md#plugin-marketplace-experimental).
+
+**Codex CLI, Cursor Agent CLI**, or Claude Code without plugins, with the
+install scripts:
+
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/LooSung/fuseforge/main/scripts/setup/quickstart.sh)"
+bash ~/.fuseforge/scripts/setup/bootstrap.sh --apply   # add Compforge + OOPforge if missing
+bash ~/.fuseforge/scripts/setup/doctor.sh              # check all three
 ```
 
-This clones or updates `~/.fuseforge` and installs it into the harnesses it finds.
-Then add the specialist packs, which FuseForge cannot delegate without:
+The first line installs FuseForge into the harnesses it finds. Pick one path
+per harness. `bootstrap.sh`
+without `--apply` only prints a plan. Pinned releases and removal:
+[install guide](docs/setup/install.md) · [bootstrap guide](docs/setup/bootstrap.md).
 
-```bash
-bash ~/.fuseforge/scripts/setup/bootstrap.sh          # print a plan first
-bash ~/.fuseforge/scripts/setup/bootstrap.sh --apply  # create missing items only
-bash ~/.fuseforge/scripts/setup/doctor.sh             # check the result
+## Use
+
+Start your agent from the folder where the new product should live. FuseForge
+sets up a greenfield workspace; attaching two existing repositories is not
+implemented yet.
+
+```text
+/fuseforge:craft Users create a schedule and see it on the month view after saving
+/fuseforge:consult Should the error codes live in the shared contract?
 ```
 
-Removal is `bash ~/.fuseforge/scripts/setup/uninstall.sh`, which removes only the
-symlinks it created. Note that unlike the sibling packs, FuseForge's
-`bootstrap.sh` installs its *specialists*; `install.sh` installs FuseForge. See
-[Install](docs/setup/install.md) for pinned releases, flags, and manual setup.
-
-## Current boundaries
-
-- One full-stack feature flow is the product goal.
-- Native subagents may be an execution mechanism, not the product itself.
-- tmux-based multi-agent orchestration is not in the current scope.
-- Monorepos and separate frontend/backend repositories are both relevant.
-- Greenfield and existing-project work are separate operating contexts.
-- Missing frontend or backend stacks must be selected by the user from the
-  capabilities actually supported by the loaded specialist packs.
-- The first proof subject is a bounded calendar delivered in vertical slices.
-- No implementation starts before the Design, Delivery Plan, and Skeleton
-  checkpoints approve it.
-
-## Documentation
-
-Use [docs/README.md](docs/README.md) to find setup, reference, project,
-checkpoint, implementation, and verification documents.
-
-- [Install](docs/setup/install.md)
-- [Support scope](docs/reference/support-scope.md)
-- [Path convention](docs/reference/path-convention.md)
-- [Released-flow acceptance](docs/verification/released-flow-acceptance-2026-08-27.md)
-- [Calendar Slice 1 proof](docs/verification/calendar-slice-1-2026-08-27.md)
-
-## Discovery
-
-Read [docs/planning/checkpoints/discovery.md](docs/planning/checkpoints/discovery.md) for the approved product boundary,
-decisions, risks, and Design questions.
-
-## Design
-
-Read [docs/planning/checkpoints/design.md](docs/planning/checkpoints/design.md) for the current coordinator contract,
-workspace and state models, specialist interfaces, calendar semantics, and
-Delivery Plan handoff candidates. The Design checkpoint is approved.
-
-## Delivery Plan
-
-Read [docs/planning/checkpoints/delivery-plan.md](docs/planning/checkpoints/delivery-plan.md) for the stack-neutral
-selection gates, proposed Skeleton scope, calendar vertical slices,
-verification, compatibility, and risks. The Delivery Plan checkpoint is
-approved.
-
-## Skeleton
-
-Read [docs/planning/checkpoints/skeleton.md](docs/planning/checkpoints/skeleton.md) for the approved package and
-interface-only file tree that preceded the first implementation slice.
-
-## Implementation slices
-
-Each slice has an approved plan and an evidence record. The index is
-[docs/planning/implementation/README.md](docs/planning/implementation/README.md).
-
-| Slice | Scope |
+| Harness | How to call |
 |---|---|
-| 1 | Request classification and the selection gate |
-| 2 | Read-only pack doctor and explicit missing-only bootstrap |
-| 3 | Exact-path greenfield workspace and shared contract `rev-1` |
-| 4 | Specialist Design delegation and parent-owned `rev-2` |
-| 5 | Specialist Implement delegation, write roots, and dependency ownership |
-| 6 | Parent-owned connected verification and the slice completion barrier |
-| 7 | Asking about persistence instead of silently deciding the backend track |
-| 8 | Self-install, uninstall, and doctor parity with the sibling packs |
-| 9 | Read-only Consult: answer, compare, review, or write one planning document |
+| Claude Code | `/fuseforge:craft <request>` · `/fuseforge:consult <question>` |
+| Codex CLI · Cursor Agent CLI | `Use FuseForge craft: <request>` · `Use FuseForge consult: <question>` |
 
-Slices are approved one at a time, and no slice was implemented before its plan
-was approved.
+| Command | Use it for | It never |
+|---|---|---|
+| `craft` | One full-stack feature, from selection gate to connected check | Picks a stack you left unspecified, or writes app code itself |
+| `consult` | Ask, compare, review, or write one planning document | Implements product behavior |
 
-## Coordinator Test
+## How it works
 
-Read [docs/verification/coordinator-test-2026-08-27.md](docs/verification/coordinator-test-2026-08-27.md) for the approved
-Test checkpoint, and
-[docs/verification/released-flow-acceptance-2026-08-27.md](docs/verification/released-flow-acceptance-2026-08-27.md) for the
-re-verification against the published `v0.1.0`. Claude Code, Codex CLI, and
-Cursor Agent activation all pass through the
-[skill-directory install](docs/setup/install.md). Acceptance recorded five
-install and documentation failures, all resolved, plus future enhancements that
-remain open.
+1. **Selection gate.** FuseForge asks for anything the request left open: which
+   frontend and backend stack, monorepo or separate repositories, and whether
+   data must outlive the browser.
+2. **Shared contract.** After you confirm the exact workspace paths, it writes
+   the product-semantics contract `rev-1`.
+3. **Specialist Design, then Implement.** Compforge and OOPforge each design
+   their side. You approve one integrated result (`rev-2`). Each specialist then
+   implements inside its own write roots, and FuseForge rejects results that
+   claim work they did not do.
+4. **Connected check.** A slice is complete only after the real frontend client
+   passes against the running backend, and the result is recorded.
 
-Read [docs/verification/calendar-slice-1-2026-08-27.md](docs/verification/calendar-slice-1-2026-08-27.md)
-for the first execution of the full flow, including the connected check and the
-Design result the barrier rejected.
+## Status: what is proven
 
-## Repository checks and releases
+On 2026-08-27 the whole flow ran once, end to end, and produced a working
+feature: *a user creates a schedule and sees it on the month view after it is
+saved.* Evidence: [calendar Slice 1](docs/verification/calendar-slice-1-2026-08-27.md).
 
-Run `bash scripts/ci/lint-skills.sh` for packaging, skill-registry, and
-documentation-link checks. Pull requests run the same checks plus the approved
-coordinator regressions.
+That is **one slice, one stack pair, one harness**. It shows that the flow works;
+it does not promise other stacks, harnesses, or later slices. Read the
+[support scope](docs/reference/support-scope.md) before relying on anything.
 
-FuseForge is MIT licensed and uses a manual release process. See the
-[changelog](CHANGELOG.md) and
-[release process](docs/reference/release-process.md). Readiness automation does
-not create commits, tags, pushes, or GitHub Releases.
+Out of scope for now: a tmux daemon, an autonomous merge pipeline, and a
+general-purpose multi-agent runtime.
 
-## Contributing
+## Learn more
 
-Read [`AGENTS.md`](AGENTS.md) and
-[`.github/CONTRIBUTING.md`](.github/CONTRIBUTING.md) before opening a pull
-request. FuseForge approves one stage at a time, so a change that implements an
-unapproved stage becomes an issue rather than a merge. An overstated support
-claim is treated as a defect; report one with the
+- Setup: [Install](docs/setup/install.md) · [Bootstrap](docs/setup/bootstrap.md) ·
+  [Claude Code](docs/setup/claude-code.md) · [Codex](docs/setup/codex.md) ·
+  [Cursor](docs/setup/cursor.md)
+- [Support scope](docs/reference/support-scope.md) ·
+  [Verification evidence](docs/verification/README.md) ·
+  [All docs](docs/README.md)
+- How it was built: [approved checkpoints](docs/planning/checkpoints/README.md) ·
+  [implementation slices](docs/planning/implementation/README.md)
+- [Changelog](CHANGELOG.md) · [Release process](docs/reference/release-process.md) ·
+  [Contributing](.github/CONTRIBUTING.md) · [Agent notes for maintainers](AGENTS.md)
+
+An overstated support claim is a defect; report one with the
 [claim-gap template](.github/ISSUE_TEMPLATE/claim-gap.md).
 
-- [Code of Conduct](.github/CODE_OF_CONDUCT.md)
-- [Security policy](.github/SECURITY.md)
-- [Reviewer checklist](docs/reference/reviewer-checklist.md)
+## License
 
-## Language policy
-
-Skills, scripts, harness instructions, and enforceable policy use English as
-their canonical language. Korean readers can use
-[`README.ko.md`](./README.ko.md) and the conceptual
-[`docs/reference/methodology.ko.md`](./docs/reference/methodology.ko.md) guide.
-FuseForge does not maintain unstable per-skill translations.
+MIT

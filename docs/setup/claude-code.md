@@ -36,6 +36,37 @@ Mode: answer
 Write permission: none
 ```
 
+## Plugin marketplace (experimental)
+
+Instead of the skill-directory install, add the `forge` catalog and install all
+three packs:
+
+```text
+/plugin marketplace add LooSung/fuseforge
+/plugin install compforge@forge
+/plugin install oopforge@forge
+/plugin install fuseforge@forge
+```
+
+If `forge` is already added from Compforge or OOPforge, skip the first line.
+`doctor.sh` and `bootstrap.sh` check script installs only, so skip them on this
+path; they report plugin-installed specialists as missing.
+
+`/fuseforge:craft` and `/fuseforge:consult` read their workflow from the plugin
+folder. Plugin files live in `~/.claude/plugins/cache/`, outside your project, so
+Claude Code asks before reading them. Approve the prompt when it appears, or
+add this rule to `~/.claude/settings.json` (required for `claude -p`):
+
+```json
+{ "permissions": { "allow": ["Read(~/.claude/plugins/cache/forge/**)"] } }
+```
+
+Update with `claude plugin marketplace update forge` and
+`claude plugin update <name>@forge`; remove with
+`claude plugin uninstall <name>@forge`. Use one install path, not both. A full
+coordinator run from a plugin-only install has not been recorded yet. Evidence
+and limits: [marketplace-2026-11-19](../verification/marketplace-2026-11-19.md).
+
 ## Session plugin alternative
 
 `claude --plugin-dir <fuseforge-checkout>` also loads the plugin, but the

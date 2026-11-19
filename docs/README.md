@@ -47,7 +47,7 @@ canonical policy remains under [`../skills/`](../skills/).
 
 Every slice plan and evidence record is indexed in
 [planning/implementation/README.md](planning/implementation/README.md). Slices 1
-through 9 are implemented.
+through 10 are implemented.
 
 ## Verification
 

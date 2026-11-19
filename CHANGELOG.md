@@ -6,6 +6,33 @@ future plans, private backlogs, and unsupported claims do not belong here.
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-11-19
+
+Forge marketplace and shorter README, AGENTS, and CLAUDE files.
+
+### Added
+
+- Claude Code plugin marketplace `forge` (`.claude-plugin/marketplace.json`,
+  experimental): `/plugin marketplace add LooSung/fuseforge`, then install
+  `compforge@forge`, `oopforge@forge`, and `fuseforge@forge`. Plugin files sit
+  outside the project, so reads need one approval or the
+  `Read(~/.claude/plugins/cache/forge/**)` rule. Evidence:
+  `docs/verification/marketplace-2026-11-19.md`.
+
+### Changed
+
+- Rewrote `README.md` and `README.ko.md` as a short page: install (all three
+  packs), usage, how it works, and what is proven. Added the Forge family table.
+- Reduced `AGENTS.md` to a map for agents changing this repository: layout, CI
+  checks, product boundaries, and rules. Stage completion criteria moved to
+  `docs/planning/checkpoints/README.md`.
+- `CLAUDE.md` now imports `AGENTS.md` and adds only Claude packaging notes.
+
+### Removed
+
+- Twelve `docs/*.md` compatibility stubs that only pointed to their moved
+  documents under `docs/planning/` and `docs/verification/`.
+
 ## [0.6.1] - 2026-11-18
 
 ### Removed

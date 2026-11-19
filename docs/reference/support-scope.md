@@ -62,6 +62,15 @@ checkout and never deletes a pack source.
 OOPforge that filename is the self-install entry point, so the habit transfers to
 the wrong action; FuseForge itself is `install.sh`.
 
+Claude Code can instead install all three packs from the `forge` plugin
+marketplace: `/plugin marketplace add LooSung/fuseforge`, then
+`/plugin install compforge@forge`, `oopforge@forge`, and `fuseforge@forge`.
+This path is **experimental**: install, update, removal, and positive live
+probes passed, but a clean negative control and a full coordinator run from a
+plugin-only install are still pending. Evidence:
+[marketplace-2026-11-19](../verification/marketplace-2026-11-19.md). Use one
+Claude Code path, not both.
+
 Not covered: Windows, a package registry, and updating or repairing a specialist
 pack that is already installed. Isolated `install-smoke.sh` also runs on GitHub
 Actions `ubuntu-latest`. A live `install.sh` round trip has been run on macOS

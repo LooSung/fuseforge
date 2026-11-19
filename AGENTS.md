@@ -1,148 +1,96 @@
-# FuseForge — Agent Instructions
+# FuseForge — agent notes
 
-## Mission
+These notes are for agents changing **FuseForge itself**. To *use* FuseForge on a
+product, follow `skills/SKILL.md` instead; it owns the Craft and Consult policy.
 
-FuseForge explores a thin full-stack coordinator over Compforge and OOPforge.
-It must preserve each specialist pack's scope while giving a developer one
-feature-level workflow, shared contract, and integrated approval experience.
+## What FuseForge is
 
-## Current stage
+A thin, experimental full-stack coordinator over
+[Compforge](https://github.com/LooSung/compforge) (frontend) and
+[OOPforge](https://github.com/LooSung/oopforge) (backend). It gives a developer
+one feature-level workflow, one shared contract, and one integrated approval per
+stage, while each specialist keeps its own scope.
 
-FuseForge's **coordinator Test checkpoint is approved**. Discovery, Design,
-Delivery Plan, Skeleton, and ten Implement slices are approved.
+Current state: Discovery, Design, Delivery Plan, Skeleton, ten Implement slices,
+and the coordinator Test checkpoint are approved. The whole flow ran once
+against a real product. Read `docs/verification/calendar-slice-1-2026-08-27.md`
+before describing what FuseForge has coordinated: one slice, one stack pair, one
+harness.
 
-The whole flow has been executed once against a real product workspace and
-produced calendar Slice 1 with a passing connected check. Read
-`docs/verification/calendar-slice-1-2026-08-27.md` before describing what
-FuseForge has coordinated. It is one slice, one stack pair, one harness.
+## Layout
 
-FuseForge installs and uninstalls itself with `scripts/setup/install.sh` and
-`scripts/setup/uninstall.sh`. `scripts/setup/bootstrap.sh` installs the
-specialist packs, not FuseForge, which differs from the sibling packs.
+| Path | Holds |
+|---|---|
+| `skills/SKILL.md` | Entry point; routes Craft and Consult |
+| `skills/workflow/` | `craft.md` and `consult.md` |
+| `skills/coordination/` | Workspace, shared contract, delegation, stage barrier, connected verification |
+| `skills/stability.json` | Interface maturity, explained in `docs/reference/skill-stability.md` |
+| `commands/` | Claude Code entry points |
+| `.claude-plugin/`, `.codex-plugin/`, `.cursor-plugin/` | Harness packaging only; `.claude-plugin/marketplace.json` is the `forge` catalog of all three packs, kept identical across the three repositories except for which entry is `./` |
+| `scripts/setup/` | `quickstart.sh` and `install.sh` install FuseForge; `bootstrap.sh` installs the **specialists**, unlike the sibling packs |
+| `scripts/ci/` | Packaging, policy, and smoke checks |
+| `docs/planning/` | Approved checkpoints and every slice's plan and evidence |
+| `docs/verification/` | Packaging and behavior evidence |
+| `evals/` | `claude plugin eval` suites |
 
-- Read `docs/planning/checkpoints/discovery.md`,
-  `docs/planning/checkpoints/design.md`,
-  `docs/planning/checkpoints/delivery-plan.md`, and
-  `docs/planning/checkpoints/skeleton.md` before implementing behavior.
-- Read a slice's plan before working on it and its evidence before reviewing it.
-  `docs/planning/implementation/README.md` indexes every slice.
-- Use `docs/README.md` as the human documentation index. Read
-  `docs/reference/support-scope.md` before describing current support and
-  `docs/verification/README.md` before changing evidence claims.
-- Separate observed facts, hypotheses, decisions, and open questions.
-- Implement only one explicitly approved vertical slice.
-- Do not add unrelated installers, CI, dependencies, calendar source, or
-  coordinator behavior outside that slice.
-- Do not describe later slices or unverified harnesses as implemented or
-  supported.
+## Checks
 
-## Required workflow
+CI runs these; all must pass before a change is done:
 
-For a new capability or product-level change, keep these stages separate:
-
-1. Discovery — problem, glossary, actors, contexts, scenarios, open questions.
-2. Design — coordinator contract, ownership, state model, and interfaces.
-3. Delivery Plan — scope, sequence, verification, compatibility, and risks.
-4. Skeleton — package and skill structure without behavior.
-5. Implement — one approved vertical slice.
-6. Test — static packaging, harness behavior, and connected evidence.
-
-Ask for human approval before moving from one stage to the next.
+```bash
+bash scripts/ci/lint-skills.sh        # packaging, skill registry, doc links
+python3 scripts/ci/test-doc-links.py
+python3 scripts/ci/check-release-readiness.py
+python3 scripts/ci/check-selection-gate.py
+python3 scripts/ci/check-workspace-contract.py
+python3 scripts/ci/check-delegation-barrier.py
+python3 scripts/ci/check-implement-delegation.py
+python3 scripts/ci/check-connected-verification.py
+python3 scripts/ci/check-consult.py
+bash scripts/ci/bootstrap-smoke.sh
+bash scripts/ci/install-smoke.sh
+```
 
 ## Product boundaries
 
 - FuseForge coordinates; it does not duplicate frontend or backend methodology.
-- Compforge owns TypeScript and React component discipline.
-- OOPforge owns Java Spring and Python FastAPI OOP/DDD discipline.
-- The user approves product behavior in their language. Internal terms and
-  specialist contracts must not replace that product-language checkpoint.
-- A parent agent owns shared decisions and user interaction. Specialist work
-  must return undecided cross-stack changes to that parent.
-- Parallelism is allowed only after a shared contract is fixed and write roots
-  do not overlap. Parallel execution is an optimization, not a requirement.
-- Do not introduce a tmux daemon, autonomous merge pipeline, or general-purpose
-  multi-agent runtime without new evidence and a separate approved scope.
+  Compforge owns TypeScript and React discipline; OOPforge owns Java Spring and
+  Python FastAPI OOP/DDD discipline.
+- FuseForge never writes application source or runs a package manager.
+  Specialists do that inside their own work target. Consult never implements
+  product behavior. Specialist bootstrap is an explicit script, never an implicit
+  Craft mutation.
+- The user approves product behavior in their own language. Internal terms and
+  specialist contracts must not replace that checkpoint.
+- The parent agent owns shared decisions and user interaction. Specialist work
+  returns undecided cross-stack changes to the parent.
+- Parallelism is allowed only after the shared contract is fixed and write roots
+  do not overlap. It is an optimization, not a requirement.
+- Do not introduce a tmux daemon, an autonomous merge pipeline, or a
+  general-purpose multi-agent runtime without new evidence and a separately
+  approved scope.
 
-## Repository and documentation discipline
+## Rules for changing the pack
 
-- Keep future decisions in Discovery or the currently approved planning
-  artifact; do not present them as current capabilities.
-- Keep authoritative checkpoints and implementation records under
-  `docs/planning/`. Root-level historical document paths are compatibility
-  stubs, not sources to edit.
-- Keep setup, stable reference, project positioning, and verification evidence
-  in their corresponding `docs/` subdirectories.
-- Keep agent-facing skills, scripts, and enforceable policy in English.
-  Maintain Korean user guidance in `README.ko.md` and
-  `docs/reference/methodology.ko.md` instead of per-skill translations.
-- Keep one source of truth for cross-stack semantics.
-- Preserve monorepo and polyrepo as distinct contexts without assuming atomic
-  commits across repositories.
-- Do not add dependencies or external services during planning stages.
+- A new capability goes through Discovery → Design → Delivery Plan → Skeleton →
+  Implement → Test, with human approval between stages. Read the four approved
+  checkpoints in `docs/planning/checkpoints/` before implementing behavior, and
+  implement exactly one approved vertical slice at a time. Read a slice's plan before working on it
+  and its evidence before reviewing it; `docs/planning/implementation/README.md`
+  indexes every slice. Stage completion criteria live in
+  `docs/planning/checkpoints/README.md`.
+- Read `docs/reference/support-scope.md` before describing support and
+  `docs/verification/README.md` before changing evidence claims. Do not describe
+  later slices or unverified harnesses as implemented or supported.
+- Separate observed facts, hypotheses, decisions, and open questions.
+- Keep one source of truth for cross-stack semantics. Treat monorepo and
+  polyrepo as distinct contexts; never assume atomic commits across repositories.
+- Add no unrelated installers, CI, dependencies, or external services, and no
+  calendar source.
+- Skills, scripts, and enforceable policy are in English. Korean guidance lives
+  in `README.ko.md` and `docs/reference/methodology.ko.md`.
 - Record only completed user-visible changes in `CHANGELOG.md`. Follow
-  `docs/reference/release-process.md`; repository automation must not create
-  tags or publish GitHub Releases.
+  `docs/reference/release-process.md`; automation never creates tags or GitHub
+  Releases.
 - Keep changes surgical and remove only artifacts created by the same change.
-- Comments explain why; names explain what.
-
-## Discovery checkpoint
-
-Status: **Approved 2026-08-26**.
-
-Discovery is complete only when the maintainer can decide:
-
-- whether the problem and target user are real;
-- whether a separate coordinator is the correct product boundary;
-- what must be shared between specialist tracks;
-- what belongs explicitly outside the first Design;
-- which open questions must be answered before Design.
-
-## Design checkpoint
-
-Status: **Approved 2026-08-26**.
-
-Design is complete only when the maintainer can decide:
-
-- the coordinator contract and one source of truth for shared semantics;
-- ownership and escalation rules across the parent and specialist tracks;
-- the logical-workspace, contract-revision, track-result, and stage-barrier
-  state models;
-- the smallest sibling-aligned harness structure and interfaces;
-- the default user flow, including mandatory stack ambiguity checks;
-- the calendar proof semantics and boundaries needed for Delivery Planning.
-
-## Delivery Plan checkpoint
-
-Status: **Approved 2026-08-26**.
-
-Delivery Planning is complete only when the maintainer can decide:
-
-- the first proof's frontend stack, backend stack, topology, and local database;
-- the ordered vertical slices and acceptance examples;
-- the Skeleton scope and non-overlapping write roots;
-- static, specialist, and connected verification for each slice;
-- compatibility assumptions, failure handling, and delivery risks.
-
-## Skeleton checkpoint
-
-Status: **Approved 2026-08-26**.
-
-Skeleton is complete only when the maintainer can decide:
-
-- whether the file tree matches the approved sibling-aligned boundary;
-- whether canonical policy and harness adapters are separated;
-- whether every created file expresses an approved interface;
-- whether any implementation behavior, dependency, or empty placeholder scope
-  was introduced early;
-- whether the first implementation slice can begin without restructuring the
-  package.
-
-## Implement checkpoint
-
-An implementation slice is complete only when:
-
-- its product-language outcome and write scope were approved in advance;
-- it preserves the shared contract and specialist ownership boundaries;
-- focused static and behavior checks pass;
-- no later slice or unsupported harness behavior was added;
-- the maintainer approves moving to the next slice or Test.
+  Comments explain why; names explain what.

@@ -23,6 +23,11 @@ Then confirm the install:
 bash ~/.fuseforge/scripts/setup/doctor.sh
 ```
 
+## Claude Code plugin marketplace (experimental)
+
+Claude Code can install all three packs from the `forge` catalog instead; see
+[Claude Code setup](claude-code.md#plugin-marketplace-experimental).
+
 ## Install a fixed release instead
 
 The quickstart tracks `main`. To pin a release:
@@ -30,7 +35,7 @@ The quickstart tracks `main`. To pin a release:
 ```bash
 git clone https://github.com/LooSung/fuseforge.git ~/.fuseforge
 cd ~/.fuseforge
-git checkout v0.6.1
+git checkout v0.7.0
 chmod +x scripts/setup/*.sh
 ./scripts/setup/install.sh
 ./scripts/setup/doctor.sh

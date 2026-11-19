@@ -21,6 +21,10 @@ measures how often the coordinator asked about persistence instead of deciding
 for the user, before and after the fix. Read it before describing classification
 stability.
 
+[`marketplace-2026-11-19.md`](marketplace-2026-11-19.md) records the Claude
+Code plugin marketplace install, update, and removal of all three packs, plus
+live root and activation probes on the installed copies.
+
 [`self-install-2026-08-27.md`](self-install-2026-08-27.md) records the installer,
 uninstaller, and self-aware doctor, with a live install, activation probe, and
 removal. Read it before describing how FuseForge is installed.
