@@ -6,6 +6,11 @@ future plans, private backlogs, and unsupported claims do not belong here.
 
 ## [Unreleased]
 
+### Removed
+
+- Placeholder `docs/assets/`, `docs/guides/`, and `docs/proof/` READMEs that
+  only reserved empty directories, and their lines in `docs/README.md`.
+
 ## [0.7.1] - 2026-11-19
 
 Comment discipline aligned with Compforge and OOPforge.

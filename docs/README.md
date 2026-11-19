@@ -5,11 +5,8 @@ canonical policy remains under [`../skills/`](../skills/).
 
 ## Directory roles
 
-- [`assets/`](assets/README.md) — versioned assets required by verified docs
-- [`guides/`](guides/README.md) — approved end-to-end walkthroughs
 - [`planning/`](planning/README.md) — approved checkpoints and implementation slices
 - [`project/`](project/positioning.md) — project positioning and ownership
-- [`proof/`](proof/README.md) — separately approved effectiveness protocols
 - [`reference/`](reference/support-scope.md) — stable concepts and support boundaries
 - [`releases/`](releases/README.md) — archived historical release notes
 - [`setup/`](setup/bootstrap.md) — harness and specialist setup
