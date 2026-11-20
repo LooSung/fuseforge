@@ -22,7 +22,7 @@ activation passed on all three. What each harness has actually run is in the
 | Pack | For | Stack |
 |---|---|---|
 | [Compforge](https://github.com/LooSung/compforge) | Frontend | TypeScript + React |
-| [OOPforge](https://github.com/LooSung/oopforge) | Backend | Java Spring · Python FastAPI |
+| [OOPforge](https://github.com/LooSung/oopforge) | Backend | Java Spring · Python FastAPI · Kotlin Spring and TypeScript Next.js (experimental) |
 | **FuseForge** (this repo) | One feature across both | Coordinates Compforge + OOPforge (experimental) |
 
 FuseForge needs both specialists. Either install below sets up all three.

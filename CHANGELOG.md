@@ -6,6 +6,15 @@ future plans, private backlogs, and unsupported claims do not belong here.
 
 ## [Unreleased]
 
+### Changed
+
+- Craft's orientation now names OOPforge's experimental Kotlin Spring and
+  TypeScript Next.js stacks: the selection gate offers them only as
+  experimental, and a Next.js server track in the same app uses the monorepo
+  topology. FuseForge's support scope is unchanged until a connected run with
+  either backend is recorded. The sister pack tables and the `forge`
+  marketplace entry for OOPforge match.
+
 ## [0.8.0] - 2026-11-19
 
 `/fuseforge:jira` and `/fuseforge:crucible`.

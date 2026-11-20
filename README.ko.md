@@ -22,7 +22,7 @@ FuseForge 자신은 애플리케이션 코드를 쓰지 않는다. 각 전문 �
 | 팩 | 대상 | 스택 |
 |---|---|---|
 | [Compforge](https://github.com/LooSung/compforge) | 프론트엔드 | TypeScript + React |
-| [OOPforge](https://github.com/LooSung/oopforge) | 백엔드 | Java Spring · Python FastAPI |
+| [OOPforge](https://github.com/LooSung/oopforge) | 백엔드 | Java Spring · Python FastAPI · Kotlin Spring·TypeScript Next.js (실험적) |
 | **FuseForge** (이 저장소) | 두 쪽에 걸친 기능 하나 | Compforge + OOPforge 조율 (실험적) |
 
 FuseForge는 두 전문 팩이 모두 필요하다. 아래 어느 방법으로든 셋 다 준비된다.

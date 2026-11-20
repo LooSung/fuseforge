@@ -61,10 +61,10 @@ Report a blocker only when the required specialist skill itself cannot be found.
 Then point the user to `docs/setup/bootstrap.md` and stop. Craft never invokes
 bootstrap, applies environment changes, or invents choices.
 
-Expected current families are TypeScript + React from Compforge and Java Spring
-or Python FastAPI from OOPforge. Treat this as orientation, not a substitute for
-inspecting the loaded pack, and do not offer planned support such as Vue until
-the loaded contract includes it.
+Expected current families are TypeScript + React from Compforge and Java Spring,
+Python FastAPI, and experimental Kotlin Spring or Next.js server code from
+OOPforge. Treat this as orientation, not a substitute for inspecting the loaded
+pack; name experimental stacks as such, and do not offer planned support such as Vue until the loaded contract includes it.
 
 ## 4. Build one combined selection gate
 
@@ -77,7 +77,7 @@ backend stack question as conditional on that answer.
 Greenfield topology is also a user decision when the request does not choose
 between:
 
-- monorepo — one product root and Git history;
+- monorepo — one product root and Git history (also a Next.js app whose server track lives in it);
 - three-work-target layout — coordination, frontend, and backend directories
   that may later become independent repositories.
 
