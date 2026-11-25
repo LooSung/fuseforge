@@ -13,6 +13,7 @@ Invoke:
 /fuseforge:consult <coordination question>
 /fuseforge:crucible <one full-stack slice, plan to tested code>
 /fuseforge:jira <card request, or the parent key for child tasks>
+/fuseforge:review <pull request, branch, or nothing for the working tree>
 ```
 
 Activation probe:

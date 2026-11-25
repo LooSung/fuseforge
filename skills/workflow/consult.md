@@ -64,6 +64,10 @@ Select the first explicit signal that matches:
 A request to compare options or recommend one is always Proposal, even when
 it is phrased as a question.
 
+A request to review a finished change — a pull request, branch, diff, or the
+working tree — is not Consult. Name `/fuseforge:review` (Codex and Cursor:
+`Use FuseForge review:`) and stop.
+
 If the user asks to "review and fix" or "advise and then implement", complete
 Review or Answer only. Offer Craft as a separate next action. Do not change
 mode silently and do not implement.

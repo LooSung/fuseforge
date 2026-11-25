@@ -68,6 +68,7 @@ implemented yet.
 /fuseforge:consult Should the error codes live in the shared contract?
 /fuseforge:crucible Plan, build, clean up, and test the schedule-creation slice
 /fuseforge:jira Write the frontend and backend child tasks of DEMO-12
+/fuseforge:review Review pull request 42
 ```
 
 | Harness | How to call |
@@ -81,6 +82,7 @@ implemented yet.
 | `consult` | Ask, compare, review, or write one planning document | Implements product behavior |
 | `crucible` | Plan → build → specialist refactor → specialist test → connected check, for one slice (not yet run past the selection gate) | Skips the plan or `rev-2` approval, or writes app code itself |
 | `jira` | One full-stack Jira card, or the `[F.E]` and `[B.E]` children of one epic or story | Writes anything but those issues, or copies its own template |
+| `review` | One finished change in both tracks: each track by its own pack's review rules, plus cross-stack mismatches | Changes code, or judges one track by the other pack's rules |
 
 ## How it works
 

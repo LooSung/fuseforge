@@ -1,6 +1,6 @@
 ---
 name: fuseforge
-description: Coordinates one full-stack feature across Compforge (frontend) and OOPforge (backend) — selection gate, confirmed greenfield workspace, shared contract, specialist Design and Implement delegation, connected client-to-backend verification, read-only consult, full-stack Jira cards, and crucible (plan → build → refactor → test for one slice). Use when one feature spans a TypeScript + React frontend and a Java Spring or Python FastAPI backend, or for the /fuseforge:craft, /fuseforge:consult, /fuseforge:jira, and /fuseforge:crucible prompts.
+description: Coordinates one full-stack feature across Compforge (frontend) and OOPforge (backend) — selection gate, confirmed greenfield workspace, shared contract, specialist Design and Implement delegation, connected client-to-backend verification, read-only consult, full-stack Jira cards, full-stack review, and crucible (plan → build → refactor → test for one slice). Use when one feature spans a TypeScript + React frontend and a Java Spring or Python FastAPI backend, or for the /fuseforge:craft, /fuseforge:consult, /fuseforge:jira, /fuseforge:review, and /fuseforge:crucible prompts.
 ---
 
 # FuseForge
@@ -43,6 +43,16 @@ For a FuseForge Jira request:
 2. Read the specialist Jira template it names. If neither specialist file can
    be read, stop; never reconstruct the template.
 3. Write Jira issues only, and only on an explicit request.
+
+For a FuseForge Review request — a finished change (pull request, branch, pasted
+diff, or working tree) that touches both tracks:
+
+1. Read `workflow/review.md`.
+2. Read each track's specialist review file it names. If one cannot be read,
+   stop that track and report the paths; never reconstruct its rules.
+3. Never change code, tests, the shared contract, or coordinator state.
+
+A review of a plan or a shared contract without a code change stays Consult.
 
 For a FuseForge Crucible request:
 
