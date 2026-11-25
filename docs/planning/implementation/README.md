@@ -13,10 +13,11 @@
 - [Slice 11 plan](implementation-slice-11-plan.md) and [evidence](implementation-slice-11.md)
 - [Slice 12 plan](implementation-slice-12-plan.md) and [evidence](implementation-slice-12.md)
 - [Slice 13 plan](implementation-slice-13-plan.md) and [evidence](implementation-slice-13.md)
+- [Slice 14 plan](implementation-slice-14-plan.md) and [evidence](implementation-slice-14.md)
 
 Each slice preserves its approved scope and checkpoint evidence.
 
-Slices 1 through 13 are implemented and statically verified. This pack contains no
+Slices 1 through 14 are implemented and statically verified. This pack contains no
 calendar application source by design.
 
 The coordinator flow has since been executed once end to end against a separate
@@ -44,3 +45,5 @@ Design §4.1 with the maintainer's approval. Evidence: [slice 11](implementation
 [slice 12](implementation-slice-12.md).
 
 Slice 13 adds `/fuseforge:review`. Evidence: [slice 13](implementation-slice-13.md).
+
+Slice 14 adds `/fuseforge:refactor`. Evidence: [slice 14](implementation-slice-14.md).

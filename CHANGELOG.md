@@ -6,6 +6,24 @@ future plans, private backlogs, and unsupported claims do not belong here.
 
 ## [Unreleased]
 
+## [0.11.0] - 2026-11-25
+
+`/fuseforge:refactor`.
+
+### Added
+
+- `/fuseforge:refactor` (Codex and Cursor: `Use FuseForge refactor:`) cleans
+  up existing code in both tracks without behavior changes. Each track runs its
+  own pack's `workflow/refactor.md` inside its work target. FuseForge freezes
+  the wire surface between the tracks — routes, request and response shapes,
+  status and error codes, frontend calls — and stops once before any edit to
+  show the write roots, each track's job contract, the frozen surface, and the
+  test commands for before and after. A track result that changes behavior, a
+  public name, or the frozen surface, or lacks the test runs, is rejected. A
+  one-track or behavior-changing request stops; Crucible's stage 5 is
+  unchanged. Evidence: `docs/verification/refactor-2026-11-25.md` (slice 14),
+  live to the approval stop only.
+
 ## [0.10.0] - 2026-11-25
 
 `/fuseforge:review`.

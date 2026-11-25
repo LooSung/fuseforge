@@ -57,6 +57,7 @@ through 14 are implemented.
 - [Consult](verification/consult-2026-08-27.md)
 - [Jira and Crucible](verification/jira-crucible-2026-11-19.md)
 - [Review](verification/review-2026-11-25.md)
+- [Refactor](verification/refactor-2026-11-25.md)
 
 ## Governance
 
