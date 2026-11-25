@@ -6,6 +6,14 @@ future plans, private backlogs, and unsupported claims do not belong here.
 
 ## [Unreleased]
 
+### Fixed
+
+- A `v*` tag push now runs the Lint workflow, so the release readiness check
+  compares the tag with the repository version, as
+  `docs/reference/release-process.md` described. Until now CI ran only on
+  `main` and pull requests, so the tag was checked only by hand. The release
+  procedure now waits for that run before creating the GitHub Release.
+
 ## [0.9.0] - 2026-11-25
 
 Narrow reading in delegation and a lower agent replacement threshold.

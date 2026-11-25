@@ -44,7 +44,8 @@ they do not create commits, tags, pushes, or GitHub Releases.
    blocked or not-applicable evidence instead of converting it into a pass.
 5. Review and commit the release changes.
 6. Create an annotated `v<version>` tag at that reviewed commit and push the
-   commit and tag.
+   commit and tag. The tag push runs the Lint workflow, whose readiness check
+   compares the tag with the version; wait for it to pass before step 7.
 7. Create the GitHub Release manually from the same tag using the changelog
    entry as release notes.
 8. Verify the GitHub Release points to the expected commit and does not claim
@@ -54,8 +55,8 @@ they do not create commits, tags, pushes, or GitHub Releases.
 
 `scripts/ci/check-release-readiness.py` validates SemVer, version agreement,
 license and changelog presence, verification evidence, and an optional tag.
-Without `--tag`, it checks repository preparation only. In GitHub tag CI it
-also reads `GITHUB_REF_NAME`.
+Without `--tag`, it checks repository preparation only. On a `v*` tag push the
+Lint workflow runs it, and it reads the tag from `GITHUB_REF_NAME`.
 
 The checker intentionally reports the documented-install requirement and the
 one-slice, one-harness reach of the connected evidence as limitations. It does
