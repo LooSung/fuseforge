@@ -15,7 +15,7 @@ feature once while Compforge and OOPforge retain their specialist ownership.
   validation, stage barriers, and user-facing integrated approval.
 - Compforge owns TypeScript and React frontend discipline.
 - OOPforge owns Java Spring and Python FastAPI backend OOP/DDD discipline, plus
-  experimental Kotlin Spring and Next.js server code.
+  experimental Kotlin Spring and TypeScript NestJS.
 
 FuseForge does not duplicate specialist methodology or provide a general
 multi-agent runtime.

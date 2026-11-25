@@ -6,6 +6,15 @@ future plans, private backlogs, and unsupported claims do not belong here.
 
 ## [Unreleased]
 
+### Changed
+
+- Craft's orientation names OOPforge's experimental Kotlin Spring and
+  TypeScript NestJS stacks: OOPforge v1.15.0 removed the Next.js server-code
+  stack and added NestJS. The monorepo topology no longer mentions a Next.js
+  server track. FuseForge's support scope is unchanged until a connected run
+  with a NestJS backend is recorded. Positioning, the sister pack tables, and
+  the forge marketplace entry for OOPforge match.
+
 ## [0.9.1] - 2026-11-25
 
 Tag pushes now run CI.
