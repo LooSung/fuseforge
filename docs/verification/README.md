@@ -29,6 +29,10 @@ live root and activation probes on the installed copies.
 Jira and Crucible runs for slices 11 and 12, including the Jira run that wrote
 cards without its workflow before the stop rule was added.
 
+[`tag-ci-2026-11-25.md`](tag-ci-2026-11-25.md) records the first tag-triggered
+release readiness check: every Lint step on a simulated tag, the failure on a
+wrong tag, and the hosted tag run that gates the GitHub Release.
+
 [`self-install-2026-08-27.md`](self-install-2026-08-27.md) records the installer,
 uninstaller, and self-aware doctor, with a live install, activation probe, and
 removal. Read it before describing how FuseForge is installed.
