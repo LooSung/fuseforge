@@ -6,6 +6,10 @@ future plans, private backlogs, and unsupported claims do not belong here.
 
 ## [Unreleased]
 
+## [0.9.2] - 2026-11-25
+
+OOPforge's TypeScript backend stack is NestJS.
+
 ### Changed
 
 - Craft's orientation names OOPforge's experimental Kotlin Spring and
@@ -13,7 +17,9 @@ future plans, private backlogs, and unsupported claims do not belong here.
   stack and added NestJS. The monorepo topology no longer mentions a Next.js
   server track. FuseForge's support scope is unchanged until a connected run
   with a NestJS backend is recorded. Positioning, the sister pack tables, and
-  the forge marketplace entry for OOPforge match.
+  the forge marketplace entry for OOPforge match. A live Crucible run on a
+  NestJS + Next.js repository reached the scope question without a stack
+  stop: `docs/verification/nestjs-selection-2026-11-25.md`.
 
 ## [0.9.1] - 2026-11-25
 

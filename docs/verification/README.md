@@ -33,6 +33,9 @@ cards without its workflow before the stop rule was added.
 release readiness check: every Lint step on a simulated tag, the failure on a
 wrong tag, and the hosted tag run that gates the GitHub Release.
 
+[`nestjs-selection-2026-11-25.md`](nestjs-selection-2026-11-25.md) records the
+selection gate on a repository with a NestJS backend after OOPforge v1.15.0.
+
 [`self-install-2026-08-27.md`](self-install-2026-08-27.md) records the installer,
 uninstaller, and self-aware doctor, with a live install, activation probe, and
 removal. Read it before describing how FuseForge is installed.
