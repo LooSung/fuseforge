@@ -35,7 +35,7 @@ The quickstart tracks `main`. To pin a release:
 ```bash
 git clone https://github.com/LooSung/fuseforge.git ~/.fuseforge
 cd ~/.fuseforge
-git checkout v0.9.2
+git checkout v0.10.0
 chmod +x scripts/setup/*.sh
 ./scripts/setup/install.sh
 ./scripts/setup/doctor.sh

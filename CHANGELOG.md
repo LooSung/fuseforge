@@ -6,6 +6,23 @@ future plans, private backlogs, and unsupported claims do not belong here.
 
 ## [Unreleased]
 
+## [0.10.0] - 2026-11-25
+
+`/fuseforge:review`.
+
+### Added
+
+- `/fuseforge:review` (Codex and Cursor: `Use FuseForge review:`) reviews one
+  finished change — pull request, branch, pasted diff, or working tree — that
+  touches both tracks. Changed files are split by work target; each track runs
+  its own pack's `workflow/review.md` on its files only, and the report names
+  the file read. FuseForge adds only cross-stack findings: a field, status, or
+  error shape the backend changed while frontend code still uses the old one,
+  or a frontend call to an operation the backend does not provide, each citing
+  both lines. A one-track change stops and names the specialist review; a plan
+  or contract review stays Consult. It never changes code. Evidence:
+  `docs/verification/review-2026-11-25.md` (slice 13).
+
 ## [0.9.2] - 2026-11-25
 
 OOPforge's TypeScript backend stack is NestJS.

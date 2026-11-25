@@ -12,10 +12,11 @@
 - [Slice 10 plan](implementation-slice-10-plan.md) and [evidence](implementation-slice-10.md)
 - [Slice 11 plan](implementation-slice-11-plan.md) and [evidence](implementation-slice-11.md)
 - [Slice 12 plan](implementation-slice-12-plan.md) and [evidence](implementation-slice-12.md)
+- [Slice 13 plan](implementation-slice-13-plan.md) and [evidence](implementation-slice-13.md)
 
 Each slice preserves its approved scope and checkpoint evidence.
 
-Slices 1 through 12 are implemented and statically verified. This pack contains no
+Slices 1 through 13 are implemented and statically verified. This pack contains no
 calendar application source by design.
 
 The coordinator flow has since been executed once end to end against a separate
@@ -41,3 +42,5 @@ names. Evidence: [field gaps](../../verification/field-gaps-2026-11-18.md).
 Slices 11 and 12 add `/fuseforge:jira` and `/fuseforge:crucible`, amending
 Design §4.1 with the maintainer's approval. Evidence: [slice 11](implementation-slice-11.md),
 [slice 12](implementation-slice-12.md).
+
+Slice 13 adds `/fuseforge:review`. Evidence: [slice 13](implementation-slice-13.md).

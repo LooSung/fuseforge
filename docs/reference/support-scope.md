@@ -22,6 +22,8 @@ claim that the complete calendar workflow is available.
   without implementing product behavior;
 - Jira: one full-stack card, or the `[F.E]` and `[B.E]` home children of one
   epic or story, from the specialist Jira template;
+- Review: one finished change in both tracks, each by its own specialist's
+  review rules, plus cross-stack findings citing both sides;
 - Crucible: one slice from plan through specialist Design, Implement, the
   connected check, specialist Refactor when earned, and Test, keeping the plan
   and `rev-2` approvals.
@@ -32,6 +34,10 @@ Crucible passed a live Claude Code run to its first stop, the selection gate. Ev
 [jira and crucible](../verification/jira-crucible-2026-11-19.md).
 No Crucible run has reached Design, Refactor, or Test yet, and Codex and Cursor
 are covered by static checks only.
+
+Review was added in slice 13 and passed one live Claude Code run on a seeded
+branch: [review](../verification/review-2026-11-25.md). Codex and Cursor are
+covered by static checks only.
 
 Implement delegation and connected verification have been exercised once, end to
 end, on Cursor Agent with Compforge 1.3.1
@@ -95,9 +101,9 @@ Support requires the skill-directory install in
 
 | Harness | Invocation | Evidence |
 |---|---|---|
-| Claude Code | `/fuseforge:craft …`, `/fuseforge:consult …`, `/fuseforge:crucible …`, `/fuseforge:jira …` | Live Craft activation, the full coordinator flow, and the Consult probe passed |
-| Codex CLI | `Use FuseForge craft: …`, `consult: …`, `crucible: …`, `jira: …` | Live Craft and Consult activation passed; one live Consult comparison loaded `consult.md` |
-| Cursor Agent | `Use FuseForge craft: …`, `consult: …`, `crucible: …`, `jira: …` | Live Craft and Consult activation passed |
+| Claude Code | `/fuseforge:craft …`, `/fuseforge:consult …`, `/fuseforge:crucible …`, `/fuseforge:jira …`, `/fuseforge:review …` | Live Craft activation, the full coordinator flow, and the Consult probe passed |
+| Codex CLI | `Use FuseForge craft: …`, `consult: …`, `crucible: …`, `jira: …`, `review: …` | Live Craft and Consult activation passed; one live Consult comparison loaded `consult.md` |
+| Cursor Agent | `Use FuseForge craft: …`, `consult: …`, `crucible: …`, `jira: …`, `review: …` | Live Craft and Consult activation passed |
 
 The Craft activation response is:
 

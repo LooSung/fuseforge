@@ -36,6 +36,9 @@ wrong tag, and the hosted tag run that gates the GitHub Release.
 [`nestjs-selection-2026-11-25.md`](nestjs-selection-2026-11-25.md) records the
 selection gate on a repository with a NestJS backend after OOPforge v1.15.0.
 
+[`review-2026-11-25.md`](review-2026-11-25.md) records the first live
+full-stack review against a seeded branch and its pass criteria.
+
 [`self-install-2026-08-27.md`](self-install-2026-08-27.md) records the installer,
 uninstaller, and self-aware doctor, with a live install, activation probe, and
 removal. Read it before describing how FuseForge is installed.
