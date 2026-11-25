@@ -6,8 +6,21 @@ future plans, private backlogs, and unsupported claims do not belong here.
 
 ## [Unreleased]
 
+## [0.9.0] - 2026-11-25
+
+Narrow reading in delegation and a lower agent replacement threshold.
+
 ### Changed
 
+- Specialist delegation carries a `read_first` field: the exact paths a
+  specialist reads in full first. Beyond them, it searches only for what they
+  name, reads only the needed range of target source, and quotes summaries and
+  failures from command output rather than full logs. The parent reads target
+  source and logs the same way, and still reads policy files, plans, the shared
+  contract, and result envelopes whole.
+- A long-running specialist agent is now replaced when its context passes
+  about 200K tokens instead of 400K, since every request re-reads the whole
+  context. This is a policy change; no run has measured its effect.
 - Craft's orientation now names OOPforge's experimental Kotlin Spring and
   TypeScript Next.js stacks: the selection gate offers them only as
   experimental, and a Next.js server track in the same app uses the monorepo

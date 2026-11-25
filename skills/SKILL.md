@@ -67,6 +67,10 @@ For a FuseForge Craft request:
 After context compaction, read the policy files the current step needs again
 before continuing: files read earlier in the session are not re-attached.
 
+Read narrowly in target source and logs: search first, read only the needed
+range, and keep command output to summaries and failures. Read policy files,
+plans, the shared contract, and result envelopes whole.
+
 If a required policy file cannot be read, stop and report which file and why.
 Never reconstruct the workflow from memory, and never emit `Assumptions`,
 `Selection Gate`, or any other section of the response contract without having

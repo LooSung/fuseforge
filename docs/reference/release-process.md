@@ -10,7 +10,7 @@ they do not create commits, tags, pushes, or GitHub Releases.
 - Keep the release version identical in all three plugin manifests and
   `skills/stability.json`.
 - Treat `0.x` as initial development and keep experimental support boundaries
-  explicit. The current release version is `0.8.0`.
+  explicit. The current release version is `0.9.0`.
 
 ## Procedure
 
@@ -36,7 +36,7 @@ they do not create commits, tags, pushes, or GitHub Releases.
    python3 scripts/ci/check-crucible.py
    bash scripts/ci/bootstrap-smoke.sh
    bash scripts/ci/install-smoke.sh
-   python3 scripts/ci/check-release-readiness.py --tag v0.8.0
+   python3 scripts/ci/check-release-readiness.py --tag v0.9.0
    git diff --check
    ```
 

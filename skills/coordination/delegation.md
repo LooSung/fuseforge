@@ -17,6 +17,11 @@ Status: **Experimental — Design, Implement, Refactor, and Test delegation**.
 | `contract_revision` | Delegated `rev-N` |
 | `base_revision` | Optional target Git revision |
 | `expected_output` | Required artifact or evidence |
+| `read_first` | Exact paths the specialist reads in full before anything else |
+
+Each prompt lists `read_first`. Beyond those paths, the specialist searches only
+for what they name and reads only the needed range of target source. It quotes
+summaries and failures from command output, never full logs.
 
 ## Result envelope
 
@@ -130,7 +135,8 @@ commit hashes, the task doc, and the remaining scope — when any is true:
 - no file has changed for about ten minutes while it is not waiting on a
   command;
 - it repeats steps it already finished;
-- its reported usage passes about 400K tokens.
+- its context passes about 200K tokens, by the harness's token count for that
+  agent.
 
 Tell the user before replacing and why. Run full verification suites and slow
 integration tests once at the end of a multi-phase plan when the user has
