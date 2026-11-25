@@ -1,6 +1,6 @@
 ---
 name: fuseforge
-description: Coordinates one full-stack feature across Compforge (frontend) and OOPforge (backend) — selection gate, confirmed greenfield workspace, shared contract, specialist Design and Implement delegation, connected client-to-backend verification, read-only consult, full-stack Jira cards, full-stack review, and crucible (plan → build → refactor → test for one slice). Use when one feature spans a TypeScript + React frontend and a Java Spring or Python FastAPI backend, or for the /fuseforge:craft, /fuseforge:consult, /fuseforge:jira, /fuseforge:review, and /fuseforge:crucible prompts.
+description: Coordinates one full-stack feature across Compforge (frontend) and OOPforge (backend) — selection gate, confirmed greenfield workspace, shared contract, specialist Design and Implement delegation, connected client-to-backend verification, read-only consult, full-stack Jira cards, full-stack review and refactor, and crucible (plan → build → refactor → test for one slice). Use when one feature spans a TypeScript + React frontend and a Java Spring or Python FastAPI backend, or for the /fuseforge:craft, /fuseforge:consult, /fuseforge:jira, /fuseforge:review, /fuseforge:refactor, and /fuseforge:crucible prompts.
 ---
 
 # FuseForge
@@ -53,6 +53,14 @@ diff, or working tree) that touches both tracks:
 3. Never change code, tests, the shared contract, or coordinator state.
 
 A review of a plan or a shared contract without a code change stays Consult.
+
+For a FuseForge Refactor request — behavior-preserving cleanup in both tracks:
+
+1. Read `workflow/refactor.md` and `coordination/delegation.md`.
+2. Read each track's specialist refactor file it names. If one cannot be read,
+   stop and report the paths; never reconstruct its rules.
+3. Stop for approval before any edit. Never write application source yourself;
+   each track writes only inside its own work target.
 
 For a FuseForge Crucible request:
 

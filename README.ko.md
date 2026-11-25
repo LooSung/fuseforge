@@ -67,6 +67,7 @@ bash ~/.fuseforge/scripts/setup/doctor.sh              # 셋 다 확인
 /fuseforge:crucible 일정 생성 슬라이스를 계획부터 정리·테스트까지 진행해줘
 /fuseforge:jira DEMO-12의 프론트·백엔드 하위 작업을 써줘
 /fuseforge:review 42번 PR 리뷰해줘
+/fuseforge:refactor API는 그대로 두고 주문 폼과 주문 서비스를 정리해줘
 ```
 
 | 하니스 | 호출 방법 |
@@ -81,6 +82,7 @@ bash ~/.fuseforge/scripts/setup/doctor.sh              # 셋 다 확인
 | `crucible` | 슬라이스 하나를 계획 → 구현 → 전문 팩 리팩터 → 전문 팩 테스트 → 연결 검증까지 (아직 선택 게이트 이후는 실행 기록 없음) | 계획·`rev-2` 승인 생략, 앱 코드 직접 작성 |
 | `jira` | 풀스택 Jira 카드 1개, 또는 에픽·스토리 하나의 `[F.E]`·`[B.E]` 하위 작업 | 해당 이슈 외의 변경, 자체 템플릿 복사 |
 | `review` | 두 트랙에 걸친 변경 1건을 트랙별 전문 팩 리뷰 규칙으로, 그리고 두 쪽이 어긋난 곳까지 | 코드 변경, 다른 팩 규칙으로 트랙 판단 |
+| `refactor` | 두 트랙의 동작 보존 정리, 트랙별 전문 팩 리팩터 규칙, 두 쪽 사이 API는 고정 | 승인 전 수정, 동작·API 변경 |
 
 ## 동작 방식
 

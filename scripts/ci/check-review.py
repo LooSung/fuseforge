@@ -98,7 +98,7 @@ def check_routing() -> None:
         "skills/SKILL.md",
         "For a FuseForge Review request",
         "Read `workflow/review.md`.",
-        "never reconstruct its rules.",
+        "stop that track and report the paths; never reconstruct its rules.",
         "/fuseforge:review",
         "A review of a plan or a shared contract without a code change stays Consult.",
     )

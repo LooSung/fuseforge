@@ -14,6 +14,7 @@ Invoke:
 /fuseforge:crucible <one full-stack slice, plan to tested code>
 /fuseforge:jira <card request, or the parent key for child tasks>
 /fuseforge:review <pull request, branch, or nothing for the working tree>
+/fuseforge:refactor <what to clean up on the frontend and the backend>
 ```
 
 Activation probe:

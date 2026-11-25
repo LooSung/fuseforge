@@ -1,7 +1,7 @@
 # FuseForge — agent notes
 
 These notes are for agents changing **FuseForge itself**. To *use* FuseForge on a
-product, follow `skills/SKILL.md` instead; it owns the Craft, Consult, Jira, Review, and Crucible policy.
+product, follow `skills/SKILL.md` instead; it owns the Craft, Consult, Jira, Review, Refactor, and Crucible policy.
 
 ## What FuseForge is
 
@@ -21,8 +21,8 @@ harness.
 
 | Path | Holds |
 |---|---|
-| `skills/SKILL.md` | Entry point; routes Craft, Consult, Jira, Review, and Crucible |
-| `skills/workflow/` | `craft.md`, `consult.md`, `jira.md`, `review.md`, and `crucible.md` |
+| `skills/SKILL.md` | Entry point; routes Craft, Consult, Jira, Review, Refactor, and Crucible |
+| `skills/workflow/` | `craft.md`, `consult.md`, `jira.md`, `review.md`, `refactor.md`, and `crucible.md` |
 | `skills/coordination/` | Workspace, shared contract, delegation (Design, Implement, Refactor, Test), stage barrier, connected verification |
 | `skills/stability.json` | Interface maturity, explained in `docs/reference/skill-stability.md` |
 | `commands/` | Claude Code entry points |
@@ -50,6 +50,7 @@ python3 scripts/ci/check-consult.py
 python3 scripts/ci/check-jira.py
 python3 scripts/ci/check-crucible.py
 python3 scripts/ci/check-review.py
+python3 scripts/ci/check-refactor.py
 bash scripts/ci/bootstrap-smoke.sh
 bash scripts/ci/install-smoke.sh
 ```

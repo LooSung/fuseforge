@@ -6,6 +6,7 @@
     "workflow/consult.md",
     "workflow/jira.md",
     "workflow/review.md",
+    "workflow/refactor.md",
     "workflow/crucible.md",
     "coordination/logical-workspace.md",
     "coordination/shared-contract.md",

@@ -192,3 +192,9 @@ production fix returns as a decision request, not as a Test result.
 
 Both report artifacts and a commit, or `unavailable` without Git. A Refactor
 result that changed source invalidates the last connected check.
+
+Standalone Refactor (`workflow/refactor.md`) uses the Refactor half without
+`rev-2` or a connected check: each track receives stage `refactor`, its
+approved write root, its job contract, and the frozen wire surface in place of
+the contract revision. The same rejection rules apply, with the frozen surface
+standing in for the contract, and no commit is made unless the user asked.

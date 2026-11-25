@@ -35,6 +35,7 @@ they do not create commits, tags, pushes, or GitHub Releases.
    python3 scripts/ci/check-jira.py
    python3 scripts/ci/check-crucible.py
    python3 scripts/ci/check-review.py
+   python3 scripts/ci/check-refactor.py
    bash scripts/ci/bootstrap-smoke.sh
    bash scripts/ci/install-smoke.sh
    python3 scripts/ci/check-release-readiness.py --tag v0.10.0

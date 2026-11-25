@@ -63,6 +63,12 @@ FuseForge는 누락된 기술 선택을 조용히 추정하지 않는다.
 판단하고, FuseForge는 두 쪽이 서로 어긋난 곳(필드, 상태 코드, 에러 형태, 공유 계약)만
 더한다. 코드는 바꾸지 않는다.
 
+`/fuseforge:refactor`는 두 트랙에 걸친 기존 코드를 동작을 바꾸지 않고 정리한다. 프론트는
+Compforge의 refactor 파일로, 백엔드는 OOPforge의 refactor 파일로 각각 진행하고,
+FuseForge는 두 쪽 사이의 API(경로, 요청·응답 형태, 상태 코드, 프론트 호출)를 고정한다.
+고치기 전에 트랙별 쓰기 범위, 작업 계약, 고정한 API, 전후 테스트 명령을 보여 주고 승인을
+받는다.
+
 `/fuseforge:crucible`은 슬라이스 하나를 선택 게이트 → 계획 → 전문 팩 Design·Implement
 → 연결 검증 → 전문 팩 Refactor(필요할 때만) → 전문 팩 Test → 필요 시 연결 재검증까지
 잇는다. 선택 게이트, 경로 확인, 계획 승인, `rev-2` 승인에서는 그대로 멈춘다.
@@ -141,7 +147,7 @@ Claude, Codex, Cursor live activation은 통과했다. 캘린더 Slice 1에서 �
 ## 10. 현재 범위와 다음 증명
 
 현재 구현된 것은 선택, 전문 팩 bootstrap, greenfield workspace, 공유 계약,
-Design 통합, Implement 위임, connected verification, Consult, Jira, Review, Crucible이다.
+Design 통합, Implement 위임, connected verification, Consult, Jira, Review, Refactor, Crucible이다.
 Crucible은 아직 선택 게이트 이후 단계를 실제로 실행해 본 적이 없다. 증거는 한 제품의
 한 슬라이스, 한 스택 조합이다. 기존 저장소 두 개를 잇는 흐름은 아직 정해지지
 않았고, 한 번 더 실행한 뒤 규칙으로 정한다.

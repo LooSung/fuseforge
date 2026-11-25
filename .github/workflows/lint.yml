@@ -61,6 +61,8 @@ jobs:
         run: python3 scripts/ci/check-crucible.py
       - name: Check review
         run: python3 scripts/ci/check-review.py
+      - name: Check refactor
+        run: python3 scripts/ci/check-refactor.py
 
       - name: Bootstrap smoke test
         run: bash scripts/ci/bootstrap-smoke.sh
